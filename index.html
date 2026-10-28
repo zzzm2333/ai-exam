@@ -124,6 +124,7 @@ button{font-family:inherit;font-size:inherit;border:none;background:none;color:i
 .wr .del{flex:none;color:var(--t3);font-size:16px;padding:4px}
 .empty{text-align:center;color:var(--t3);font-size:13px;padding:34px 0;line-height:2}
 .toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:var(--tx);color:var(--bg);font-size:13px;font-weight:600;padding:10px 18px;border-radius:99px;z-index:99;animation:up .25s;white-space:nowrap}
+/* ===== 主观题作答区与代码填空 ===== */
 .ta{width:100%;min-height:132px;border:1.5px solid var(--bd);border-radius:13px;background:var(--card);color:var(--tx);font-size:14px;line-height:1.7;padding:12px 14px;font-family:inherit;resize:vertical;outline:none;transition:border-color .15s}
 .ta:focus{border-color:var(--blue)}
 .ta::placeholder{color:var(--t3)}
@@ -154,28 +155,6 @@ button{font-family:inherit;font-size:inherit;border:none;background:none;color:i
 </style>
 </head>
 <body>
-<!--
-  ============================================================
-  Supabase 配置步骤
-  ============================================================
-  1. 打开 https://supabase.com 新建项目
-  2. 进入 SQL Editor，执行：
-     create table if not exists progress (
-       user_id uuid not null default auth.uid(),
-       level   text not null,
-       key     text not null,
-       value   jsonb,
-       updated_at timestamptz not null default now(),
-       primary key (user_id, level, key)
-     );
-     alter table progress enable row level security;
-     create policy "own rows" on progress
-       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-  3. Project Settings → API，复制 Project URL 与 anon / publishable key
-  4. 替换下面 SB_URL、SB_KEY 两个常量
-  5. 部署到 GitHub Pages / Vercel / Netlify 等静态托管即可
-  ============================================================
--->
 <div id="app"></div>
 <script>
 /* ===== 二级客观题题库数据（依据《广东省人工智能训练师二级（技师）题库最终冻结版》第一部分） ===== */
@@ -561,11 +540,7 @@ function result(){
 /* ===== 刷题完成 ===== */
 function finishP(){
  const t=S.ids.length,r=Object.values(S.done).filter(v=>v==1).length;
- const key=pkey('s');
- localStorage.removeItem(key);
- const m=getMeta();delete m[key];setMeta(m);
- if(TOKEN)deleteCloudKey(key);
- DONE={r,t};donePage();
+ localStorage.removeItem(pkey('s'));DONE={r,t};donePage();
 }
 function donePage(){
  clearInterval(tmr);document.body.className='';
@@ -747,6 +722,7 @@ function subView(){
 }
 function togA(k){const a=document.getElementById('a-'+k),b=document.getElementById('b-'+k);if(!a)return;const on=a.style.display=='none';a.style.display=on?'block':'none';if(b)b.textContent=on?'收起参考答案与解析 ▴':'查看参考答案与解析 ▾'}
 function togM(k){if(MST[k])delete MST[k];else MST[k]=1;store.s(pkey('mst'),MST);const y=window.scrollY;subView();window.scrollTo(0,y)}
+/* ============ 主观题在线作答 + 代码填空 ============ */
 let ANS,FILL,STDC;
 const CNUM='①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿';
 function escA(s){return esc(s).replace(/"/g,'&quot;')}
@@ -1154,343 +1130,13 @@ const PRACT3=[
 #第24题 ONNX图像分类模型部署
 原题号：3.2.6　｜　填空数：23§你是一家AI公司的工程师，需要将一个训练好的图像分类模型部署到生产环境中。该模型使用ONNX格式保存，能够识别10种不同的动物类别。你需要完成模型的加载、图像预处理和推理预测的完整流程。§§import onnxruntime§import numpy as np§from PIL import Image§import scipy.special§# 1. 加载ONNX模型§session = __①__§# 2. 获取模型输入输出信息§input_name = __②__[0].name§output_name = __③__[0].name§# 3. 加载类别标签并输出结果§with open('animal_labels.txt', 'r',encoding='utf-8') as f:§    labels = [line.strip() for line in f.readlines()]§# 4. 图像预处理函数§def preprocess_image(image_path, target_size=(224, 224)):§    # 加载图像并转换为RGB格式§    image = __④__(image_path).__⑤__("RGB")§    # 调整图像大小§    image = image.__⑥__(target_size)§    # 转换为numpy数组并归一化§    image_array = __⑦__(image).__⑧__(np.float32)§    image_array = image_array / 255.0§    # 标准化（ImageNet标准）§    mean = np.array([0.485, 0.456, 0.406], dtype=np.float32) # 确保mean是float32§    std = np.array([0.229, 0.224, 0.225], dtype=np.float32)  # 确保std是float32§    image_array = (image_array - __⑨__) / __⑩__§    # 调整维度顺序为CHW§    image_array = __⑪__(image_array, (2, 0, 1))§    # 添加batch维度§    image_array = __⑫__(image_array, axis=0)§    image_array = image_array.astype(np.float32)§    return image_array§# 5. 加载并预处理测试图像§processed_image = __⑬__§# 6. 执行模型推理§outputs = __⑭__([output_name], {__⑮__: processed_image})§# 7. 后处理预测结果§# 应用softmax获取概率§probabilities = __⑯__.__⑰__(outputs[0], axis=1)§# 获取最高概率的类别索引§predicted_class_idx = __⑱__(probabilities[0])§# 获取最高概率值§confidence = __⑲__[0][predicted_class_idx]§# 8. 输出结果§predicted_label = __⑳__[predicted_class_idx]§print(f"预测结果: {predicted_label}")§print(f"置信度: {confidence:.4f}")§# 9. 输出Top-3预测结果§top3_indices = __㉑__(probabilities[0])[-3:][__㉒__]§top3_confidences = __㉓__[0][top3_indices]§print("\\nTop-3 预测结果:")§for i, (idx, conf) in enumerate(zip(top3_indices, top3_confidences)):§    print(f"{i+1}. {labels[idx]} - {conf:.4f}")|①onnxruntime.InferenceSession('animal_classifier.onnx')；§②session.get_inputs()；§③session.get_outputs()；§④Image.open；§⑤convert；§⑥resize；§⑦np.array；§⑧astype；§⑨mean；§⑩std；§⑪np.transpose；§⑫np.expand_dims；§⑬preprocess_image('test_animal.jpg')；§⑭session.run；§⑮input_name；§⑯scipy.special；§⑰softmax；§⑱np.argmax；§⑲probabilities；§⑳labels；§㉑np.argsort；§㉒::-1；§㉓probabilities`},
 ];
-
-/* =========================================================================
-   Supabase 账号 + 云同步层
-   ========================================================================= */
-const SB_URL = 'https://YOUR-PROJECT.supabase.co';   // ← 替换为 Project URL
-const SB_KEY = 'YOUR-ANON-KEY';                       // ← 替换为 anon / publishable key
-
-let UID   = localStorage.getItem('tk_cur_user') || '';
-let TOKEN = localStorage.getItem('tk_token') || '';
-let REFRESH = localStorage.getItem('tk_refresh') || '';
-let EMAIL = localStorage.getItem('tk_email') || '';
-
-const _rawSave = store.s;
-const _rawGet  = store.g;
-
-/* ---- 通用请求：自动带 token，401 自动刷新一次 ---- */
-async function sbFetch(path, opt={}, retry=true){
-  const headers = Object.assign({
-    'apikey': SB_KEY,
-    'Content-Type': 'application/json'
-  }, opt.headers||{});
-  if (TOKEN) headers['Authorization'] = 'Bearer ' + TOKEN;
-  const r = await fetch(SB_URL + path, Object.assign({}, opt, {headers}));
-  if (r.status === 401 && retry && REFRESH){
-    const ok = await refreshToken();
-    if (ok) return sbFetch(path, opt, false);
-  }
-  return r;
-}
-
-async function refreshToken(){
-  try {
-    const r = await fetch(SB_URL + '/auth/v1/token?grant_type=refresh_token', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','apikey':SB_KEY},
-      body: JSON.stringify({refresh_token: REFRESH})
-    });
-    if (!r.ok) return false;
-    const d = await r.json();
-    TOKEN = d.access_token; REFRESH = d.refresh_token; UID = d.user.id;
-    EMAIL = d.user.email || EMAIL;
-    localStorage.setItem('tk_token', TOKEN);
-    localStorage.setItem('tk_refresh', REFRESH);
-    localStorage.setItem('tk_cur_user', UID);
-    localStorage.setItem('tk_email', EMAIL);
-    return true;
-  } catch(e){ return false; }
-}
-
-async function sbSignup(email, pass){
-  const r = await fetch(SB_URL + '/auth/v1/signup', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','apikey':SB_KEY},
-    body: JSON.stringify({email, password: pass})
-  });
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.msg || d.error_description || '注册失败');
-  return d;
-}
-
-async function sbLogin(email, pass){
-  const r = await fetch(SB_URL + '/auth/v1/token?grant_type=password', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','apikey':SB_KEY},
-    body: JSON.stringify({email, password: pass})
-  });
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.error_description || d.msg || '登录失败');
-  return d;
-}
-
-/* ---- meta：每个 key 的本地最后修改时间 ---- */
-function getMeta(){ return _rawGet('tk_meta_' + (UID||'guest'), {}); }
-function setMeta(m){ _rawSave('tk_meta_' + (UID||'guest'), m); }
-function touchMeta(k){
-  const m = getMeta();
-  m[k] = Date.now();
-  setMeta(m);
-}
-
-/* ---- 包装 store.s：写本地后打标记并防抖同步 ---- */
-let syncTimer = null;
-store.s = function(k, v){
-  _rawSave(k, v);
-  if (TOKEN && !k.startsWith('tk_meta_')){
-    touchMeta(k);
-    scheduleSync();
-  }
-};
-function scheduleSync(){
-  if (!TOKEN) return;
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(pushAll, 1500);
-}
-
-/* ---- 会话合并：按题 id 合并 ans / done ---- */
-function mergeSession(a, b){
-  if (!a) return b;
-  if (!b) return a;
-  if (!a.ids || !b.ids) return ((a.t0||0) >= (b.t0||0)) ? a : b;
-  const base = ((a.t0||0) >= (b.t0||0)) ? a : b;
-  return Object.assign({}, base, {
-    ans:  Object.assign({}, b.ans  || {}, a.ans  || {}),
-    done: Object.assign({}, b.done || {}, a.done || {})
-  });
-}
-
-/* ---- 推送全部本地改动到云端 ---- */
-async function pushAll(){
-  if (!TOKEN) return;
-  const m = getMeta();
-  const rows = [];
-  for (const k of Object.keys(m)){
-    if (k.startsWith('tk_meta_')) continue;
-    const v = _rawGet(k, null);
-    if (v === null) continue;
-    rows.push({
-      level: k.startsWith('tk3_') ? '3' : '2',
-      key: k,
-      value: v,
-      updated_at: new Date(m[k]).toISOString()
-    });
-  }
-  if (!rows.length) return;
-  try {
-    await sbFetch('/rest/v1/progress', {
-      method: 'POST',
-      headers: {'Prefer': 'resolution=merge-duplicates,return=minimal'},
-      body: JSON.stringify(rows)
-    });
-  } catch(e){}
-}
-
-/* ---- 从云端拉取并合并到本地 ---- */
-async function pullAll(){
-  if (!TOKEN) return;
-  let rows = [];
-  try {
-    const r = await sbFetch('/rest/v1/progress?select=level,key,value,updated_at');
-    if (!r.ok) return;
-    rows = await r.json();
-  } catch(e){ return; }
-  const m = getMeta();
-  let changed = false;
-  for (const row of rows){
-    const cloudT = new Date(row.updated_at).getTime();
-    const localT = m[row.key] || 0;
-    if (cloudT > localT){
-      if (row.key.endsWith('_s')){
-        const local = _rawGet(row.key, null);
-        _rawSave(row.key, mergeSession(local, row.value));
-      } else {
-        _rawSave(row.key, row.value);
-      }
-      m[row.key] = cloudT;
-      changed = true;
-    }
-  }
-  if (changed) setMeta(m);
-}
-
-/* ---- 删除云端某个 key（用于刷题完成后清理会话） ---- */
-async function deleteCloudKey(key){
-  try {
-    await sbFetch('/rest/v1/progress?key=eq.' + encodeURIComponent(key), {method:'DELETE'});
-  } catch(e){}
-}
-
-/* ---- 旧数据迁移：tk_xxx -> tk_{UID}_xxx ---- */
-function migrateOldData(){
-  if (!UID) return;
-  const flagKey = 'tk_mig_to_' + UID;
-  if (localStorage.getItem(flagKey)) return;
-  const names = ['w','st','h','s','mst','ans','fill'];
-  const m = getMeta();
-  for (const p of ['tk_', 'tk3_']){
-    for (const n of names){
-      const oldK = p + n;
-      const newK = p + UID + '_' + n;
-      const oldV = localStorage.getItem(oldK);
-      if (oldV !== null && localStorage.getItem(newK) === null){
-        localStorage.setItem(newK, oldV);
-        m[newK] = Date.now();
-      }
-    }
-  }
-  setMeta(m);
-  localStorage.setItem(flagKey, '1');
-}
-
-/* ---- 页面切走 / 关闭时尽量 flush ---- */
-document.addEventListener('visibilitychange', ()=>{
-  if (document.visibilityState === 'hidden') flushSync();
-});
-window.addEventListener('beforeunload', ()=>flushSync(true));
-
-function flushSync(){
-  if (!TOKEN) return;
-  clearTimeout(syncTimer);
-  const m = getMeta();
-  const rows = [];
-  for (const k of Object.keys(m)){
-    if (k.startsWith('tk_meta_')) continue;
-    const v = _rawGet(k, null);
-    if (v === null) continue;
-    rows.push({
-      level: k.startsWith('tk3_') ? '3' : '2',
-      key: k,
-      value: v,
-      updated_at: new Date(m[k]).toISOString()
-    });
-  }
-  if (!rows.length) return;
-  try {
-    fetch(SB_URL + '/rest/v1/progress', {
-      method: 'POST',
-      keepalive: true,
-      headers: {
-        'apikey': SB_KEY,
-        'Authorization': 'Bearer ' + TOKEN,
-        'Content-Type': 'application/json',
-        'Prefer': 'resolution=merge-duplicates,return=minimal'
-      },
-      body: JSON.stringify(rows)
-    });
-  } catch(e){}
-}
-
-/* ---- 登录 / 注册 / 退出 ---- */
-async function onAuthSuccess(d){
-  TOKEN = d.access_token; REFRESH = d.refresh_token; UID = d.user.id;
-  EMAIL = d.user.email || '';
-  localStorage.setItem('tk_token', TOKEN);
-  localStorage.setItem('tk_refresh', REFRESH);
-  localStorage.setItem('tk_cur_user', UID);
-  localStorage.setItem('tk_email', EMAIL);
-  migrateOldData();
-  await pullAll();
-  setLevel(LV);
-  scheduleSync();
-  home();
-}
-
-function loginPage(){
-  clearInterval(tmr);
-  document.body.className = '';
-  document.title = '登录 · 人工智能训练师题库';
-  $('#app').innerHTML = `
-  <div class="hero"><div class="wrap">
-    <div class="k">职业技能等级认定题库</div>
-    <h1>人工智能训练师题库</h1>
-    <p>登录后，答题进度、错题本、主观题作答将跨设备同步</p>
-  </div></div>
-  <div class="wrap">
-    <div class="card">
-      <h3>登录</h3>
-      <input class="fbi2" id="lgEmail" type="email" placeholder="邮箱" style="width:100%;margin-bottom:9px" autocapitalize="off" autocomplete="username">
-      <input class="fbi2" id="lgPass" type="password" placeholder="密码" style="width:100%" autocomplete="current-password">
-      <button class="bt bp" style="width:100%;margin-top:12px" id="lgBtn" onclick="doLoginClick()">登录</button>
-      <div class="tip" style="margin-top:10px;text-align:center">没有账号？<a href="javascript:showRegister()" style="color:var(--blue)">注册</a></div>
-    </div>
-    <div class="foot">进度保存在 Supabase 云端，换设备登录同一账号即可继续<br>请勿在公共设备保存密码</div>
-  </div>`;
-  window.scrollTo(0,0);
-}
-
-function showRegister(){
-  document.title = '注册 · 人工智能训练师题库';
-  $('#app').innerHTML = `
-  <div class="top"><div class="tin"><button class="nv" onclick="loginPage()">‹</button><div class="tb">注册新账号</div><span style="width:36px"></span></div></div>
-  <div class="wrap" style="padding-top:20px">
-    <div class="card">
-      <h3>邮箱注册</h3>
-      <input class="fbi2" id="rgEmail" type="email" placeholder="邮箱" style="width:100%;margin-bottom:9px" autocapitalize="off" autocomplete="username">
-      <input class="fbi2" id="rgPass" type="password" placeholder="密码（至少 6 位）" style="width:100%;margin-bottom:9px" autocomplete="new-password">
-      <input class="fbi2" id="rgPass2" type="password" placeholder="确认密码" style="width:100%" autocomplete="new-password">
-      <button class="bt bp" style="width:100%;margin-top:12px" onclick="doRegisterClick()">注册</button>
-      <div class="tip" style="margin-top:10px">若项目开启了邮箱确认，注册后需到邮箱点击确认链接再登录。</div>
-    </div>
-  </div>`;
-  window.scrollTo(0,0);
-}
-
-async function doLoginClick(){
-  const email = $('#lgEmail').value.trim();
-  const pass = $('#lgPass').value;
-  if (!email || !pass) return toast('请输入邮箱和密码');
-  const btn = $('#lgBtn'); btn.disabled = true; btn.textContent = '登录中…';
-  try {
-    const d = await sbLogin(email, pass);
-    await onAuthSuccess(d);
-    toast('登录成功');
-  } catch(e){
-    toast(e.message || '登录失败');
-    btn.disabled = false; btn.textContent = '登录';
-  }
-}
-
-async function doRegisterClick(){
-  const email = $('#rgEmail').value.trim();
-  const pass = $('#rgPass').value;
-  const pass2 = $('#rgPass2').value;
-  if (!email || !pass) return toast('请填写邮箱和密码');
-  if (pass.length < 6) return toast('密码至少 6 位');
-  if (pass !== pass2) return toast('两次密码不一致');
-  try {
-    const d = await sbSignup(email, pass);
-    if (d.access_token){
-      await onAuthSuccess(d);
-      toast('注册并登录成功');
-    } else {
-      toast('注册成功，请查收邮箱确认');
-      loginPage();
-    }
-  } catch(e){ toast(e.message || '注册失败'); }
-}
-
-function logout(){
-  if (!confirm('退出登录？云端记录保留，下次登录可继续。')) return;
-  flushSync();
-  TOKEN=''; REFRESH=''; UID=''; EMAIL='';
-  localStorage.removeItem('tk_token');
-  localStorage.removeItem('tk_refresh');
-  localStorage.removeItem('tk_cur_user');
-  localStorage.removeItem('tk_email');
-  clearInterval(tmr);
-  setLevel(LV);
-  loginPage();
-}
-
 /* ===== 等级切换与初始化 ===== */
 let SQ,MQ,JQ,SEC,PRACT,CNT={s:100,m:40,j:60},LV='2';
 const BANKS={'2':{SQ:SQ2,MQ:MQ2,JQ:JQ2,SEC:SEC2,PRACT:PRACT2},'3':{SQ:SQ3,MQ:MQ3,JQ:JQ3,SEC:SEC3,PRACT:PRACT3}};
-function pkey(k){return (LV==='3'?'tk3_':'tk_')+(UID||'guest')+'_'+k;}
+function pkey(k){return (LV==='3'?'tk3_':'tk_')+k;}
 function setLevel(lv){LV=lv;const B=BANKS[LV];SQ=B.SQ;MQ=B.MQ;JQ=B.JQ;SEC=B.SEC;PRACT=B.PRACT;CNT={s:B.SQ.length,m:B.MQ.length,j:B.JQ.length};W=store.g(pkey('w'),{});ST=store.g(pkey('st'),{a:0,c:0});HIST=store.g(pkey('h'),[]);S=null;SU=null;DONE=null;RV='s';tmr=null;MST=store.g(pkey('mst'),{});ANS=store.g(pkey('ans'),{});FILL=store.g(pkey('fill'),{});STDC={};SUB={v:0,only:0,f:'all'};}
 
-/* 以下为含账号信息与新入口的首页 */
+/* 以下为含新入口的首页 */
 function home(){
  clearInterval(tmr);S=null;document.body.className='';document.title='人工智能训练师题库';
  const is3=LV==='3';
@@ -1508,7 +1154,7 @@ function home(){
   <div class="k">${heroK}</div>
   <h1>${heroT}</h1><p>${heroP}</p>
  </div></div><div class="wrap">
-  <div class="seg" style="margin-top:18px"><button class="${!is3?'on':''}" onclick="setLevel('2');pullAll().then(home)">二级题库</button><button class="${is3?'on':''}" onclick="setLevel('3');pullAll().then(home)">三级题库</button></div>
+  <div class="seg" style="margin-top:18px"><button class="${!is3?'on':''}" onclick="setLevel('2');home()">二级题库</button><button class="${is3?'on':''}" onclick="setLevel('3');home()">三级题库</button></div>
   <div class="stats"><div class="st"><b>${tot}</b><span>${statLab}</span></div><div class="st"><b>${ST.a}</b><span>累计答题</span></div><div class="st"><b>${acc}%</b><span>总正确率</span></div><div class="st"><b>${w}</b><span>错题本</span></div></div>
   ${cont}
   <div class="mc" onclick="setup('p')"><div class="mi b">📚</div><div class="mtx"><div class="mt">刷题模式</div><div class="ms">${objMs}</div></div><div class="che">›</div></div>
@@ -1516,44 +1162,11 @@ function home(){
   <div class="mc" onclick="wrongBook()"><div class="mi" style="background:var(--redbg)">📕</div><div class="mtx"><div class="mt">错题本${w?`<span class="rb">${w}</span>`:''}</div><div class="ms">针对错题反复练习，掌握后可移除</div></div><div class="che">›</div></div>
   ${subMc}
   ${HIST.length?`<div class="card"><h3>最近考试</h3>${hs}</div>`:''}
-  <div class="card"><h3>账号</h3>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="mi b" style="width:36px;height:36px;font-size:16px">👤</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(EMAIL||'已登录')}</div>
-        <div class="ms">进度已开启云端同步</div>
-      </div>
-      <button class="bt bf" style="padding:8px 14px;font-size:13px" onclick="logout()">退出</button>
-    </div>
-  </div>
-  <div class="foot">答题记录保存在 Supabase 云端，换设备登录同一账号即可继续<br>清除浏览器数据不影响云端记录</div>
+  <div class="foot">答题记录仅保存在本机浏览器（localStorage）<br>清除浏览器数据会丢失记录，换设备记录不互通</div>
  </div>`;window.scrollTo(0,0);
 }
-
-/* ===== 启动：先校验登录态，再决定进首页还是登录页 ===== */
 setLevel('2');
-(async ()=>{
-  if (TOKEN && UID){
-    try {
-      const r = await sbFetch('/auth/v1/user');
-      if (!r.ok) throw new Error('auth failed');
-      const u = await r.json();
-      EMAIL = u.email || EMAIL;
-      localStorage.setItem('tk_email', EMAIL);
-      await pullAll();
-      setLevel(LV);
-      home();
-      return;
-    } catch(e){
-      TOKEN=''; REFRESH=''; UID=''; EMAIL='';
-      localStorage.removeItem('tk_token');
-      localStorage.removeItem('tk_refresh');
-      localStorage.removeItem('tk_cur_user');
-      localStorage.removeItem('tk_email');
-    }
-  }
-  loginPage();
-})();
+home();
 </script>
 </body>
 </html>
