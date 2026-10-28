@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f5f7">
+<meta name="theme-color" content="#000" media="(prefers-color-scheme:dark)">
+<title>人工智能训练师题库</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f5f5f7;--card:#fff;--bar:rgba(250,250,252,.86);--tx:#1d1d1f;--t2:#86868b;--t3:#d1d1d6;--fill:#f2f2f7;--bd:rgba(0,0,0,.07);--blue:#0071e3;--bluebg:rgba(0,113,227,.1);--green:#34c759;--greenbg:rgba(52,199,89,.14);--red:#ff3b30;--redbg:rgba(255,59,48,.1);--purple:#af52de;--purplebg:rgba(175,82,222,.12);--teal:#32ade6;--tealbg:rgba(50,173,230,.14);--sh:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.06)}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--bar:rgba(28,28,30,.86);--tx:#f5f5f7;--t2:#98989d;--t3:#3a3a3c;--fill:#2c2c2e;--bd:rgba(255,255,255,.1);--blue:#0a84ff;--bluebg:rgba(10,132,255,.2);--green:#30d158;--greenbg:rgba(48,209,88,.18);--red:#ff453a;--redbg:rgba(255,69,58,.16);--purple:#bf5af2;--purplebg:rgba(191,90,242,.18);--teal:#64d2ff;--tealbg:rgba(100,210,255,.16);--sh:0 1px 3px rgba(0,0,0,.5)}}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;font-size:15px;line-height:1.5}
+body.pad{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+button{font-family:inherit;font-size:inherit;border:none;background:none;color:inherit;cursor:pointer}
+.wrap{max-width:690px;margin:0 auto;padding:0 16px}
+.top{position:sticky;top:0;z-index:40;background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--bd)}
+.tin{max-width:690px;margin:0 auto;padding:11px 14px;display:flex;align-items:center;gap:6px}
+.tb{font-size:16px;font-weight:650;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nv{width:36px;height:36px;flex:none;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:22px;line-height:1}
+.nv:active{background:var(--fill)}
+.tm{font-size:13px;color:var(--t2);font-variant-numeric:tabular-nums;font-weight:550}
+.hero{background:linear-gradient(180deg,var(--bluebg),transparent 72%);padding:44px 0 20px}
+.hero .k{display:inline-block;font-size:12px;font-weight:700;color:var(--blue);background:var(--bluebg);padding:4px 11px;border-radius:99px;margin-bottom:12px}
+.hero h1{font-size:30px;letter-spacing:-.4px;line-height:1.22}
+.hero p{color:var(--t2);font-size:13.5px;margin-top:7px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:18px 0 4px}
+.st{background:var(--card);border-radius:15px;padding:14px 4px;text-align:center;box-shadow:var(--sh)}
+.st b{display:block;font-size:21px;font-variant-numeric:tabular-nums}
+.st span{font-size:10.5px;color:var(--t2);margin-top:3px;display:block}
+.mc{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:19px;padding:17px;box-shadow:var(--sh);margin-top:12px;cursor:pointer;transition:transform .15s}
+.mc:active{transform:scale(.975)}
+.mi{width:46px;height:46px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.mi.b{background:var(--bluebg)}.mi.p{background:var(--purplebg)}
+.mtx{flex:1;min-width:0}
+.mt{font-size:16px;font-weight:650}
+.ms{font-size:12px;color:var(--t2);margin-top:3px}
+.che{color:var(--t3);font-size:20px;flex:none}
+.rb{font-size:11px;color:var(--red);background:var(--redbg);padding:2px 8px;border-radius:99px;font-weight:700;margin-left:7px;vertical-align:2px}
+.card{background:var(--card);border-radius:19px;padding:18px;box-shadow:var(--sh);margin-top:14px}
+.card h3{font-size:13px;color:var(--t2);font-weight:650;margin-bottom:12px}
+.hist{display:flex;align-items:center;background:var(--card);border-radius:13px;padding:11px 14px;box-shadow:var(--sh);margin-top:8px}
+.hist b{font-size:16px;margin-right:10px;font-variant-numeric:tabular-nums}
+.hist span{color:var(--t2);font-size:12px}
+.hist .d{margin-left:auto;color:var(--t3);font-size:11px;flex:none}
+.foot{margin:30px 0 40px;text-align:center;color:var(--t3);font-size:11px;line-height:1.9}
+.tip{font-size:12.5px;color:var(--t2);margin:16px 2px 10px;line-height:1.7}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.ch{border:1.5px solid var(--bd);border-radius:14px;padding:13px 12px;text-align:left;transition:.15s}
+.ch.on{border-color:var(--blue);background:var(--bluebg)}
+.ch b{font-size:14px;font-weight:650;display:block}
+.ch span{font-size:11.5px;color:var(--t2)}
+.seg{display:flex;background:var(--fill);border-radius:11px;padding:3px;gap:2px}
+.seg button{flex:1;padding:9px 6px;border-radius:8px;font-size:13px;color:var(--t2);font-weight:550}
+.seg button.on{background:var(--card);color:var(--tx);font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.qc{background:var(--card);border-radius:19px;padding:21px 19px;box-shadow:var(--sh);margin-top:14px;animation:up .3s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+.qh{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:13px}
+.tg{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
+.tg.b{color:var(--blue);background:var(--bluebg)}
+.tg.p{color:var(--purple);background:var(--purplebg)}
+.tg.t{color:var(--teal);background:var(--tealbg)}
+.tg.g{color:var(--t2);background:var(--fill)}
+.tg.ok{color:var(--green);background:var(--greenbg)}
+.tg.no{color:var(--red);background:var(--redbg)}
+.qn{margin-left:auto;font-size:12px;color:var(--t2);font-variant-numeric:tabular-nums}
+.qt{font-size:16.5px;font-weight:650;line-height:1.65;margin-bottom:16px}
+.os{display:flex;flex-direction:column;gap:9px}
+.o{display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border-radius:13px;border:1.5px solid var(--bd);cursor:pointer;transition:.15s;font-size:14.5px;line-height:1.5}
+.o:hover{border-color:var(--t3)}
+.o.on{border-color:var(--blue);background:var(--bluebg)}
+.o.right{border-color:var(--green);background:var(--greenbg)}
+.o.wrong{border-color:var(--red);background:var(--redbg)}
+.o.right .lb,.o.on .lb{color:#fff}
+.o.right .lb{background:var(--green)}
+.o.on .lb{background:var(--blue)}
+.o.wrong .lb{background:var(--red);color:#fff}
+.o.lock{pointer-events:none}
+.lb{width:25px;height:25px;flex:none;border-radius:50%;background:var(--fill);color:var(--t2);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;margin-top:1px}
+.vd{display:flex;align-items:center;gap:7px;padding:12px 15px;border-radius:13px;font-weight:650;font-size:14px;margin-top:15px;flex-wrap:wrap}
+.vd.ok{background:var(--greenbg);color:var(--green)}
+.vd.no{background:var(--redbg);color:var(--red)}
+.ex{background:var(--fill);border-radius:13px;padding:13px 15px;font-size:13.5px;line-height:1.75;margin-top:10px}
+.ex .lab{color:var(--t2);font-weight:650}
+.rm{display:block;margin:10px auto 0;color:var(--blue);font-size:13px;font-weight:650}
+.ab{position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--bd);padding:11px 16px calc(11px + env(safe-area-inset-bottom))}
+.ain{max-width:658px;margin:0 auto;display:flex;gap:9px;align-items:center}
+.bt{border-radius:99px;padding:13px 20px;font-weight:650;font-size:14.5px;transition:transform .15s;white-space:nowrap}
+.bt:active{transform:scale(.96)}
+.bt:disabled{opacity:.35;pointer-events:none}
+.bf{background:var(--fill);color:var(--tx)}
+.bp{background:var(--blue);color:#fff;flex:1}
+.bgr{background:var(--green);color:#fff}
+.brd{background:var(--redbg);color:var(--red)}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:60;display:flex;align-items:flex-end;animation:fdin .2s}
+@keyframes fdin{from{opacity:0}}
+.sheet{background:var(--card);border-radius:22px 22px 0 0;width:100%;max-height:76vh;overflow:auto;padding:18px 18px calc(22px + env(safe-area-inset-bottom));animation:sup .25s ease}
+@keyframes sup{from{transform:translateY(40px);opacity:.4}}
+.sh-h{display:flex;align-items:center;margin-bottom:14px}
+.sh-h b{font-size:16px;flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:8px}
+.gi{height:42px;border-radius:11px;background:var(--fill);color:var(--t2);font-size:13px;font-weight:650;font-variant-numeric:tabular-nums}
+.gi.a{background:var(--bluebg);color:var(--blue)}
+.gi.cur{outline:2px solid var(--blue);outline-offset:-2px}
+.sheet .bt{width:100%;margin-top:14px}
+.rc{text-align:center;padding:34px 20px 24px}
+.rw{position:relative;width:158px;height:158px;margin:0 auto}
+.rw svg{width:100%;height:100%}
+.rt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rt b{font-size:42px;font-variant-numeric:tabular-nums;line-height:1}
+.rt span{font-size:12.5px;color:var(--t2);margin-top:5px}
+.rs{display:flex;justify-content:center;gap:24px;margin-top:18px;flex-wrap:wrap}
+.rs div b{display:block;font-size:19px;font-variant-numeric:tabular-nums}
+.rs div span{font-size:11.5px;color:var(--t2)}
+.mod{display:flex;align-items:center;gap:10px;padding:8px 0}
+.mod span{font-size:13px;font-weight:600;width:52px;flex:none}
+.pb{height:6px;border-radius:99px;background:var(--fill);overflow:hidden;flex:1}
+.pb i{display:block;height:100%;border-radius:99px;background:var(--blue)}
+.mod em{font-size:12px;color:var(--t2);font-style:normal;width:56px;text-align:right;font-variant-numeric:tabular-nums;flex:none}
+.wr{display:flex;align-items:center;gap:11px;background:var(--card);border-radius:15px;padding:13px 14px;box-shadow:var(--sh);margin-top:9px}
+.wr .no{flex:none;font-size:11.5px;font-weight:700;color:var(--t2);background:var(--fill);border-radius:8px;padding:4px 7px;font-variant-numeric:tabular-nums}
+.wr .tx{flex:1;min-width:0;font-size:13.5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wr .del{flex:none;color:var(--t3);font-size:16px;padding:4px}
+.empty{text-align:center;color:var(--t3);font-size:13px;padding:34px 0;line-height:2}
+.toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:var(--tx);color:var(--bg);font-size:13px;font-weight:600;padding:10px 18px;border-radius:99px;z-index:99;animation:up .25s;white-space:nowrap}
+.ta{width:100%;min-height:132px;border:1.5px solid var(--bd);border-radius:13px;background:var(--card);color:var(--tx);font-size:14px;line-height:1.7;padding:12px 14px;font-family:inherit;resize:vertical;outline:none;transition:border-color .15s}
+.ta:focus{border-color:var(--blue)}
+.ta::placeholder{color:var(--t3)}
+.tainfo{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;color:var(--t2);margin-top:7px}
+.tainfo b{color:var(--tx);font-variant-numeric:tabular-nums}
+.code{background:var(--fill);border:1px solid var(--bd);border-radius:13px;padding:13px 14px;margin-top:11px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;font-size:12.5px;line-height:1.7;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fl{white-space:pre-wrap;word-break:break-all;min-height:1.6em}
+.fbi{display:inline-block;vertical-align:middle;height:28px;border:none;border-bottom:2px solid var(--blue);background:var(--bluebg);color:var(--tx);border-radius:7px 7px 0 0;padding:0 7px;font-family:inherit;font-size:12.5px;line-height:26px;outline:none;text-align:center;min-width:4.5ch;max-width:100%;box-sizing:border-box}
+.fbi:focus{background:var(--card);box-shadow:0 0 0 2px var(--bluebg)}
+.fbi.ok{border-bottom-color:var(--green);background:var(--greenbg)}
+.fbi.no{border-bottom-color:var(--red);background:var(--redbg)}
+.frow{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.fno{flex:none;font-size:12px;font-weight:700;color:var(--blue);background:var(--bluebg);border-radius:8px;padding:5px 9px}
+.fhint{flex:none;font-size:12px;color:var(--t2);max-width:45%}
+.fbi2{flex:1;min-width:170px;height:40px;border:1.5px solid var(--bd);border-radius:11px;background:var(--card);color:var(--tx);font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;font-size:13px;padding:0 12px;outline:none;transition:border-color .15s}
+.fbi2:focus{border-color:var(--blue)}
+.fbi2.ok{border-color:var(--green);background:var(--greenbg)}
+.fbi2.no{border-color:var(--red);background:var(--redbg)}
+.abtns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.abtns .bt{padding:9px 18px;font-size:13px}
+.fres{display:none;margin-top:11px}
+.fsum{font-size:12.5px;font-weight:650;color:var(--t2)}
+.frr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:650;padding:8px 12px;border-radius:10px;margin-top:6px;line-height:1.6}
+.frr.ok{background:var(--greenbg);color:var(--green)}
+.frr.no{background:var(--redbg);color:var(--red)}
+.frr .std{color:var(--tx);font-weight:500;font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;font-size:12.5px;word-break:break-all}
+@media(max-width:820px){.ta,.fbi,.fbi2{font-size:16px}.fbi{height:32px;line-height:30px}.fbi2{height:44px}.code{font-size:11.5px;padding:11px}}
+</style>
+</head>
+<body>
+<!--
+  ============================================================
+  Supabase 配置步骤
+  ============================================================
+  1. 打开 https://supabase.com 新建项目
+  2. 进入 SQL Editor，执行：
+     create table if not exists progress (
+       user_id uuid not null default auth.uid(),
+       level   text not null,
+       key     text not null,
+       value   jsonb,
+       updated_at timestamptz not null default now(),
+       primary key (user_id, level, key)
+     );
+     alter table progress enable row level security;
+     create policy "own rows" on progress
+       for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+  3. Project Settings → API，复制 Project URL 与 anon / publishable key
+  4. 替换下面 SB_URL、SB_KEY 两个常量
+  5. 部署到 GitHub Pages / Vercel / Netlify 等静态托管即可
+  ============================================================
+-->
+<div id="app"></div>
+<script>
+/* ===== 二级客观题题库数据（依据《广东省人工智能训练师二级（技师）题库最终冻结版》第一部分） ===== */
+const SQ2=`人工智能训练师在项目交付中的首要职业操守是|按时交付并隐藏不利测试记录|如实报告测试结果与风险|优先满足领导个人意见|用口头承诺代替测试报告|1|如实报告是诚信底线，隐藏记录属造假。
+处理含个人信息的数据时，训练师应首先确认|数据量是否足够大|处理目的、授权范围与来源合法性|服务器是否够用|标注工具是否顺手|1|合规先于效率，先确认授权与合法性。
+对训练数据的敏感字段（如身份证号）应|直接保留以便复现|脱敏并按最小必要原则使用|加密后仍全量入训练集|复制多份分散保存|1|最小必要＋脱敏＋留痕，不因复现牺牲合规。
+发现模型在部分场景误报率异常升高，正确做法是|调低置信度阈值掩盖|记录问题并组织复测、归因|删除异常场景的样本|推迟交付且不说明原因|1|暴露问题并闭环，不以掩盖或删样代替归因。
+使用开源模型权重建设商用系统时，应|直接使用不查许可|阅读许可证并核查商用、分发义务|标注作者后即可任意再分发|一律视为无限制|1|许可决定使用边界，须逐条核查。
+NumPy中计算二维数组每列均值应使用|np.mean(a, axis=0)|np.mean(a, axis=1)|a.mean(axis=2)|np.average(a.T)|0|axis=0为列方向。
+Pandas中去除完全重复行的方法是|df.fillna()|df.drop_duplicates()|df.dropna()|df.replace()|1|drop_duplicates去重行。
+将字符串列转为统一格式的正确做法是|直接覆盖原列|用map/replace统一映射并保留原值|删除异常值|忽略不处理|1|口径转换应可追溯，保留原值与映射规则。
+监督学习中“训练误差低但验证误差高”通常表示|欠拟合|过拟合|数据泄露|正常收敛|1|训练误差低、验证误差高是过拟合典型表现。
+梯度下降中学习率过大可能导致的后果是|训练更稳定|损失震荡甚至发散|必然收敛更快|与学习率无关|1|学习率过大越过最优点导致震荡。
+多模态数据一般指|多张同规格图片|文本、图像、音频、表格等异构数据|多个数据库|多个模型|1|多模态指异构数据类型的融合建模。
+《中华人民共和国数据安全法》确立的核心原则之一是|数据自由流通优先|数据分类分级保护|数据默认公开|处理无需授权|1|分类分级是数据安全法核心制度。
+《中华人民共和国个人信息保护法》中“告知—同意”原则要求|只要内部使用可免告知|处理前告知目的方式并取得同意|同意后信息可永久使用|书面同意必须纸质|1|处理个人信息以告知同意为前提。
+用于标注的图片数据集，其版权风险主要来自|图片分辨率|来源授权与再分发许可|图片大小|标注工具版本|1|版权风险在授权与使用边界。
+模型过拟合时，增大训练数据量最直接的作用是|必然提升训练精度|提升泛化能力、缓解过拟合|加速收敛|减少参数量|1|更多真实样本提升泛化。
+从“人工客服工作量大”挖掘智能改造场景，第一步应|直接采购大模型|拆解咨询量、耗时、重复度、差错与投诉|扩大客服团队|提高考核指标|1|先量化业务现状再定位可改造环节。
+设计跨部门数据架构时，泳道图的主要作用是|美化文档|明确各部门责任与交接边界|替代数据库设计|简化流程|1|泳道表达业务责任与交接。
+某智能审核模块通过率提高但投诉增加，应优先|下调阈值继续提通过率|核查是否把转人工减少误当效果提升|删除投诉样本|停止上线|1|先区分“真效果”与“指标虚高”。
+数据采集、处理、审核三个环节形成质量闭环的关键是|各环节独立验收|不合格数据隔离、退回责任节点修正后重审|只统计采集量|人工全程复核所有数据|1|闭环＝隔离＋退回＋重审＋日志。
+业务模块效果评估中，“一次解决率”比“总处理量”更适合衡量|系统并发能力|业务端到端解决质量|硬件性能|标注速度|1|一次解决率反映端到端质量。
+识别值得智能化的候选任务，通常不关注|规则是否稳定|数据是否可得|任务是否重复|任务是否一次性|3|高频、规则稳定、数据可得才适合改造。
+字段字典至少应包含|名称与示例值|名称、类型、必填、含义、质量规则|仅名称|仅类型|1|字段字典要素齐全才能支撑质量治理。
+流程指标与结果指标的区别在于|前者衡量过程质量，后者衡量最终成效|二者相同|结果指标一定更重要|流程指标不需要|0|过程与结果分开统计、配合使用。
+业务数据口径不一致时，正确的治理顺序是|直接合并|先统一口径与主键，再加工特征|删除旧数据|各用各的|1|先统一主键与口径再进入加工。
+试点验证业务价值时，应|只看平均指标|与基线对照并做小范围灰度|直接全量上线|只测训练集|1|基线对照＋小流量灰度是标准做法。
+多智能产品避免“烟囱系统”的关键是|各产品独立开发|统一主数据、标签口径、接口与权限规范|共享同一个UI|合并所有功能|1|统一底座与规范，产品间按边界协作。
+“回答要准确”改写为可验收需求，应|保留原话|定义正确率、无依据拒答与引用可核验标准|增加字数|交给测试随意判断|1|需求须可测量、可验收。
+业务价值验证中，指标选择应优先|最容易算的|与业务目标直接相关的端到端指标|最多的指标|领导喜欢的|1|端到端业务指标优于单点指标。
+跨部门项目启动前，最需要确认的是|各环节输入输出、字段口径与责任人|项目名字|汇报模板|会议室|0|先定接口与责任，再谈执行。
+数据质量规则命中率下降，应|删除规则|分析原因并修订规则，版本化后重跑|忽略|降低标准|1|规则持续治理并版本化。
+历史回放在业务验证中的作用是|装饰报告|在不影响真实用户的情况下比较新旧方案|代替线上测试|只测速度|1|回放＝离线模拟真实流量比较。
+灰度发布的回退条件是|时间到了就回退|高风险误通过或关键指标明显退化|从不回退|用户要求才回退|1|预先定义回退触发条件。
+识别“伪需求”的典型特征|有明确用户与场景|无明确受益者或无法验证效果|数据可得|有成本核算|1|无受益者、不可验证即伪需求。
+业务数据脱敏应在哪个环节执行|采集前完成授权，加工前完成脱敏|发布后|删除时|不脱敏|0|授权前置、脱敏前置。
+效果诊断中“先小流量试运行”的主要目的|节省电费|控制风险并收集真实反馈|隐藏问题|加速上线|1|小流量＝低风险验证。
+训练集、验证集、测试集划分时，随机逐图划分最容易导致|类别不平衡|同源样本泄漏|模型过大|训练过慢|1|同源样本跨集合造成泄漏。
+防止数据泄漏的正确做法是|打乱后随机划分|按用户/视频/批次组级划分并检查交集|只用一个集合|划分后补样本|1|组级隔离＋交集检查是防泄漏关键。
+数据增强的正确边界是|训练集、验证集、测试集都做|只对训练集做|只对测试集做|全部随机做|1|增强只作用于训练集，验证/测试保持真实。
+对含文字方向语义的图像（如车牌）使用水平翻转，属于|合理增强|可能破坏语义的增强|无影响|必做操作|1|翻转改变方向语义时不能用。
+训练损失下降、验证损失上升，下一步应|加大学习率|早停或正则化，检查是否过拟合|增加训练轮数|删除验证集|1|验证回升是过拟合信号。
+Precision（精确率）的含义是|预测为正的样本中真正为正的比例|真正为正的样本中被检出的比例|全部样本正确率|交并比|0|Precision=TP/(TP+FP)。
+Recall（召回率）的含义是|预测为正中真正为正比例|真正为正中被检出的比例|背景正确率|准确率|1|Recall=TP/(TP+FN)。
+F1值是Precision与Recall的|算术平均|调和平均|几何平均|乘积|1|F1=2PR/(P+R)，调和平均。
+Kappa系数的作用是|衡量模型大小|剔除随机一致后衡量一致性|衡量训练速度|衡量显存|1|Kappa校正随机一致的贡献。
+语义分割常用指标mIoU的计算基础是|各类别预测与真实区域的交并比均值|整图准确率|损失值|参数量|0|mIoU＝各类IoU平均。
+测试集指纹（SHA-256清单）的用途是|压缩数据|验证测试集未被污染或篡改|加速训练|标注|1|指纹对比确保集合完整且未变。
+黄金测试集的核心特征是|数据量最大|标签严格复核、评估期独立封存|每日更新|与训练集共享|1|黄金集＝可信＋不可污染。
+黄金测试集不参与的活动是|最终评估|训练、增强与调参|版本对比|报告|1|黄金集只做最终评估与对比。
+训练日志最少应包含|只有loss|run_id、data_hash、代码版本、参数、种子、逐轮指标|只有时间|只有模型名|1|可复现需要版本与配置全要素。
+随机种子固定主要目的是|加速训练|使随机过程可复现|提高精度|减少数据|1|固定种子使划分/增强/初始化可复现。
+误分类样本“见错就加数据”的低效原因|数据太少|未归因就盲目加样，问题可能不在数据|加数据无效|样本不合法|1|先按标签/覆盖/类间相似/预处理归因。
+类别不平衡时不应只看|少数类F1|总体准确率|混淆矩阵|各类召回|1|总体准确率会被多数类主导。
+Focal Loss主要用于|加速训练|缓解难样本与类别不平衡|降低显存|提升图像质量|1|聚焦难样本、抑制易分样本。
+模型版本比较的正确前提是|不同数据|同一测试集、同口径、同环境|不同指标|随意比较|1|控制变量才能归因。
+验证集选优与测试集评估的关系是|测试集也可反复调参|调参只用验证集，测试集最终一次评估|两者相同|只用测试集调参|1|测试集不参与调参防泄露。
+数据增强“随机水平翻转”与“掩膜同步变换”的关系是|无关|图像与像素掩膜必须同步变换|只翻图像|只翻掩膜|1|不同步将导致标签错位，即标注错误。
+近重复样本未去重的主要危害是|训练变慢|数据冗余与组级泄漏|精度必然提高|无危害|1|近重复造成有效信息冗余与泄漏。
+感知哈希/embedding判重的适用场景是|精确查重|近重复图像/文本检测|加密|压缩|1|感知哈希适合内容相似判重。
+训练中断后恢复的关键依据是|凭记忆|保存的日志、权重与配置|重新开始|删除数据|1|完整日志与断点支撑恢复。
+模型导出后的验证方式是|不验证|同一批样本比较导出前后输出一致性|只看文件大小|只测速度|1|导出前后一致性抽检防转换误差。
+RAG（检索增强生成）的核心思想是|模型记住全部知识|先检索外部知识再生成回答|纯文本生成|图像识别|1|检索＋生成，提升准确与可溯源。
+RAG知识库构建的正确顺序是|索引→清洗→切片→嵌入|清洗→切片→嵌入→建索引→检索问答|检索→切片→清洗|嵌入→清洗→切片|1|先清洗再切片再向量化再索引。
+RAG回答错误时，区分检索故障与生成故障的方法是|凭感觉|打印检索片段：未召回查检索侧，已召回答错查生成侧|直接重训|换模型|1|用召回片段定位故障环节。
+Agent（智能体）的核心能力不包括|规划|工具调用|记忆与上下文|无限准确|3|Agent也有边界，无依据应拒答。
+知识库切片粒度的确定应依据|固定200字|检索测试结果与条款语义边界|文件大小|随机|1|切片以检索效果为准，不写死通用长度。
+RAG引用溯源要求输出|只给答案|文档名、版本与条款位置|不给来源|只给相似度|1|引用可核验是防幻觉关键。
+“无依据拒答”的意义是|减少工作量|防止编造、控制幻觉|降低精度|隐藏知识|1|拒答优于编造。
+LoRA微调的核心原理是|全参数重训|冻结原权重、训练低秩增量矩阵|加一层全连接|蒸馏|1|低秩增量适配，省显存省算力。
+LoRA相比全参数微调的主要优势是|精度必然更高|参数少、显存占用低、可多任务切换|训练更快收敛必然|无需数据|1|轻量适配、便于多任务复用。
+大模型微调选择LoRA等参数高效方法的场景是|算力资源受限或需多任务复用|必须全量重训|无训练数据|推理加速|0|资源受限、多任务场景选PEFT。
+人机协同中“硬性转人工”适用|任意低置信度|安全、合规、权限等不可由模型决定事项|所有问题|从不转人工|1|红线事项必须硬性转人工。
+弹性转人工依据的信号不包括|置信度低|信息不完整|连续失败|缺乏客观风险依据的主观好恶|3|弹性规则看客观风险信号。
+多智能产品共享底座的首要内容是|同一个UI|主数据、标签口径、权限与接口规范|同一个模型|同一个数据库密码|1|共享规范与底座，避免烟囱。
+上线前历史回放的价值是|装饰|离线比较新旧方案、暴露衔接问题|替代人工|加速部署|1|回放可量化比较且无真实用户风险。
+灰度发布时对高风险分支应|直接全量|先降级或转人工，验证后再放开|忽略|立即删除|1|高风险分支保守放量。
+模型上线后数据层监控不包括|数据漂移|缺失率|延迟|员工满意度|3|数据层监控数据质量与时效。
+业务层监控指标优先选择|训练loss|解决率、转人工率、投诉与时长|参数量|FLOPs|1|业务层看端到端业务成效。
+告警设置的原则是|越多越好|指标关联版本与场景，可归因可处置|只设一个|不设告警|1|告警要能定位到数据/模型/流程。
+异常演练的作用是|浪费时间|验证超时、无结果、权限失败与回退|加速上线|只测正常路径|1|演练覆盖异常分支。
+知识库版本与模型版本的关系是|必须绑定不可分|可独立版本化并支持独立回滚|只有模型有版本|只有知识有版本|1|模型与知识独立版本、独立回滚。
+旧版本知识被误召回的问题，通常由什么导致|检索太好|版本过滤缺失或元数据不完整|生成太强|用户提问刁钻|1|用版本/生效日期过滤保证取有效版。
+OCR错字的扫描版SOP进入知识库前应|直接入库|OCR后抽检并保留原图对照|删除|只存图不检索|1|OCR质量抽检＋原文对照。
+多轮对话防信息泄露的关键是|共享全局缓存|独立session_id，权限过滤先于检索|不保存上下文|明文存储|1|会话隔离＋权限前置。
+智能产品需求说明书中“验收口径”应|模糊处理|明确指标公式、统计范围与准入条件|由测试随意定|不写|1|验收须可执行、可复算。
+模型卡最少应包含|只有名字|用途、数据版本、指标、限制、环境与回退|只有参数量|只有作者|1|模型卡承载用途、边界与可追溯信息。
+OCR/切片后构建向量索引，检索策略常见为|只有关键词|关键词＋向量混合召回|只向量|随机|1|混合召回兼顾字面与语义。
+“回答内容准确、贴合手册原文且无明显幻觉”的验证方式|人工抽查|构造测试集＋引用有效率统计＋回归|只看速度|不验证|1|用测试集与引用率客观评估。
+智能系统上线后“故障回退”的前提是|不需要|保留上一稳定版本与回滚包|删除旧版|覆盖发布|1|可回退是灰度发布的安全底线。
+多产品联合灰度时，应|各自任意灰度|记录兼容矩阵并做端到端回归|同时全量|不回归|1|跨产品组合须端到端验证。
+对低置信度样本的正确处理是|直接丢弃|进入人工复核队列并回流困难样本池|标记为正确|提高阈值掩盖|1|低置信度分流＋回流迭代。
+“历史事件回放评价转人工合理性”需要|专家标注标准答案与是否应转人工|只看时长|只看数量|不评价|0|有标准答案才能算转人工合理率。
+智能客服生成回复前，权限检查应|生成后检查|检索前完成|不检查|只查登录|1|权限前置，越权内容不进入生成。
+提示词设计“禁止编造”的落实方式是|只写进提示词|提示词约束＋无依据拒答＋引用校验|不落实|交给模型自觉|1|工程化约束＋拒答＋引用三重保障。
+线上问答引用错位时，优先排查|模型大小|切片边界、版本过滤与检索Top-K|服务器颜色|用户身份|1|引用错位多在检索与切片侧。
+智能系统“运营监控”闭环的终点是|记录告警|按归因进入修数、调模或改流程并版本化|发通知|停止监控|1|监控必须落到改进动作。
+培训计划中“目标、练习、考核一致”是指|三套内容|同一规范贯穿目标、练习与量规|只考核|只练习|1|目标与考核共用同一规范与量规。
+初级工反复漏标，正确的现场指导顺序是|直接批评|提问定位原因→示范→重做→互查确认|换人|只给答案|1|四段话术：提问—示范—纠错—确认。
+评估培训是否转化为岗位能力，应|只看满意度|培训后约定回访期抽查返工率与质量|只看签到|不评估|1|岗位迁移评估看实际工作表现。
+学员基础差异大时，教学安排应|统一进度|设共同必达目标＋分层练习＋补差复测|只教快的|只教慢的|1|分层教学兼顾进度与补差。
+培训闭环“反向改进课程”的含义是|不再改课|将高频错误转化为新案例与检查项|删课|加课时|1|学员错误反馈到课程与规范迭代。`.split('\n');
+const MQ2=`人工智能训练师应遵守的职业守则包括|诚实守信、如实报告|保护客户数据与商业秘密|尊重知识产权|夸大成果争取资源|012|夸大成果违背诚信守则。
+发现测试记录可能被不当删除时，应|保留原始日志与版本|如实说明风险|组织复测与评审|自行删除以保持整洁|012|删除掩盖造假，坚决不做。
+常见数据清洗操作包括|去重|缺失值处理|口径统一转换|随意改值|012|清洗须保留原值与规则，不随意改值。
+深度学习防止过拟合的常见手段有|数据增强|正则化与Dropout|早停|无限增大模型|012|增大模型通常加剧过拟合。
+处理个人信息时应遵循|最小必要|告知同意|脱敏留痕|无限制使用|012|个保法以同意与最小必要为前提。
+NumPy/Pandas常用能力包括|数组运算|表格筛选与分组|缺失值处理|图像自动标注|012|自动标注不在库能力内。
+业务场景挖掘的输入通常包括|工单与日志|客户反馈|流程耗时统计|猜测|012|基于真实业务证据挖掘。
+跨部门数据架构设计中应明确的要素|责任泳道|字段口径|接口与异常回路|部门领导姓名|012|架构关注责任、口径与接口。
+流程设计需覆盖的分支包括|成功主链|异常退回|人工介入|只画主链|012|异常与人工分支不可省略。
+试点验证方案应包含|基线对照|分组指标|回退条件|只报平均分|012|验证要可对照、可分组、可回退。
+业务指标设计的原则|可量化|与业务目标相关|口径清晰可复算|越多越好|012|指标贵在有效不在数量。
+数据质量规则应覆盖|唯一性|取值范围|引用完整性|无关紧要的字段|012|质量规则针对关键字段。
+“智能审核通过率提高但投诉增加”的可能原因|规则过宽|误放行|界面误导|客服人员工资调整|012|归因看规则、样本与交互，不主观归因用户。
+端到端数据流程应记录的要素|原始值|修正值|责任人|时间|0123|全要素留痕支撑追溯。
+防止数据泄漏的措施包括|按组划分|近重复去重|划分后检查交集|随机打乱|012|随机打乱不能消除同源泄漏。
+黄金测试集的特征|专家复核标签|独立封存不调参|冻结版本|每日更新|012|稳定冻结才能做版本对比。
+模型效果与资源评估可记录的指标包括|Precision/Recall|F1|mIoU/Kappa|参数量|0123|质量指标与资源指标结合。
+Kappa系数计算步骤包括|列混淆矩阵求Po|按边际求Pe|(Po-Pe)/(1-Pe)|只算准确率|012|三步：Po→Pe→Kappa。
+误分类样本归因的维度包括|标签错误|覆盖不足|类间相似|模型问题|0123|先归因再采取对应动作。
+训练日志应包含|run_id|data_hash|参数与种子|逐轮指标|0123|日志支撑复现与追溯。
+类别不平衡的处理方式|过采样少数类|类别加权损失|关注少数类F1|只看总准确率|012|评估要按类别分开看。
+验证集与测试集的正确用法|验证集调参|测试集最终评估|测试集也可调参|两集合互不重叠|013|测试集不参与调参。
+数据增强应考虑|不破坏语义|只作用训练集|模拟真实变化|随意裁剪|012|增强以真实场景为边界。
+导出模型验证包括|加载复现|输出一致性抽检|记录环境|不检查|012|导出前后对比防转换误差。
+RAG系统组成部分包括|文档清洗与切片|嵌入与向量索引|检索与生成|引用溯源|0123|RAG＝检索＋生成＋溯源闭环。
+RAG故障定位的检查点|文档是否入库|切片是否切断语义|Top-K是否足够|生成是否忠于片段|0123|逐环节定位检索与生成。
+Agent设计应考虑|角色人设|权限过滤|无依据拒答|上下文隔离|0123|Agent须有边界与安全约束。
+LoRA的适用场景|资源受限|多任务切换|快速适配下游任务|必须全参重训|012|PEFT适配轻量高效。
+人机协同转人工规则设计要点|硬性规则针对红线|弹性规则看风险信号|明确责任人与时限|结果回流评估|0123|转人工须闭环且可评估。
+灰度发布的前置工作|基线指标|回退方案|分组统计口径|直接全量|012|先定基线、回退与统计口径。
+上线后监控层级包括|数据层|模型层|业务层|无|012|三层监控覆盖质量与成效。
+知识库版本管理要点|独立版本化|生效日期过滤|旧版归档不删除|覆盖旧版|012|旧版归档可回滚，取有效版。
+多智能产品共享能力包括|数据治理|模型服务|知识库|权限与监控|0123|共享底座避免重复建设。
+智能客服的异常分支|信息不足追问|低置信转人工|重复合并|超时入队|0123|异常分支完整才可上线。
+模型卡应记录|用途与限制|数据与代码版本|指标与环境|回退版本|0123|模型卡＝可追溯档案。
+无依据拒答与转人工的区别|拒答不产生结论|转人工移交人处理|两者相同|都要留痕|013|拒答与转人工都要留痕并防编造。
+历史回放评估的指标|检索命中|答案正确|引用有效|转人工合理|0123|四类指标全面评价问答质量。
+智能系统上线验收应包含|权限测试|异常与回归测试|灰度发布|只测正常路径|012|权限、异常、回归缺一不可。
+标注培训应包含|规范讲解|示范操作|分步练习与考核|只讲理论|012|练考结合才能转化能力。
+培训效果岗位迁移评估方式|回访期抽查返工率|漏标率与效率|访谈学员与主管|只看满意度|012|用岗位表现证明培训有效。`.split('\n');
+const JQ2=`为了项目进度，可以暂时删除不利的测试记录，上线后再补。|1|删除记录属造假，任何时候不得做。
+使用客户数据训练前，应先确认处理目的与授权范围。|0|目的＋授权＋最小必要，合法前提。
+标注数据的版权风险与数据来源授权无关。|1|来源与授权决定版权边界。
+Pandas的drop_duplicates默认按整行判断重复。|0|默认全列一致才判重。
+过拟合时验证损失上升而训练损失下降。|0|典型过拟合表现。
+数据增强可以完全替代真实数据采集。|1|增强不能替代真实场景数据。
+《数据安全法》要求对数据分类分级保护。|0|分类分级是法定要求。
+个人信息处理遵循最小必要原则。|0|最小必要＋告知同意。
+OpenCV中读取视频总帧数使用CAP_PROP_FRAME_COUNT。|0|标准属性。
+业务流程设计只需画出成功主链。|1|须覆盖异常、退回与人工分支。
+字段字典是数据质量治理的基础。|0|字段要素齐全才能治理。
+指标“通过率提高”一定代表业务变好。|1|须结合投诉、差错与转人工综合判断。
+数据口径不一致时应先统一口径再加工。|0|口径统一前置。
+试点验证必须设置基线对照。|0|无基线无法判断效果。
+灰度发布可以不设回退方案。|1|回退是灰度安全底线。
+历史回放可以在不影响真实用户的情况下比较方案。|0|回放＝离线模拟。
+多智能产品各自独立建设即可，无需共享底座。|1|不共享会形成烟囱系统。
+验收需求“回答要准确”可直接作为验收标准。|1|须量化口径与准入条件。
+流程指标与结果指标只需要统计一种。|1|过程与结果配合使用。
+异常上报是流程闭环的必要环节。|0|升级上报保障风险可控。
+业务责任人不属于数据流程设计的内容。|1|责任泳道是流程设计要素。
+训练/验证/测试集随机逐图划分即可防止泄漏。|1|同源样本需组级隔离。
+数据增强只作用于训练集。|0|验证/测试保持真实。
+水平翻转适用于所有图像任务。|1|方向语义任务不可用。
+Kappa系数剔除了随机一致的影响。|0|Pe校正随机一致。
+mIoU是各类别IoU的平均值。|0|定义正确。
+测试集可以反复用于调参。|1|测试集只做最终评估。
+黄金测试集不参与训练与调参。|0|独立封存是核心。
+SHA-256指纹用于验证测试集完整性。|0|指纹防篡改防污染。
+固定随机种子即可保证跨硬件完全逐位复现。|1|跨硬件可能不一致，需记录环境。
+误分类样本应全部直接回灌训练。|1|须先归因、分桶处理并回归。
+类别不平衡时总体准确率足以说明模型好坏。|1|须看各类别与少数类指标。
+训练日志需记录run_id、数据哈希、代码版本与参数。|0|可复现五要素。
+图像增强时掩膜无需与图像同步变换。|1|标签错位＝标注错误。
+近重复样本去重可以降低泄漏风险。|0|去重＋组级隔离。
+模型导出后无需验证输出一致性。|1|导出前后须抽检对比。
+RAG通过检索外部知识库再生成回答。|0|定义正确。
+RAG知识库构建顺序是清洗→切片→嵌入→索引。|0|顺序正确。
+RAG回答错误时，只要换一个更大的模型即可解决。|1|须先定位检索或生成故障。
+无依据时模型可以合理猜测回答。|1|应拒答或转人工，防幻觉。
+LoRA是冻结原权重、训练低秩增量矩阵的微调方法。|0|PEFT典型方法。
+全参数微调在资源受限时优于LoRA。|1|资源受限时LoRA更优。
+硬性转人工适用于安全与合规红线事项。|0|红线必须人工决断。
+弹性转人工只依据置信度单一信号。|1|综合置信度、完整度、连续失败等。
+知识库切片粒度写死一个通用长度即可。|1|切片依检索测试与语义边界确定。
+多轮对话应使用独立session_id防止跨用户泄露。|0|会话隔离。
+权限过滤应在检索之前完成。|0|权限先于检索，防止越权内容进入生成。
+模型版本与知识版本必须绑定，不可独立回滚。|1|独立版本、独立回滚。
+旧版本知识在更新后应直接删除。|1|归档保留，按生效日期过滤。
+OCR错字文档可直接入库构建知识库。|1|须OCR抽检与原文对照。
+灰度发布发现高风险误通过应立即停灰度并回退。|0|预定义回退条件。
+异常演练只需验证正常路径。|1|演练覆盖超时、无结果、权限失败等。
+模型卡记录用途、限制、数据版本与回退版本。|0|模型卡＝档案。
+智能产品验收测试包含权限、异常与回归测试。|0|三类测试齐全才可验收。
+告警设置越多越好。|1|告警须可归因可处置。
+低置信度样本应直接丢弃。|1|分流人工复核并回流困难样本。
+关键词＋向量混合召回在所有任务和数据上都必然优于单一检索方式。|1|混合召回效果须经任务与数据评估，并非必然优于单一检索。
+培训目标、练习与考核应使用同一规范与量规。|0|一致性是培训设计核心。
+培训效果只需统计满意度评分。|1|须结合前测、实操考核与岗位迁移。
+高频标注错误应转化为培训案例并更新规范。|0|培训闭环反向改进课程。`.split('\n');
+
+/* ===== 基础工具 ===== */
+const $=s=>document.querySelector(s);
+const AB=['A','B','C','D'];
+const esc=s=>String(s).replace(/</g,'&lt;');
+const store={g:(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},s:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+const SEC2=[['职业道德','⚖️',1,5,101,102,141,143],['基础知识','📖',6,15,103,106,144,149],['业务分析','📊',16,35,107,114,150,161],['智能训练','🎯',36,60,115,124,162,176],['智能系统设计','🛠️',61,95,125,138,177,197],['培训与指导','🎓',96,100,139,140,198,200]];
+let W,ST,HIST,S,SU,DONE,RV,tmr;
+
+function getQ(id){
+ const t=id[0],i=+id.slice(1);
+ if(t=='s'){const a=SQ[i].split('|');return{id,type:'单选',no:i+1,text:a[0],opts:[a[1],a[2],a[3],a[4]],ans:[+a[5]],exp:a[6]||''}}
+ if(t=='m'){const a=MQ[i].split('|');return{id,type:'多选',no:CNT.s+1+i,text:a[0],opts:[a[1],a[2],a[3],a[4]],ans:a[5].split('').map(Number),exp:a[6]||'',multi:1}}
+ const a=JQ[i].split('|');return{id,type:'判断',no:CNT.s+CNT.m+1+i,text:a[0],opts:['正确','错误'],ans:[+a[1]],exp:a[2]||'',judge:1};
+}
+function secOf(q){for(const s of SEC){if(q.type=='单选'&&q.no>=s[2]&&q.no<=s[3])return s[0];if(q.type=='多选'&&q.no>=s[4]&&q.no<=s[5])return s[0];if(q.type=='判断'&&q.no>=s[6]&&q.no<=s[7])return s[0]}return ''}
+function idsFor(r){
+ const o=[],push=(t,a,b)=>{for(let n=a;n<=b;n++)o.push(t+(n-1))};
+ if(r=='all'){push('s',1,CNT.s);push('m',CNT.s+1,CNT.s+CNT.m);push('j',CNT.s+CNT.m+1,CNT.s+CNT.m+CNT.j)}
+ else if(r=='s')push('s',1,CNT.s);
+ else if(r=='m')push('m',CNT.s+1,CNT.s+CNT.m);
+ else if(r=='j')push('j',CNT.s+CNT.m+1,CNT.s+CNT.m+CNT.j);
+ else{const s=SEC[+r[1]];push('s',s[2],s[3]);push('m',s[4],s[5]);push('j',s[6],s[7])}
+ return o;
+}
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+function fmtT(s){return (s/60|0)+':'+String(s%60).padStart(2,'0')}
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)}
+function ansStr(q,arr){if(!arr||!arr.length)return '未作答';return q.judge?(arr[0]==0?'正确':'错误'):arr.slice().sort().map(i=>AB[i]).join('')}
+
+/* ===== 模式设置 ===== */
+function setup(m){SU={m,rid:'all',cnt:-1,rnd:m=='e'?1:0};drawSetup()}
+function drawSetup(){
+ const m=SU.m,wl=Object.keys(W).length;
+ const rgs=[['all','全部题库',CNT.s+CNT.m+CNT.j],['s','单选题',CNT.s],['m','多选题',CNT.m],['j','判断题',CNT.j]].concat(SEC.map((s,i)=>['c'+i,s[0],s[3]-s[2]+1+s[5]-s[4]+1+s[7]-s[6]+1]));
+ if(m=='p')rgs.push(['wrong','错题本',wl]);
+ const chips=rgs.map(r=>`<button class="ch ${SU.rid==r[0]?'on':''}" ${r[0]=='wrong'&&!wl?'disabled style="opacity:.4"':''} onclick="SU.rid='${r[0]}';drawSetup()"><b>${r[1]}</b><span>${r[2]} 题</span></button>`).join('');
+ const cnt=m=='e'?`<div class="tip">题量（从所选范围抽取）</div><div class="seg">${[-1,100,50,20].map(c=>`<button class="${SU.cnt==c?'on':''}" onclick="SU.cnt=${c};drawSetup()">${c<0?'全部':c+' 题'}</button>`).join('')}</div>`:'';
+ const ord=`<div class="tip">出题顺序</div><div class="seg"><button class="${SU.rnd?'on':''}" onclick="SU.rnd=1;drawSetup()">随机</button><button class="${SU.rnd?'':'on'}" onclick="SU.rnd=0;drawSetup()">按题号</button></div>`;
+ $('#app').innerHTML=`<div class="top"><div class="tin"><button class="nv" onclick="home()">‹</button><div class="tb">${m=='p'?'刷题模式':'考试模式'}</div><span style="width:36px"></span></div></div>
+ <div class="wrap"><div class="tip" style="margin-top:20px">选择出题范围</div><div class="chips">${chips}</div>${cnt}${ord}
+ <button class="bt bp" style="width:100%;margin-top:22px;padding:15px" onclick="start('${m}',SU.rid,SU.cnt,SU.rnd)">开始${m=='p'?'刷题':'考试'}</button></div>`;
+ document.body.className='';window.scrollTo(0,0);
+}
+
+/* ===== 开始 / 继续 ===== */
+function start(m,rid,cnt,rnd){
+ let ids=rid=='wrong'?Object.keys(W):idsFor(rid);
+ if(!ids.length)return toast('该范围暂无题目');
+ if(rnd)ids=shuf(ids);
+ if(m=='e'&&cnt>0&&cnt<ids.length)ids=ids.slice(0,cnt);
+ S={m,rid,cnt,rnd,pos:0,ids,ans:{},done:{},t0:Date.now()};
+ store.s(pkey('s'),S);quiz();
+}
+function resume(){S=store.g(pkey('s'),null);if(!S||S.fin)return home();quiz()}
+
+/* ===== 答题页 ===== */
+function optHtml(q,sel,locked){
+ const rows=q.opts.map((o,i)=>{
+  let cls='o';
+  if(locked){if(q.ans.includes(i))cls+=' right';else if(sel.includes(i))cls+=' wrong';cls+=' lock'}
+  else if(sel.includes(i))cls+=' on';
+  return `<div class="${cls}" onclick="pick(${i})"><div class="lb">${AB[i]}</div><div style="flex:1">${esc(o)}</div></div>`}).join('');
+ return `<div class="os" id="opts">${rows}</div>`;
+}
+function verdictHtml(q,sel,ok,id){
+ let h=`<div class="vd ${ok?'ok':'no'}">${ok?'✓ 回答正确':'✗ 回答错误'} · 正确答案 ${ansStr(q,q.ans)}${ok?'':' · 已记入错题本'}</div>`;
+ if(q.exp)h+=`<div class="ex"><span class="lab">解析</span> ${esc(q.exp)}</div>`;
+ if(S.rid=='wrong'&&W[id])h+=`<button class="rm" onclick="rmWC('${id}')">已掌握 · 移出错题本 ✓</button>`;
+ return h;
+}
+function quiz(){
+ clearInterval(tmr);
+ const id=S.ids[S.pos],q=getQ(id),sel=S.ans[id]||[],locked=S.m=='p'&&!!S.done[id],last=S.pos==S.ids.length-1;
+ const doneN=S.m=='p'?Object.keys(S.done).length:S.ids.filter(x=>(S.ans[x]||[]).length).length;
+ const prog=Math.round(doneN/S.ids.length*100);
+ const right=S.m=='e'?`<span class="tm" id="tm">${fmtT((Date.now()-S.t0)/1000|0)}</span><button class="nv" style="font-size:12.5px;font-weight:700;width:auto;padding:0 8px" onclick="sheet(1)">答题卡</button>`:'<span style="width:76px"></span>';
+ let btns='';
+ if(S.pos>0)btns+=`<button class="bt bf" onclick="prev()">‹ 上一题</button>`;
+ if(S.m=='p')btns+=locked?`<button class="bt bp" onclick="next()">${last?'完成 ✓':'下一题 ›'}</button>`:`<button class="bt bp" id="cf" ${sel.length?'':'disabled'} onclick="confirmAns()">确认答案</button>`;
+ else btns+=`<button class="bt bp" onclick="next()">${last?'交卷 ✓':'下一题 ›'}</button>`;
+ const tip=q.multi&&!locked?`<div class="tip" style="margin:-4px 0 12px">多选题 · 请选出所有正确选项（多选少选不得分）</div>`:'';
+ const vd=locked?verdictHtml(q,sel,S.done[id]==1,id):'';
+ document.body.className='pad';
+ $('#app').innerHTML=`<div class="top"><div class="tin"><button class="nv" onclick="quit()">‹</button><div class="tb">${S.m=='p'?'刷题':'考试'} · ${S.pos+1}/${S.ids.length}</div>${right}</div><div class="pb" style="height:3px;border-radius:0"><i style="width:${prog}%"></i></div></div>
+ <div class="wrap"><div class="qc">
+  <div class="qh"><span class="tg ${q.type=='单选'?'b':q.type=='多选'?'p':'t'}">${q.type}题</span><span class="tg g">${secOf(q)}</span><span class="qn">第 ${q.no} 题</span></div>
+  <div class="qt">${esc(q.text)}</div>${tip}${optHtml(q,sel,locked)}${vd}
+ </div></div>
+ <div class="ab"><div class="ain">${btns}</div></div>`;
+ if(S.m=='e')tmr=setInterval(()=>{const e=$('#tm');if(e)e.textContent=fmtT((Date.now()-S.t0)/1000|0)},1000);
+ window.scrollTo(0,0);
+}
+function pick(i){
+ const id=S.ids[S.pos],q=getQ(id);
+ if(S.m=='p'&&S.done[id])return;
+ let sel=S.ans[id]||[];
+ sel=q.multi?(sel.includes(i)?sel.filter(x=>x!=i):sel.concat(i)):[i];
+ S.ans[id]=sel;store.s(pkey('s'),S);
+ $('#opts').outerHTML=optHtml(q,sel,false);
+ const b=$('#cf');if(b)b.disabled=!sel.length;
+}
+function confirmAns(){
+ const id=S.ids[S.pos],q=getQ(id),sel=S.ans[id]||[];
+ if(!sel.length)return toast('请先选择答案');
+ const ok=sel.length==q.ans.length&&q.ans.every(a=>sel.includes(a));
+ S.done[id]=ok?1:2;ST.a++;if(ok)ST.c++;
+ if(!ok)W[id]={c:(W[id]?W[id].c:0)+1,t:Date.now()};
+ store.s(pkey('s'),S);store.s(pkey('w'),W);store.s(pkey('st'),ST);quiz();
+}
+function prev(){if(S.pos>0){S.pos--;store.s(pkey('s'),S);quiz()}}
+function next(){
+ if(S.pos<S.ids.length-1){S.pos++;store.s(pkey('s'),S);quiz()}
+ else if(S.m=='e')sheet(1);
+ else finishP();
+}
+function quit(){if(confirm('退出当前答题？\n进度已自动保存，可从首页继续。'))home()}
+function rmWC(id){delete W[id];store.s(pkey('w'),W);toast('已移出错题本');quiz()}
+
+/* ===== 答题卡 / 交卷 ===== */
+function sheet(open){
+ const o=$('#ovl');if(!open){if(o)o.remove();return}
+ if(o)return;
+ const cells=S.ids.map((id,i)=>{const a=(S.ans[id]||[]).length>0;return `<button class="gi ${a?'a':''} ${i==S.pos?'cur':''}" onclick="S.pos=${i};store.s(pkey('s'),S);sheet(0);quiz()">${getQ(id).no}</button>`}).join('');
+ const d=document.createElement('div');d.id='ovl';d.className='mask';
+ d.innerHTML=`<div class="sheet" onclick="event.stopPropagation()"><div class="sh-h"><b>答题卡</b><button class="nv" style="font-size:15px" onclick="sheet(0)">✕</button></div><div class="grid">${cells}</div><button class="bt bgr" onclick="submit()">交卷（已答 ${S.ids.filter(id=>(S.ans[id]||[]).length).length}/${S.ids.length}）</button></div>`;
+ d.onclick=()=>sheet(0);document.body.appendChild(d);
+}
+function submit(){
+ const blank=S.ids.filter(id=>!(S.ans[id]||[]).length).length;
+ if(blank>0&&!confirm(`还有 ${blank} 题未作答，确定交卷吗？`))return;
+ clearInterval(tmr);sheet(0);
+ let r=0,b=0;const mod={s:[0,0],m:[0,0],j:[0,0]};
+ for(const id of S.ids){
+  const q=getQ(id),sel=S.ans[id]||[];
+  const ok=sel.length==q.ans.length&&q.ans.every(a=>sel.includes(a));
+  if(ok)r++;else if(!sel.length)b++;
+  mod[id[0]][0]+=ok?1:0;mod[id[0]][1]++;
+  if(sel.length&&!ok)W[id]={c:(W[id]?W[id].c:0)+1,t:Date.now()};
+  ST.a++;if(ok)ST.c++;
+ }
+ const secs=(Date.now()-S.t0)/1000|0;
+ S.res={r,b,secs,mod};S.fin=1;
+ store.s(pkey('s'),S);store.s(pkey('w'),W);store.s(pkey('st'),ST);
+ HIST.push({p:Math.round(r/S.ids.length*100),r,b,n:S.ids.length,t:fmtT(secs),d:new Date().toLocaleDateString('zh-CN')});
+ HIST=HIST.slice(-10);store.s(pkey('h'),HIST);
+ result();
+}
+
+/* ===== 成绩与解析 ===== */
+function rvItem(id){
+ const q=getQ(id),sel=S.ans[id]||[];
+ const ok=sel.length==q.ans.length&&q.ans.every(a=>sel.includes(a));
+ return `<div class="qc" style="margin-top:10px;animation:none">
+  <div class="qh"><span class="tg ${ok?'ok':'no'}">${ok?'✓ 正确':'✗ 错误'}</span><span class="tg g">第${q.no}题 · ${q.type}题</span></div>
+  <div class="qt" style="font-size:15px">${esc(q.text)}</div>
+  <div class="ex"><span class="lab">你的答案</span> ${ansStr(q,sel)}<span class="lab" style="margin-left:14px">正确答案</span> ${ansStr(q,q.ans)}${q.exp?`<br><span class="lab">解析</span> ${esc(q.exp)}`:''}</div></div>`;
+}
+function rvList(t){const it=S.ids.filter(id=>id[0]==t).map(id=>rvItem(id)).join('');return it||'<div class="empty">该模块无题目</div>'}
+function result(){
+ document.body.className='';
+ const R=S.res,tot=S.ids.length,p=Math.round(R.r/tot*100),w=tot-R.r-R.b;
+ const segs=[['s','单选题'],['m','多选题'],['j','判断题']].filter(m=>R.mod[m[0]][1]>0);
+ if(!segs.find(m=>m[0]==RV))RV=segs[0][0];
+ const ring=`<svg viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="var(--fill)" stroke-width="10"/><circle cx="70" cy="70" r="60" fill="none" stroke="${p>=60?'var(--green)':'var(--red)'}" stroke-width="10" stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="${(377*(1-p/100)).toFixed(1)}" transform="rotate(-90 70 70)"/></svg>`;
+ $('#app').innerHTML=`<div class="top"><div class="tin"><button class="nv" onclick="home()">‹</button><div class="tb">考试成绩</div><span style="width:36px"></span></div></div>
+ <div class="wrap">
+  <div class="card rc"><div class="rw">${ring}<div class="rt"><b>${p}</b><span>得分 / 100</span></div></div>
+   <div class="rs"><div><b style="color:var(--green)">${R.r}</b><span>正确</span></div><div><b style="color:var(--red)">${w}</b><span>错误</span></div><div><b>${R.b}</b><span>未答</span></div><div><b>${fmtT(R.secs)}</b><span>用时</span></div></div></div>
+  <div class="card"><h3>模块正确率</h3>${segs.map(m=>`<div class="mod"><span>${m[1]}</span><div class="pb"><i style="width:${Math.round(R.mod[m[0]][0]/R.mod[m[0]][1]*100)}%"></i></div><em>${R.mod[m[0]][0]}/${R.mod[m[0]][1]}</em></div>`).join('')}</div>
+  <div class="card"><h3>答案解析（错题已自动记入错题本）</h3><div class="seg">${segs.map(m=>`<button class="${RV==m[0]?'on':''}" onclick="RV='${m[0]}';result()">${m[1]}</button>`).join('')}</div><div style="margin-top:6px">${rvList(RV)}</div></div>
+  <div style="display:flex;gap:9px;margin:16px 0 34px;flex-wrap:wrap">
+   <button class="bt bf" onclick="home()">返回首页</button>
+   <button class="bt bf" onclick="start('e',S.rid,S.cnt,S.rnd)">再考一组</button>
+   ${Object.keys(W).length?`<button class="bt bp" onclick="start('p','wrong',0,1)">刷错题（${Object.keys(W).length}）</button>`:''}
+  </div></div>`;
+ window.scrollTo(0,0);
+}
+
+/* ===== 刷题完成 ===== */
+function finishP(){
+ const t=S.ids.length,r=Object.values(S.done).filter(v=>v==1).length;
+ const key=pkey('s');
+ localStorage.removeItem(key);
+ const m=getMeta();delete m[key];setMeta(m);
+ if(TOKEN)deleteCloudKey(key);
+ DONE={r,t};donePage();
+}
+function donePage(){
+ clearInterval(tmr);document.body.className='';
+ $('#app').innerHTML=`<div class="top"><div class="tin"><span style="width:36px"></span><div class="tb">刷题完成</div><span style="width:36px"></span></div></div>
+ <div class="wrap"><div class="card" style="text-align:center;padding:42px 20px">
+ <div style="font-size:46px">🎉</div><h2 style="margin:12px 0 6px;font-size:20px">本组刷题完成</h2>
+ <p style="color:var(--t2);font-size:14px">共 ${DONE.t} 题 · 正确 ${DONE.r} 题 · 正确率 ${Math.round(DONE.r/DONE.t*100)}%</p>
+ <div style="display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap">
+  <button class="bt bf" onclick="home()">返回首页</button>
+  ${Object.keys(W).length?`<button class="bt bp" onclick="start('p','wrong',0,1)">刷错题（${Object.keys(W).length}）</button>`:''}
+ </div></div></div>`;window.scrollTo(0,0);
+}
+
+/* ===== 错题本 ===== */
+function wrongBook(){
+ clearInterval(tmr);document.body.className='';
+ const ids=Object.keys(W).sort((a,b)=>getQ(a).no-getQ(b).no);
+ const rows=ids.map(id=>{const q=getQ(id);return `<div class="wr"><span class="no">${q.no}</span><div class="tx">${q.type}题 · ${esc(q.text)}</div><button class="del" onclick="rmW('${id}')">✕</button></div>`}).join('');
+ $('#app').innerHTML=`<div class="top"><div class="tin"><button class="nv" onclick="home()">‹</button><div class="tb">错题本 · ${ids.length} 题</div><span style="width:36px"></span></div></div>
+ <div class="wrap" style="padding-top:14px">
+ ${ids.length?`<div style="display:flex;gap:9px;margin-bottom:6px"><button class="bt bp" onclick="start('p','wrong',0,1)">开始刷错题</button><button class="bt brd" onclick="clearW()">清空</button></div>${rows}`:'<div class="empty">错题本是空的<br>答题中答错的题目会自动收录到这里</div>'}
+ </div>`;window.scrollTo(0,0);
+}
+function rmW(id){delete W[id];store.s(pkey('w'),W);wrongBook();toast('已移出错题本')}
+function clearW(){if(confirm('确定清空全部错题吗？')){W={};store.s(pkey('w'),W);wrongBook()}}
+
+/* ================= 主观题与实操卷（第二三四部分） ================= */
+let MST,SUB;
+const PRACT2=[
+{n:'第二部分 · 主观题专项',d:'简答题24题＋论述题6题，对应技能考核与综合评审的方案设计能力。建议先自行写出得分点，再展开参考答案对照。考场规则：先写编号得分点，解析仅供理解；先覆盖动作、依据、指标和闭环，再补细节；题目未给定的比例、阈值、周期等只能作为建议值，须说明依据并通过验证确定。',data:`#简答题 · 职业道德、法律与基础（第1—4题）
+1. 项目负责人要求删除不利测试记录后上线，你作为二级人工智能训练师应如何处置？|①暂停删除并完整保存原始日志、版本和审批记录；②如实说明风险，不伪造或选择性报告；③复测并分析失败样本对安全、合规和业务的影响；④按变更流程提交评审，未达准入条件不上线；⑤确需例外时由授权责任人审批，保留整改期限和回退方案。【解析】二级人员不仅要“拒绝造假”，还要组织复测、评审和风险闭环。
+2. 将含客户联系方式的售后对话用于训练，应建立怎样的合规处理闭环？|①确认处理目的、授权范围和数据来源合法性；②按最小必要原则提取字段，删除或脱敏联系方式等标识；③设置访问权限、加密存储和留存期限；④在采集、标注、导出环节记录处理日志并抽检残留敏感信息；⑤到期删除，发现泄露或越权立即隔离、上报和整改。
+3. 为什么训练任务必须保留数据版本、代码版本、参数和随机种子？说明其与实验复现的关系。|①数据版本固定样本、标签及划分清单；②代码版本固定模型和预处理逻辑；③参数文件记录学习率、轮数、批次等配置；④随机种子控制划分、增强和初始化等随机过程；⑤共同保存环境与权重，才能复现结果、比较单次改动效果并追溯线上问题。【解析】固定随机种子不保证跨硬件完全逐位一致，因此还需记录运行环境。
+4. 使用公开图片和开源模型建设商用训练集时，应核查哪些知识产权与使用边界？|①核查图片许可、授权范围和是否允许商用及再分发；②确认人物、商标等权利及必要授权；③阅读模型、权重、代码和数据的许可证及义务；④保留来源、作者、许可证和修改记录；⑤按许可证要求署名、保留声明或开放衍生成果；⑥权利不清的素材不进入交付数据集。
+#简答题 · 业务分析（第5—8题）
+5. 如何从“人工客服工作量大”进一步挖掘值得智能化改造的业务场景？|①按咨询类型拆解量、耗时、重复度、差错和投诉；②绘制从进线到结案流程，定位等待和重复录入环节；③识别规则稳定、数据可得的标准任务作为候选；④评估风险、数据质量、系统接口和人工成本；⑤用基线与小范围试点比较解决率、时长和满意度，再决定扩展。
+6. 设计跨部门业务数据架构时，如何避免只画技术流程而遗漏业务责任？|①以业务目标和端到端价值流为主轴；②用泳道标明业务、数据、算法、运维及审批责任人；③为每个节点定义输入、输出、字段口径和时限；④标出系统接口、人工判断及异常回路；⑤设置质量责任和交付验收人；⑥用真实案例走查并确认跨部门交接。
+7. 数据采集、处理、审核三个流程如何通过质量规则形成闭环？|①采集端定义来源、字段、格式、授权和质量规则；②处理端执行去重、缺失处理、口径转换并保留原值；③审核端自动校验加人工抽检，记录问题类型；④不合格数据隔离，退回责任节点修正后重审；⑤规则命中率、返工率入监控，定期修订规则并版本化。
+8. 某智能审核模块上线后通过率提高但投诉增加，应如何定位并优化该业务模块？|①按渠道、类别、人员和时段比较通过率、差错率与投诉；②核查是否把转人工减少误当效果提升；③抽查投诉关联样本，区分规则错误、界面误导和接口异常；④回看发布前后数据及阈值变更；⑤先对高风险分支降级或转人工；⑥经回放和小流量验证后再恢复。
+#简答题 · 智能训练（第9—14题）
+9. 高质量训练集与“数量很多的图片集合”有何本质区别？|①样本代表真实场景并覆盖关键类别、环境和困难情况；②标签有规范、复核及一致性证据；③来源合法且元数据完整可追溯；④无重复、损坏、泄露和显著偏差；⑤类别与场景分布有统计报告；⑥能依据错误分析持续补采、修订并管理版本。
+10. 黄金测试集应如何建设和维护，才能支撑模型版本比较？|①依据业务风险定义覆盖矩阵，纳入典型、边界和对抗样本；②标签经专家复核，争议样本仲裁；③独立封存，不参与训练和调参；④保存划分清单与哈希指纹，防止篡改；⑤保留稳定核心集，另设反映新场景的扩展集；⑥变更须审批并记录版本差异。
+11. 一份可执行的模型测试方案至少应包含哪些内容？|①明确对象、版本、业务目标与风险范围；②列出数据来源、规模、标签和独立性证明；③设计总体、分类别、分场景及边界测试；④给出指标公式、统计口径和题目给定的准入条件；⑤规定环境、工具、步骤和复现方式；⑥约定缺陷分级、报告、复测与审批。
+12. 同一用户的相邻对话被随机分到训练集和测试集，会产生什么问题？如何纠正？|①相邻对话语义高度相似，模型可能记住用户表达；②测试集信息提前进入训练，形成组级泄漏；③离线指标虚高，换用户后性能下降；④应按user_id或会话组整体划分；⑤划分前近重复去重，划分后检查组、文本指纹交集；⑥重训并在独立用户上验证。【解析】随机打乱不能消除同源样本之间的泄漏。
+13. 面对误分类样本，如何避免“见错就加数据”的低效优化？|①按真实标签、预测、置信度、场景和来源归类；②区分标签错误、样本缺覆盖、类间相似、预处理或模型问题；③用混淆矩阵和代表性样本确认主因；④分别采取修标、定向补采、特征或参数优化；⑤只改一个主要因素做对照；⑥在旧回归集和新场景集验证收益与副作用。
+14. 训练集损失下降、验证集损失上升时，应怎样设计下一轮训练实验？|①先核查数据划分、标签及预处理是否异常；②保存学习曲线、配置和当前权重作为基线；③选择合适轮次早停，避免继续过拟合；④采用与任务相容的增强、正则化或权重衰减；⑤用验证集做单因素对照并记录日志；⑥测试集仅最终评估，回归检查各类别是否受损。
+#简答题 · 智能系统设计（第15—20题）
+15. 为同一业务领域设计多个智能产品时，如何避免形成相互割裂的“烟囱系统”？|①先画共同业务价值流和各产品职责边界；②统一主数据、标签口径、身份权限与接口规范；③复用数据治理、模型服务、检索和监控能力；④通过事件或消息衔接产品，避免重复采集和相互覆盖；⑤明确跨产品异常责任人；⑥以端到端业务指标而非单产品指标验收。
+16. 智能产品需求说明书中，怎样把“回答要准确”改写为可验收的需求？|①限定知识范围、问题类型和用户角色；②定义正确、无依据回答和引用可核验的标准；③建立专家标注测试集及题目给定验收口径；④分别统计答案正确率、检索命中和引用有效率；⑤规定无答案时拒答或转人工；⑥记录版本、响应和回归结果，形成验收报告。【解析】不能把“准确率很高”作为没有数据集与统计口径的验收条件。
+17. RAG系统回答错误时，应如何区分检索故障与生成故障？|①固定问题并打印检索片段、来源和相似度；②原文存在但未召回，检查解析、切片、索引、查询改写和过滤条件；③片段已召回但答案错，检查提示词、上下文截断和生成约束；④引用错查文档版本及元数据；⑤分别构造检索集与生成用例回归。
+18. 人机协同流程中的硬性转人工与弹性转人工有何区别？|①硬性规则针对安全、合规、权限等不可由模型决定的事项，命中即转人工；②弹性规则依据置信度、信息完整度和连续失败等风险信号综合判断；③两者都需写明责任人、上下文交接和时限；④人工结果回流规则评估；⑤用回放校准覆盖率与漏转风险。
+19. 多智能产品全链路上线前，为什么必须做历史回放和异常演练？|①历史回放可在不影响真实用户的情况下比较新旧方案；②能量化自动处理、转人工、时长、差错和成本；③跨产品链路可暴露字段、状态及接口衔接问题；④异常演练验证超时、无结果、权限失败和回退；⑤问题修复后须重放，审批通过方可灰度。
+20. 智能产品上线后，如何组织数据、模型、业务三类监控并驱动迭代？|①数据层监控缺失、漂移、延迟和敏感信息；②模型层监控分场景质量、置信度、检索及错误样本；③业务层监控解决率、转人工、时长、投诉与成本；④指标关联版本和场景设置告警；⑤按归因进入修数、调模或改流程；⑥回放、灰度和复测后发布新版本。
+#简答题 · 培训与指导（第21—24题）
+21. 面向初级工制定数据标注培训计划时，如何做到目标、练习和考核一致？|①依据岗位任务设定可观察目标，如独立完成标注并自检；②按讲解、示范、分步练习、独立实操安排内容；③练习覆盖正常、遮挡和争议样本；④考核沿用同一规范与评分量规；⑤记录漏标、错标和效率短板；⑥未达标者针对补练并复测。
+22. 初级工反复出现漏标，二级人员应怎样开展现场业务指导？|①先提问并观察操作，确认是规范理解、工具使用还是疲劳造成；②用同一张样本示范目标边界和检查顺序；③让学员复述规则并重标错误样本；④双人互查，汇总漏标类别与场景；⑤安排针对练习和复测；⑥若属规范歧义，修订示例库并同步全组。
+23. 如何评估培训是否真正转化为岗位能力，而不只停留在满意度层面？|①培训前测形成能力基线；②课中用问答和随堂操作检查理解；③结业用统一实操量规考核独立完成能力；④培训后比较前后测及不同学员短板；⑤在约定回访期抽查返工率、质量和效率；⑥将未迁移项反馈到补训、课程及作业规范。
+24. 学员操作水平差异较大时，如何保证培训进度并兼顾补差？|①以前测识别基础、工具和任务经验差异；②设置共同必达目标和分层练习；③基础薄弱者用步骤卡、示范与助教辅导；④熟练者承担边界案例和互查任务；⑤按关键节点检查而非只赶讲授进度；⑥补差后单独复测，保留个人改进记录。
+#论述题（第25—30题）
+25. 某连锁维修企业有工单、配件、设备日志和客户评价四套数据，部门各自采集，口径不一。请设计“故障诊断助手”项目的业务架构与端到端数据流程，并说明如何验证业务价值。|①以“缩短诊断周期且不误派工”为目标，绘制受理、诊断、配件确认、维修、回访价值流，用泳道明确客服、维修、仓库、算法和质检责任；围绕故障类型、设备、工单建立统一主键与指标口径。②业务架构分为交互受理、诊断服务、工单与配件协同、知识运营四层；模型只提供证据化建议，安全维修和争议结论由授权人员确认。③数据链路为授权接入→字段映射→脱敏→去重及跨表校验→特征与标签加工→自动质检→争议复核→版本入库；记录原始值、修正值、责任人和时间，退回重审形成闭环。④训练、验证、测试按设备或维修批次隔离，建立专家复核测试集；先历史回放，再单网点灰度。比较一次诊断正确率、平均处理时长、返修率、误配配件率和转人工率，同时检查各类设备是否退化，达标后推广，失败可回退。【解析】核心是把四套数据统一到工单业务闭环，而非简单汇总建库。
+26. 某视觉分类项目准备验收，现有一批历史图片和持续新增的现场图片。请论述黄金测试集、测试方案及版本准入机制的设计，说明如何兼顾稳定性与现场适应性。|①先按类别、设备、光照、拍摄条件和风险等级建立覆盖矩阵。核心黄金集从历史样本中选取代表性、边界和高风险案例，由双人标注、专家仲裁并冻结；新增现场图片形成独立扩展集，避免只用旧分布验收。②按采集批次或设备组划分，近重复去重，保存清单、标签版本和SHA-256指纹。黄金集不参与训练、增强和参数选择，调参只用验证集。③测试方案明确环境、版本、预处理、指标公式及统计口径，输出总体和分场景指标、混淆矩阵、困难样本及时延；设旧核心回归、新场景适应和压力异常三类测试。准入条件采用题目或项目评审给定值，不自行宣称统一阈值。④每次候选模型与当前基线同条件比较；发现主场景退步即退回归因。扩展集定期经审批补入核心集，保留旧版以便趋势比较，最终形成报告、复核记录和发布审批。
+27. 某包装缺陷模型训练准确率很高，现场却漏检细小划痕，且不同班次表现差异明显。请从错误分析、数据治理、训练调参和回归验证提出闭环优化方案。|①锁定相同测试口径，按划痕尺寸、班次、光照和工位切片统计漏检，复核漏检样本标签，区分标注遗漏、训练覆盖不足、分辨率损失与模型容量问题。②保留原始图片，统一采集和标注规范；针对薄弱班次与细划痕定向补采，按生产批次组级划分，近重复去重。增强仅模拟真实光变，不使用会抹去划痕的强压缩或裁剪。③以现模型为基线，记录数据、代码、参数、种子和日志；依次验证输入分辨率、损失权重或适合小目标的结构等单项改动，用验证集早停，避免同时调多项导致无法归因。④在冻结黄金集和新班次集做回归，重点报告各类召回、误报及不同尺寸表现；新旧模型历史回放后小流量试运行，设置人工复检和回退。人工确认结果回流困难样本池，经审核再进入下一轮。
+28. 某园区希望同时建设“设备巡检、能耗预测、维修知识问答”三个智能产品。请设计多产品全链路解决方案，说明共享能力、产品边界、人机协同及运营闭环。|①以“发现异常—研判—维修—复盘”为共同链路：巡检产品识别缺陷并生成事件，能耗产品预测负荷和异常，问答产品提供规程及维修依据；三者分别承担感知、预测和知识辅助，不相互替代专业审批。②统一设备主数据、事件编码、时间口径和身份权限，共享数据治理、模型服务、知识库、消息总线与监控平台。巡检或能耗异常触发工单，问答按设备型号检索对应版本规程，处理结果回写设备档案。③高风险控制、停机及能耗调度必须人工确认；低置信度、知识无依据和接口超时进入人工队列，交接原始证据与上下文。④用历史事件回放评估漏报、误报、提前量和跨系统状态一致性，再分区域灰度。运营监控设备覆盖率、告警闭环率、能耗误差、引用有效率、维修时长及成本，按月归因到数据、模型或流程并版本化改进。
+29. 某企业拟将“售后邮件分类、回复草拟、工单流转”整合为智能售后产品。请撰写核心功能需求与项目验证方案，覆盖接口、数据、权限、异常、验收和灰度发布。|①范围：邮件按业务类别路由，在授权知识范围内生成回复草稿，经规则或人工确认后发送，并创建、更新工单；禁止模型自行承诺赔付或越权查看数据。②需求字段：邮件ID、客户ID脱敏值、类别、置信度、引用、草稿、工单状态、处理人、版本和时间。接口需幂等、重试和状态回查；权限按角色最小化，敏感内容加密并留审计日志。③异常分支：信息不足追问，低置信度、投诉或政策例外转人工，重复邮件合并，接口超时进入队列，无知识依据不生成事实。④以专家标注邮件集验收分类、草稿事实正确性、引用及工单字段完整性；历史回放比较处理时长、一次解决率和人工修改率。通过权限、异常和回归测试后灰度发布，保留旧流程回退，依据抽检与投诉闭环优化。
+30. 新一批初级工将承担多源数据采集、标注复核和训练日志整理。请设计培训计划、业务指导方案和效果评估闭环，使培训结果能反向改进课程与作业规范。|①以前测和岗位任务确定目标：能按规范采集、识别并修正标注问题、完整整理训练日志。计划按“规则讲解→教师示范→分步练习→独立任务→复盘”组织，配置脱敏数据、操作步骤卡和统一评分量规。②指导采用提问定位根因、示范同类样本、学员重做、双人互查和确认复测；个人问题记录到辅导单，共性歧义进入规范修订，不让学员靠猜标通过。③评估分四层：前测与随堂测看知识增量，结业实操看独立操作，培训后约定周期抽查返工率、漏标率、日志完整率和效率看岗位迁移，访谈学员与主管收集应用障碍。④按模块和学员比较前后测，不只统计平均分与满意度；未达标者针对补训。将高频错误转化为新案例和检查项，更新课程与作业规范，下一期使用同一口径复评。【解析】培训闭环应同时改变“人”和“作业标准”。`},
+{n:'第三部分 · 广东形态上机实操（最终冻结基准卷）',d:'技能考核形态基准卷 · 120分钟 · 100分。模块一业务分析25分；模块二智能训练（数据治理与训练准备）30分；模块三智能训练与智能系统设计40分；模块四培训与指导5分；检查交付物20分钟。场景：城市道路积水智能识别与预警项目二期。已有人工复核工单 water_tickets.csv 和积水区域矩形标注 train_ann/，图片位于 train_images/。唯一目标类别为 water（积水），湿路面、反光和裂缝均为易混淆负样本，不单独设类。考试须提交业务分析、数据质检报告、清洗与转换代码、训练记录、系统服务方案和培训摘要。数据处理仅作为工作情境，评分重点为分析、训练、系统设计和闭环。',data:`#模块一 业务分析（25分，30分钟）
+1. （10分）阅读二期目标，提交《业务分析与需求确认表》：①系统边界与硬件约束；②3类干系人及诉求；③2项需求确认问题；④至少4个量化验收指标（目标值自定义并说明理由）。|①边界：项目二期、积水场景；不默认扩展至全部道路病害。②硬件：模型规格、帧率、分辨率、显存和端到端时延须联动说明。③干系人及诉求：道路巡检人员关注召回与定位；调度/值班人员关注告警时效和工单闭环；系统运维人员关注稳定性、监控与回滚。④需求确认：确认积水与湿路面、反光的判定边界；确认告警等级、现场复核、处置时限和留痕要求。⑤指标示例：独立测试集召回率、误报率或精确率、夜间/雨天分层表现、单帧或端到端时延、资源占用、告警闭环率；目标值均须经基线测试确认。
+2. （7分）提交《数据与标注验收规范》：说明water矩形框规则、负样本处理、遮挡/反光边界和至少3项质检规则。|①统一使用矩形目标检测框，不使用像素级分割标签。②water框覆盖可见积水区域，框内尽量贴合目标；同一图片可标注多个实例。③湿路面、反光、裂缝不标为water；无法确认的样本进入疑难复核，不强行打标。④质检至少覆盖：类别正确、框坐标有效且不出界、漏标/多标抽检、图片与JSON配对、疑难样本复核和版本留痕。
+3. （8分）提交《风险与闭环表》：至少3类风险；每类给出归因、措施、验证指标和回滚/兜底。|①场景风险：夜间、雨天、反光导致误报或漏报；分层采样、补训和复测；不达标时降低自动化等级并人工复核。②数据风险：重复、空文本、错配、类别失衡和标签错误；清洗、抽检、版本记录和分层验证。③训练风险：过拟合、类别分布变化或阈值不合适；独立验证集、早停、分场景阈值验证。④系统风险：超时、服务不可用、知识误检索；超时降级、熔断、重试限制、备用模型或人工接管；保留回滚。
+#模块二 智能训练——数据治理与训练准备（30分，35分钟）
+4. （10分）补全以下Pandas代码，每空2分。要求读取工单、去空文本、按工单与文本去重、处理置信度并输出清洗文件。§§import pandas as pd§raw = pd.read_csv("water_tickets.csv", ____①____="utf-8", dtype=str).fillna("")§clean = raw[raw["content"].str.strip().____②____("")]§clean = clean.____③____(subset=["ticket_id", "content"])§clean["confidence"] = pd.to_numeric(clean["confidence"], ____④____="coerce").fillna(0)§clean["text_len"] = clean["content"].str.len()§clean.____⑤____("output/clean_tickets.csv", index=False, encoding="utf-8-sig")|①encoding；②ne；③drop_duplicates；④errors；⑤to_csv
+5. （10分）补全LabelMe矩形框转YOLO检测格式的核心代码，每空2分。water类别编号为0。§§for shape in label[____①____]:§    if shape["label"] != "water":§        continue§    (x1, y1), (x2, y2) = shape[____②____]§    xc = ((x1 + x2) / 2) / label["imageWidth"]§    yc = ((y1 + y2) / 2) / label[____③____]§    w = ____④____(x2 - x1) / label["imageWidth"]§    h = abs(y2 - y1) / label["imageHeight"]§    lines.append(f"____⑤____ {xc:.6f} {yc:.6f} {w:.6f} {h:.6f}")|①"shapes"；②"points"；③"imageHeight"；④abs；⑤0
+6. （10分）质检结果如下：原始工单10000条；重复300条、空文本200条均已清除；可选地址字段缺失18%；water正样本占22%；max_len=128时6%的长文本被截断。项目门槛为：重复和空文本须清零，可选字段缺失不阻断，文本截断率须低于5%。提交《准入与复测结论》。|1. 重复和空文本已清零，满足基础完整性门槛。2. 地址为可选字段，18%缺失不直接阻断，但须保留缺失标记，禁止无依据填补。3. 正样本22%提示类别不均衡，划分时保持分层，并关注少数类召回。4. 截断率6%高于5%门槛，当前不能直接准入；可调整max_len、采用长文本策略并复测至低于5%。5. 形成“清洗—质检—修正—复测—准入”记录，保留数据和代码版本。
+#模块三 智能训练与智能系统设计（40分，40分钟）
+7. （10分）按15条/秒、批量4、输出token按1/10抽样、秒级流式日志设计压测。提交至少4个评价指标、抽样口径、超时/溢出处置及结果判读。|①指标至少包括端到端时延/P95、输出速率或吞吐、准确率或分层召回、失败率/超时率，以及必要的资源占用。②全量记录延迟、批量和失败；按输出token以固定随机种子抽取1/10，记录抽样清单，避免只抽成功样本。③超时进入重试限制或降级队列；输出溢出检查token上限、截断策略和异常输入，记录而非静默丢弃。④结果同时比较效果、速度和稳定性；任一项不满足门槛均须调整并复测。
+8. （10分）同一模型、同一数据版本的两轮日志为：A轮TP=76、FN=24、FP=10、P95=280ms；B轮TP=72、FN=28、FP=5、P95=220ms。当前门槛为召回率不低于0.75、精确率不低于0.88、P95不高于250ms。计算并选择上线版本，提出后续验证。|①A轮召回率0.76、精确率约0.884、P95=280ms，时延不达标。②B轮召回率0.72、精确率约0.935、P95=220ms，召回率不达标。③两轮均不能直接全量上线；不得只凭单轮日志判断稳定改进。④可在满足业务风险的前提下优先以A轮优化时延，或以B轮调整阈值/补训提升召回，再使用同一独立测试集复测。⑤至少3轮复测并分夜间、雨天、反光场景验证；必要时灰度、人工复核和回滚。
+9. （10分）设计积水识别模型服务化方案。要求给出接口输入输出、P95超时后的降级、非幂等重试控制、监控告警及回滚条件。|①输入：图片或图片引用、工单ID、模型版本和必要场景信息；输出：water置信度、检测框、处理状态、模型版本和追踪ID。②P95持续超门槛时启用队列削峰、轻量备用模型或人工复核；不得无限等待。③工单创建等非幂等操作使用唯一请求ID和去重记录，限制重试次数并采用退避。④监控可用性、P95、失败率、资源、误报/漏报和数据漂移；分级告警并明确处置人。⑤新版本出现严重错误率、时延或业务指标越线时停止灰度并回滚，保留审计记录。
+10. （10分）为预警助手设计RAG知识库增强。知识来源包括处置规程、历史复核案例和设备手册。提交切分、元数据、权限、评估和无依据回答策略。|①按规程条款、案例和设备章节切分，保留上下文，避免跨权限和跨版本混切。②元数据至少包括来源、版本、生效日期、适用场景、权限和定位信息。③检索前后均执行权限过滤；回答附可追溯引用，敏感内容按最小权限返回。④建立含标准答案的测试集，分别评估检索命中、回答正确性、引用一致性和无依据拒答。⑤检索不足或答案无依据时明确提示并转人工，不编造处置要求；低质量案例经复核后再入库。
+#模块四 培训与指导（5分，15分钟）
+11. （5分）编写200字以内培训摘要，指导四级人员完成“规则—代码—训练/服务—验收”交付。|①规则：明确water定义、负样本、疑难复核和版本记录。②代码：演示清洗、去重、坐标转换，设置异常提示并运行自检。③训练/服务：说明训练配置、指标计算、超时降级、权限和回滚。④验收：用统一测试集复核效果与时延，报告包含指标、问题、修正、复测和准入结论。
+#检查交付物（20分钟）
+12. 检查交付物清单：需求确认表、数据规范、风险闭环表、清洗代码、转换代码、质检结论、训练评估、服务方案、RAG方案、培训摘要。所有文件命名清晰，关键结果可复现，版本和修改记录可追溯。|按交付清单逐项核对文件名、格式、数量和可打开性；核对平台是否提交成功；最后只补空题、漏项、计算和提交错误，不在单题追求完美。`},
+{n:'第四部分 · 实操卷一 金华结构变式',d:'非广东形态，供知识强化练习 · 120分钟 · 100分。情境：某家电服务企业建设“安装条件智能预审”项目。客户上传安装环境照片并填写设备型号、墙体类型、空间尺寸和地址。当前存在字段口径不一、同一张照片跨集合、夜间照片误分为“可安装”，以及AI与客服重复处理等问题。所有阈值除题目给定外只写“建议值＋验证方法”。',data:`#模块一 业务流程设计（25分） 交付物：A1_flow.md、A2_dictionary.csv、A3_rules.md
+1. 画出“申请→授权→采集→校验→处理→审核→预审→结果回流”的泳道流程，至少标出客户、客服、数据平台、审核员、模型服务五个泳道及两个退回回路。（8分）|主链：客户提交及授权→客服检查必填→平台校验/去重→审核员处理争议→模型预审→客服反馈结果→审核结论回流；校验失败退客户补采，标签争议退审核员重标后重审。（评分：泳道3、主链3、回路2）
+2. 字段字典至少包含8个字段，覆盖申请标识、设备、环境、图片、授权、来源、时间、处理状态；每字段给出名称、类型、是否必填、含义/取值、质量规则。（8分）|字典示例（任写8个且要素完整）：application_id｜string｜是｜申请唯一标识｜非空且唯一；device_model｜string｜是｜设备型号｜在型号主数据内；wall_type｜string｜是｜concrete/brick/other｜枚举；clearance_mm｜int｜是｜净空间毫米｜大于0；image_uri｜string｜是｜脱敏存储地址｜可读取且格式允许；consent_flag｜bool｜是｜使用授权｜仅true入训练；source_channel｜string｜是｜app/web｜枚举；captured_at｜datetime｜是｜拍摄时间｜不晚于入库时间；status｜string｜是｜new/review/approved/rejected｜状态机合法。
+3. 写出5条可执行质量规则及“自动拦截—人工复核—修正回写—重审—日志归档”闭环；设计2个流程指标。（9分）|规则：申请ID唯一；型号在有效主数据；尺寸为正且单位统一；图片可解码且申请ID匹配；无授权不得入训练。失败记录rule_id、raw_value、reason、owner、time，自动拦截→人工复核→保留原值写修正值→重跑规则→日志归档。指标：一次校验通过率=首次通过数/提交数；返工闭环时长=重审通过时间-首次拦截时间。
+#模块二 智能训练（35分） 数据集共10,000张图片，来自2,000个申请单，每单含同场景近重复图片。按申请单分组，三类场景划分保持比例，训练/验证/测试为8:1:1（本题给定），随机种子42，增强只作用于训练集
+4. 写出分组分层划分、近重复检查、数量与组级互斥校验步骤，并说明不能逐图随机划分的原因。（8分）|以application_id为组，按主场景做组级分层；固定42划分8:1:1并保存清单；感知哈希/embedding识别近重复，跨组重复整体迁移或去重；检查图片数守恒、类别分布、三集合申请ID两两交集为空。逐图划分会让同申请近重复进入不同集合，造成泄漏和指标虚高。
+5. 训练增强：旋转范围±12°、水平翻转概率0.5、缩放范围0.9～1.1；填写augment.yaml空①～④。（6分）§§augment.yaml：§seed: 42§train_only: ____①____§rotate: ____②____§hflip: ____③____§scale: ____④____|①true；②12；③0.5；④[0.9, 1.1]。若平台用起止角则写[-12, 12]，须与字段定义一致。
+6. 划分后保存test_files.txt，写出SHA-256指纹生成和训练后复核代码空①～③。（6分）§§from pathlib import Path§import hashlib§def sha256(path):§    h = hashlib.____①____()§    with open(path, "rb") as f:§        for block in iter(lambda: f.read(1024 * 1024), b""):§            h.____②____(block)§    return h.____③____()§root = Path("dataset/test")§before = {str(p): sha256(p) for p in root.rglob("*") if p.is_file()}§# 保存before；训练后按相同方式重算并逐项比对|①sha256；②update；③hexdigest。将before序列化保存；训练后同法生成after，比较键集合及各键哈希，任一差异即隔离并回查。
+7. 24条误分样本统计：标签错6条、夜间反光8条、墙体相近6条、图片被错误裁剪4条。提出逐类纠正动作及回归验证，不得直接全部回灌。（9分）|标签错6条→专家复核定标签并修规范；夜间反光8条→按班次定向补采、真实光变增强；墙体相近6条→补充纹理差异样本并检查分类特征；错误裁剪4条→修复预处理且全量重跑。按原因分桶，修后先做数据质检，再在旧黄金集和夜间专项集回归，审核通过方可入训练。
+8. 给出训练对比日志最少字段和一次单因素调参设计。（6分）|日志字段：run_id、data_hash、code_commit、params、seed、epoch、train_loss、val_loss、class_metrics、best_epoch、artifact_uri。固定其他条件，仅比较权重衰减两个候选设置，以验证集选优，测试集只做最终一次评估。
+#模块三 智能系统设计（35分） 历史回放共200单，原流程每单平均12分钟。新规则让120单自动通过，耗时4分钟/单；其余80单转人工，仍按12分钟/单。120单中108单经人工抽查判定正确，12单错误。原流程一次解决率75%
+9. 计算自动处理率、自动通过样本抽查正确率、回放平均处理时长；说明一次解决率为什么不能由上述数据直接推出。（8分）|自动处理率=120/200=60%；自动通过抽查正确率=108/120=90%；平均时长=(120×4+80×12)/200=7.2分钟/单。一次解决率需“首次接触无需再次处理”的结果数据，题中未给，不能计算；原75%只能作基线。
+10. 设计至少3个判断分支的人机流程，给出2条硬性和2条弹性转人工规则，并写明上下文交接。（9分）|分支：授权/字段完整？照片可读且型号一致？模型风险及置信状态是否允许自动处理？硬性：涉及安全例外或政策争议必转；客户明确投诉/情绪激动必转。弹性：信息不足或模型低置信转；连续两次识别失败转。交接申请ID、原图、字段、模型建议、命中规则、已沟通内容，避免客户重复描述。
+11. 针对“设备型号与照片冲突、客户情绪激动、政策例外、图片上传失败”设计异常处理。（8分）|型号冲突→冻结自动结论，客户与客服核对；情绪激动→停止自动追问并转专员；政策例外→展示无自动权限并转授权人；上传失败→保留表单、给重试入口，超过次数转人工，不重复建单。
+12. 设计历史回放与灰度验证表：至少含质量、效率、风险、体验4类指标，写明基线、候选、统计分组和回退条件。（10分）|质量：正确率及一次解决率；效率：平均/P95时长、自动处理率；风险：错误自动通过数、应转未转率；体验：重复提交率、满意度。按型号、墙体、渠道和班次分层，以原流程为基线比较候选；先200单回放再小流量灰度，出现高风险误通过或关键指标明显退化即停灰度、切回人工并复测。
+#模块四 培训与指导（5分）
+13. 初级工只采白天正面照片、同一申请连拍充数、墙体标签口径不一致。提交一条指导记录，含3个问题、对应纠正动作和“提问→示范→纠错→确认”话术，并提出培训后评估指标。|问题：时间/视角覆盖不足、同组重复、标签歧义。纠正：按光照与视角矩阵补采；按申请组去重；双人复核并补正反对例。话术：“你认为这批样本遗漏了哪些现场条件？”→“我按同一墙体示范白天、夜间和侧拍并记录元数据。”→“连拍不能当独立覆盖，这张标签也需按规范复核。”→“请重做这个小组，明天互查后复述规则。”评估：前后测差、独立采集合格率、组内重复率、培训后返工率。
+#本卷变式
+14. 本卷变式：改为“商用洗碗机安装预审”，新增上下水、电压、排水坡度字段和厂家安装规范；同一门店视为一个防泄漏组；比较新旧规范版本下的模型表现，并设计规范更新后的数据、知识和培训同步机制。|新增字段进入字典和单位/范围校验；以store_id组级隔离；分别统计新旧规范版本的错误与兼容样本；规范更新时同步版本化字段、测试集、知识文档和培训案例，完成回归后再发布。`},
+{n:'第四部分 · 实操卷二 义乌结构变式',d:'非广东形态，供知识强化练习 · 120分钟 · 100分。情境：某生鲜配送企业开发“周转箱外观检测与仓内作业助手”：视觉模型识别完好、变形、裂缝，Agent回答仓内SOP并生成异常工单。现有同箱连拍、训练与验证差距大、知识问答引用错位等问题。',data:`#一、案例分析题（25分）
+1. 训练日志：第30轮训练准确率98%，验证准确率76%；随机逐图划分后发现同一周转箱的相邻帧跨训练与验证。判断主要问题并写出证据、修正的数据划分方法。（7分）|过拟合：训练98%与验证76%相差22个百分点；组级泄漏：同箱相邻帧跨集合使验证信息间接进入训练，验证结果失真。按box_id/采集视频组整体划分并做近重复去重，检查组交集为空；重新训练后才比较正则化等措施。
+2. 部署测试中“裂缝”类TP=72、FP=8、FN=18。计算裂缝类Precision、Recall、F1（保留两位小数百分比），并解释FP与FN的业务含义。（9分）|Precision=72/(72+8)=90.00%；Recall=72/(72+18)=80.00%；F1=2×72/(2×72+8+18)=144/170=84.71%。FP=非裂缝被报裂缝，可能造成误隔离；FN=裂缝漏检，可能继续装货，风险更高。
+3. 针对细小裂缝漏检、强光反光和验证波动，分别给出数据、训练、部署优化及对照验证。（9分）|细裂缝：保留高分辨率、补采不同距离并核查标签；反光：按真实光照做亮度增强和采集遮光改进；波动：检查组分布与样本量，固定种子并报告多次划分结果。训练只单因素改变输入分辨率、正则化等，用验证集早停；部署保存基线并灰度，以裂缝召回、误报和分时延回归，不能只看总体准确率。
+#二、程序题（35分）
+4. 补全代码①～⑧，实现仅训练集增强、轻量CNN构建、优化器权重衰减、验证、保存最佳权重和导出TorchScript。数据目录data/train、data/val，标签由文件夹名映射，三分类，输入64×64。评分：16空分＋交付19分（训练与验证预处理分开4分；按轮打印并保存epoch、train_loss、val_loss、lr、data_hash、seed共5分；以验证损失保存最佳权重4分；加载最佳权重、eval、同设备示例输入并成功导出3分；提交日志、best.pt、model_ts.pt和含分类指标的metrics.json共3分）§§import torch§from torch import nn§from torch.utils.data import DataLoader§from torchvision import datasets, transforms§§train_tf = transforms.Compose([§    transforms.Resize((64, 64)),§    transforms.____①____(12),§    transforms.RandomHorizontalFlip(p=____②____),§    transforms.ToTensor()§])§val_tf = transforms.Compose([transforms.Resize((64, 64)), transforms.ToTensor()])§§train_ds = datasets.ImageFolder("data/train", transform=train_tf)§val_ds = datasets.ImageFolder("data/val", transform=val_tf)§train_dl = DataLoader(train_ds, batch_size=32, shuffle=____③____)§val_dl = DataLoader(val_ds, batch_size=32, shuffle=False)§§class SmallCNN(nn.Module):§    def __init__(self, classes=3):§        super().__init__()§        self.features = nn.Sequential(§            nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),§            nn.Conv2d(16, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),§            nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.AdaptiveAvgPool2d(1)§        )§        self.classifier = nn.Linear(____④____, classes)§    def forward(self, x):§        return self.classifier(self.features(x).flatten(1))§§device = "cuda" if torch.cuda.is_available() else "cpu"§model = SmallCNN().to(device)§opt = torch.optim.____⑤____(model.parameters(), lr=1e-3, weight_decay=1e-4)§loss_fn = nn.CrossEntropyLoss()§best = float("inf")§§for epoch in range(20):§    model.____⑥____()§    for x, y in train_dl:§        x, y = x.to(device), y.to(device)§        opt.zero_grad(); loss = loss_fn(model(x), y)§        loss.backward(); opt.step()§    model.eval(); total, count = 0.0, 0§    with torch.____⑦____():§        for x, y in val_dl:§            x, y = x.to(device), y.to(device)§            total += loss_fn(model(x), y).item() * x.size(0)§            count += x.size(0)§    val_loss = total / count§    print(epoch, val_loss)§    if val_loss < best:§        best = val_loss§        torch.save(model.state_dict(), "best.pt")§§model.load_state_dict(torch.load("best.pt", map_location=device, weights_only=True))§model.eval()§example = torch.randn(1, 3, 64, 64, device=device)§traced = torch.jit.____⑧____(model, example)§traced.save("model_ts.pt")|①RandomRotation；②0.5；③True；④64；⑤AdamW；⑥train；⑦no_grad；⑧trace。【解析】若裂缝方向不影响类别，翻转才可使用；存在方向语义时应删除该增强。val_tf不能做随机增强，验证损失也不能用测试集代替。
+#三、系统设计题（35分）
+5. 知识库现有《仓储SOP》三章：A“入库检查”、B“清洗消毒”、C“异常处置”。提问“箱体有裂缝能否继续装货？”时，系统返回B章“清洗后使用”，实际答案在C章“隔离并报检”，检索日志显示C章未被召回。按“文档解析→切片→索引→检索→生成→溯源”排查该RAG故障，给出定位实验与修复动作。（12分）|原样复现并保存query、召回片段和文档版本；直接检索C章原句，若能命中则查query改写/Top-K，若不能则查解析、切片和索引。检查C章是否入库、标题是否切断、关键词“裂缝/隔离”是否被OCR或清洗破坏；按条款边界切片并保留doc_id、version、chapter、page，增量重建索引，用关键词＋向量混合召回；生成只依据命中证据并输出章节引用。
+6. 设计Agent工作流：提问→权限/意图→检索→证据判断→生成→引用→无依据转人工→异常工单，要求多轮上下文不跨用户泄露。（10分）|用户会话写入独立session_id，权限过滤先于检索；意图为SOP则检索并评估证据充分性，充分时生成带引用答案，不充分时明确“未找到依据”并转人工。异常处置意图收集箱体编号、图片和位置创建工单；人工接管收到对话摘要及证据，跨用户内容不得拼接。
+7. 设计至少5条发布前测试，覆盖正常、跨章节、无答案、旧版本、权限和故障回退；写出发布与回滚交付物。（8分）|测试：C章单跳问题应正确引用；入库＋异常跨章问题应综合两章；手册外问题应拒答；旧版与新版同编号应只取有效版；无权限用户不得看到受限内容；检索超时进入降级/人工。提交测试记录、知识库版本、工作流截图、发布记录、监控项和回滚包。
+8. 说明如何用仓储历史问题回放评价“检索命中、答案正确、引用有效、转人工合理”。（5分）|专家为历史问题标标准答案、证据及是否应转人工；分别统计检索命中、答案正确、引用有效和转人工合理率，按章节与版本分组；失败样本回到解析、检索、生成或规则桶修复后重放。
+#四、简答题（5分）
+9. 为初级工编写“训练日志与模型版本管理”5分钟培训提纲，须含一个错误示范、一个实操练习和前后测之外的岗位迁移评估。|目标为“能复现一次训练并找到对应权重”；内容为数据哈希、代码、参数、种子、逐轮日志、指标和模型路径。错误示范：只交best.pt但无数据版本。练习：为两次单因素实验补全日志并互查复现。迁移评估：约定回访期抽查日志完整率、权重可追溯率和因缺记录造成的返工次数，结果用于补训。
+#本卷变式
+10. 本卷变式：新增手机拍摄的周转箱照片和扫描版SOP；扫描件存在OCR错字，现场另有已过期但编号相同的SOP。要求扩展数据和知识治理方案，并保证模型与知识版本更新可独立回滚。|手机图按设备/班次分层补采并检查压缩差异；扫描件OCR后抽检、保留页图对照；同编号SOP以有效状态和生效日期过滤，旧版归档不删除；模型权重与知识索引分别设版本、兼容清单和独立回滚入口，跨版本组合须回归。`},
+{n:'第四部分 · 实操卷三 深圳结构变式',d:'非广东形态，供知识强化练习 · 180分钟 · 100分。情境：某装备企业建设“支架缺陷检测＋质检知识助手”。现场提供10段视频，每段抽得7张图像，共70张；同段图像高度相似。标签为bracket、crack，使用LabelMe矩形标注。图像按视频段分组划分：训练7段49张、验证2段14张、测试1段7张（本题给定），不得打散视频段。时间分配：A抽帧与质量检查30分钟、A标注与审核35分钟、A转换划分统计30分钟、B训练评估导出45分钟、C RAG与Agent发布25分钟、全局检查与提交15分钟。',data:`#模块A 数据集制作（45分） 交付物：A1_capture.py、采集图、LabelMe JSON、A2_convert.py、YOLO数据集、质量与统计报告
+1. 补全OpenCV抽帧代码①～⑤：读取video/bracket.mp4，打印总帧数，每12帧保存一张，序号连续命名，资源必须释放。（10分）§§from pathlib import Path§import cv2§out = Path("A1_images"); out.mkdir(exist_ok=True)§cap = cv2.VideoCapture(____①____)§if not cap.isOpened():§    raise RuntimeError("视频打开失败")§print("总帧数", int(cap.get(____②____)))§frame_id, saved = 0, 0§while True:§    ok, frame = cap.____③____()§    if not ok:§        break§    frame_id += 1§    if frame_id % 12 == 0:§        saved += 1§        path = out / f"A_bracket_{saved:04d}.png"§        if not cv2.____④____(str(path), frame):§            raise IOError(f"保存失败: {path}")§cap.____⑤____()§cv2.destroyAllWindows()§print("保存数量", saved)|①"video/bracket.mp4"；②cv2.CAP_PROP_FRAME_COUNT；③read；④imwrite；⑤release。
+2. 写出采集质量检查、LabelMe操作与审核闭环；类别框须紧贴目标，无法判定的样本不得猜标。（10分）|检查可解码、清晰度、曝光、目标完整、视角/距离/产线覆盖及近重复；LabelMe打开目录→Create Rectangle→分别标bracket/crack→保存同名JSON→批量校验。自动检查字段、类别和框，人工抽检边界与漏标；不合格隔离→责任人修正→重审→保留问题及版本日志，疑难样本仲裁不猜标。
+3. 补全LabelMe矩形JSON转YOLO代码①～⑥。每行格式class_id x_center y_center width height（后四项归一化），输出与图片同名的.txt。（15分）§§import json§from pathlib import Path§classes = {"bracket": 0, "crack": 1}§§def convert(json_path, out_dir):§    d = json.loads(Path(json_path).read_text(encoding="utf-8"))§    w, h = d["imageWidth"], d["____①____"]§    if w <= 0 or h <= 0:§        raise ValueError("图像尺寸非法")§    lines = []§    for s in d["____②____"]:§        if s["shape_type"] != "rectangle" or len(s["points"]) != 2:§            continue§        (x1, y1), (x2, y2) = s["points"]§        x1, x2 = sorted((max(0, min(w, x1)), max(0, min(w, x2))))§        y1, y2 = sorted((max(0, min(h, y1)), max(0, min(h, y2))))§        if x1 == x2 or y1 == y2:§            continue§        xc = ((x1 + x2) / 2) / ____③____§        yc = ((y1 + y2) / 2) / ____④____§        bw = (x2 - x1) / w§        bh = (y2 - y1) / ____⑤____§        lines.append(f"{classes[s[____⑥____]]} {xc:.6f} {yc:.6f} {bw:.6f} {bh:.6f}")§    target = Path(out_dir) / (Path(json_path).stem + ".txt")§    target.write_text("\\n".join(lines) + ("\\n" if lines else ""), encoding="utf-8")|①imageHeight；②shapes；③w；④h；⑤h；⑥label。运行前创建out_dir：Path(out_dir).mkdir(parents=True, exist_ok=True)。
+4. 图像宽800、高600，crack框两点为(200,150)与(400,300)，写出YOLO行；另给出图像—标签同名匹配、空标签、非法框和类别统计检查。（6分）|xc=300/800=0.375；yc=225/600=0.375；bw=200/800=0.25；bh=150/600=0.25；输出"1 0.375000 0.375000 0.250000 0.250000"。检查图片与JSON/TXT主名一一对应；空TXT需确认“确无目标”而非漏标；剔除零面积/越界非法框；统计每类实例数及异常值。
+5. 按10段视频给定分组写入train/val/test清单，保存测试集SHA-256清单，输出每集合图像数、类别实例数和分辨率分布。（4分）|train=7段49张、val=2段14张、test=1段7张；三集合video_id交集为空。对测试文件逐一SHA-256保存路径与摘要；输出49/14/7及各类实例和分辨率分布，转换或增强后复核测试指纹。
+#模块B 模型训练（35分）
+6. 选择YOLOv8检测模型，写出训练配置/命令必须包含的字段；增强不得作用于验证和测试，固定数据清单与日志。（8分）|配置含model、data、imgsz=640、epochs、batch、lr0、optimizer、seed、workers、project/name、patience；数据YAML指向固定train/val/test清单和类别名。保留预训练权重来源、数据哈希及环境，测试集不参与训练或选参。
+7. 训练出现box_loss持续下降、验证mAP在第12轮后下降。给出早停、最佳权重选择和下一轮单因素优化方案，并列出日志字段。（9分）|验证mAP下降提示过拟合，启用基于验证指标的早停并选验证最优best.pt，非最后一轮。下一轮固定其他条件，仅改变一种正则化/增强强度或权重衰减并比较；日志含run_id、epoch、box/cls/dfl_loss、lr、val_P/R/mAP50/mAP50-95、data_hash、params、best_epoch。
+8. 在独立测试集输出Precision、Recall、F1、mAP、混淆矩阵和PR曲线；按bracket/crack及目标尺寸分组分析，不得由训练集指标替代。（8分）|在7张独立测试图上评估并如实注明小样本波动；输出总体与分类P/R/F1、mAP、混淆矩阵和PR曲线，按类别及小/中/大目标分桶。结合漏检和误检样本判断是否需要扩大测试集，不能用训练指标代替。
+9. 补全导出代码①～②并提交可复载模型；写明导出前后用同一批样本做输出一致性抽检。（5分）§§from ultralytics import YOLO§model = YOLO("runs/detect/train/weights/best.pt")§model.____①____(format="____②____", imgsz=640)|①export；②onnx。导出后分别加载best.pt与ONNX，对同一预处理样本比较框、类别和置信度，记录运行环境、OpSet及差异；模型放入指定目录并可复载。
+10. 给出模型卡最少内容。（5分）|任务与类别、数据/代码/权重版本、测试集指纹、总体和分组指标、已知限制（远距/反光等）、训练与推理环境、审批状态及上一稳定版本回退路径。
+#模块C 智能系统设计（20分）
+11. 将《质检作业指导书》《不合格品处置办法》建成知识库，Agent需回答质检依据并在需要时创建复核工单。写出文档清洗、按条款切片、适度重叠、元数据、向量索引及引用设计；不得把具体切片长度写成通用标准。（6分）|去页眉页脚噪声并保留条款结构；按条款语义切片，适度重叠保留上下文，长度通过检索测试确定；附doc_id、title、version、effective_date、chapter、page、line_id；嵌入建索引，答案引用文档名、版本和条款。
+12. 设计“提问→权限与意图→检索→证据充分性→生成/拒答→引用→复核工单”的工作流和提示词边界。（6分）|先按产线和角色过滤有效文档，再识别问答/工单意图；证据不足或冲突时拒答并转复核，不编造数值；有据时仅据片段作答并列引用。工单写line_id、sample_id、question、evidence、image_uri、status，人工处理结果回写。
+13. 给出5条问答测试，其中至少1条无答案、1条跨文档、1条版本冲突；完成调试发布并保存可核验证据。（5分）|单条款问检验方法；跨两文档问“发现裂缝后如何判定与处置”；无依据问未收录设备；新旧版本冲突应选当前有效版；无权限问受限处置流程应拒绝；另可测检索超时转人工。保存问答记录、引用截图、工作流截图、发布版本与回滚记录。
+14. 上线后如何将错误问答与视觉漏检分别回流到知识和数据闭环？（3分）|错误问答按解析/检索/生成/版本归因，修文档或索引后回归；视觉漏检按产线、目标尺寸和缺陷归因，经复核进入困难样本池，重新训练并独立测试。两者分别审批发布，避免一次变更无法定位。
+#本卷变式
+15. 本卷变式：新增第二条产线的远距小目标图像与一份更新后的处置办法。要求重新设计覆盖矩阵、组级测试集和专项指标；知识库保留新旧版本但仅向当前产线提供有效版本，并完成联合灰度与独立回退。|覆盖矩阵增加产线、距离和小目标；第二产线按采集批次独立设专项测试集，报告小目标召回；新旧知识按产线、有效期和权限过滤；模型与知识可独立灰度、独立回退，联合版本做端到端回归并保存兼容矩阵。`}
+];
+function parseP(P){if(!P._s){P._s=[];let cur=null;P.data.split('\n').forEach(l=>{if(!l.trim())return;if(l[0]=='#'){cur={t:l.slice(1).trim(),items:[]};P._s.push(cur)}else if(cur){const i=l.indexOf('|');if(i>0)cur.items.push([l.slice(0,i),l.slice(i+1)])}})}return P._s}
+function pCount(P){return parseP(P).reduce((a,s)=>a+s.items.length,0)}
+function pDone(i){return parseP(PRACT[i]).reduce((a,s,si)=>a+s.items.filter((x,ii)=>MST[i+'-'+si+'-'+ii]).length,0)}
+function escB(s){return esc(s).replace(/~P~/g,'|').replace(/§/g,'<br>').replace(/  /g,' &nbsp;')}
+function subHome(){
+ clearInterval(tmr);S=null;document.body.className='';document.title=LV=='3'?'代码实操题':'主观题与实操卷';
+ const is3=LV==='3';
+ const tip=is3?'三级代码填空题库：在原文空缺处直接填空，可逐空检查正误并查看标准答案；作答自动保存，记录保存在本机浏览器。':'第二、三、四部分：简答/论述题提供作答区（自动保存、不作自动比对）；代码题在原文中直接填空，可逐空检查正误并查看标准答案。作答记录保存在本机浏览器，电脑与手机均可使用。';
+ $('#app').innerHTML=`<div class="top"><div class="tin"><button class="nv" onclick="home()">‹</button><div class="tb">${is3?'代码实操题':'主观题与实操卷'}</div><span style="width:36px"></span></div></div>
+ <div class="wrap" style="padding-top:14px"><div class="tip">${tip}</div>
+ ${PRACT.map((P,i)=>{const c=pCount(P),d=pDone(i),a2=pAnsN(i);return `<div class="mc" onclick="SUB={v:${i},only:0,f:'all'};subView()"><div class="mi" style="background:var(--tealbg)">${is3?'💻':'🗂️'}</div><div class="mtx"><div class="mt">${P.n}</div><div class="ms">${c} 题已收录 · 已作答 ${a2} · 已掌握 ${d}/${c}</div><div class="pb" style="margin-top:8px"><i style="width:${c?Math.round(d/c*100):0}%"></i></div></div><div class="che">›</div></div>`}).join('')}
+ </div>`;window.scrollTo(0,0);
+}
+function subView(){
+ const vi=SUB.v,P=PRACT[vi],secs=parseP(P),F=SUB.f||'all';
+ let tot=0,dn=0,an=0;
+ secs.forEach((s,si)=>s.items.forEach((it,ii)=>{
+  const k=vi+'-'+si+'-'+ii;tot++;
+  if(MST[k])dn++;
+  if(itemAns(k,it[0],it[1]))an++;
+ }));
+ let body='';
+ secs.forEach((s,si)=>{
+  const its=[];
+  s.items.forEach((it,ii)=>{
+   const k=vi+'-'+si+'-'+ii;
+   if(F=='unm'&&MST[k])return;
+   if(F=='todo'&&itemAns(k,it[0],it[1]))return;
+   its.push({it,k});
+  });
+  if(!its.length)return;
+  body+='<div class="tip" style="margin-top:24px;margin-bottom:2px;font-weight:650;color:var(--tx);font-size:13.5px">'+esc(s.t)+'</div>';
+  its.forEach(o=>{body+=itemHtml(o.k,o.it)});
+ });
+ const segB=(id,lab)=>'<button class="'+((SUB.f||'all')==id?'on':'')+'" onclick="SUB.f=\''+id+'\';subView()">'+lab+'</button>';
+ document.body.className='';
+ $('#app').innerHTML='<div class="top"><div class="tin"><button class="nv" onclick="subHome()">‹</button><div class="tb">'+P.n+'</div><span style="width:36px"></span></div><div class="pb" style="height:3px;border-radius:0"><i style="width:'+(tot?Math.round(dn/tot*100):0)+'%"></i></div></div>'
+ +'<div class="wrap" style="padding-top:14px"><div class="card"><div style="font-size:13px;color:var(--t2);line-height:1.8">'+esc(P.d)+'</div>'
+ +'<div style="font-size:12.5px;color:var(--t2);margin-top:13px">已作答 <b style="color:var(--blue);font-size:15px">'+an+'</b> / '+tot+' 题 · 已掌握 <b style="color:var(--green);font-size:15px">'+dn+'</b> / '+tot+' 题</div>'
+ +'<div class="seg" style="margin-top:12px">'+segB('all','全部 '+tot)+segB('todo','未作答 '+(tot-an))+segB('unm','未掌握 '+(tot-dn))+'</div></div>'
+ +body+'</div>';
+ window.scrollTo(0,0);
+}
+function togA(k){const a=document.getElementById('a-'+k),b=document.getElementById('b-'+k);if(!a)return;const on=a.style.display=='none';a.style.display=on?'block':'none';if(b)b.textContent=on?'收起参考答案与解析 ▴':'查看参考答案与解析 ▾'}
+function togM(k){if(MST[k])delete MST[k];else MST[k]=1;store.s(pkey('mst'),MST);const y=window.scrollY;subView();window.scrollTo(0,y)}
+let ANS,FILL,STDC;
+const CNUM='①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿';
+function escA(s){return esc(s).replace(/"/g,'&quot;')}
+function itemType(q,a){
+ if(/_{2,}[①-⑩⑪-⑳㉑-㉟㊱-㊿]_{2,}/.test(q))return 'code';
+ if(/空[①-⑩⑪-⑳㉑-㉟㊱-㊿][～~][①-⑩⑪-⑳㉑-㉟㊱-㊿]/.test(q)&&a.indexOf('①')>=0)return 'list';
+ return 'text';
+}
+function normFill(s){
+ s=String(s==null?'':s).trim().replace(/[；;。,，\s]+$/,'');
+ s=s.replace(/^['"`]+|['"`]+$/g,'').replace(/\s+/g,'').toLowerCase();
+ return s.replace(/\(\)$/,'');
+}
+function segStd(a){
+ const pos=[];
+ for(let i=0;i<CNUM.length;i++){const idx=a.indexOf(CNUM[i]);if(idx>=0)pos.push({i,idx})}
+ const out={};
+ pos.forEach((p,pi)=>{
+  const end=pi+1<pos.length?pos[pi+1].idx:a.length;
+  let seg=a.slice(p.idx+1,end).trim();
+  const cut=seg.search(/[。；;]/);
+  if(cut>=0)seg=seg.slice(0,cut);
+  const acc=new Set();
+  const par=seg.indexOf('（');
+  const prim=(par>=0?seg.slice(0,par):seg).trim();
+  if(prim)acc.add(prim);
+  if(par>=0){
+   acc.add(seg.replace(/（/g,'(').replace(/）/g,')'));
+   const am=seg.match(/（或([^）]*)）/);
+   if(am)acc.add(am[1].trim());
+  }
+  out[p.i]=[...acc];
+ });
+ return out;
+}
+function stdsOf(k,q,a){
+ if(STDC[k])return STDC[k];
+ const sd=segStd(a);
+ let blanks;
+ if(itemType(q,a)=='code'){
+  const s=new Set();
+  q.replace(/_{2,}([①-⑩⑪-⑳㉑-㉟㊱-㊿])_{2,}/g,(m,c)=>{s.add(c);return m});
+  blanks=[...s].sort((x,y)=>CNUM.indexOf(x)-CNUM.indexOf(y));
+ }else blanks=Object.keys(sd).map(i=>CNUM[i]).sort((x,y)=>CNUM.indexOf(x)-CNUM.indexOf(y));
+ const std={};blanks.forEach(c=>{std[c]=sd[CNUM.indexOf(c)]||['—']});
+ return STDC[k]={blanks,std};
+}
+function hintList(q,n){
+ const m=q.match(/空[①-⑩⑪-⑳㉑-㉟㊱-㊿][～~][①-⑩⑪-⑳㉑-㉟㊱-㊿][：:]([^（(。]*)/);
+ if(!m)return null;
+ const arr=m[1].split(/[、，,]/).map(s=>s.trim()).filter(Boolean);
+ return arr.length==n?arr:null;
+}
+function fillV(k,c){const st=FILL[k];return st&&st.v&&st.v[c]!=null?String(st.v[c]):''}
+function rCls(k,c){const st=FILL[k];return st&&st.r?(st.r[c]==1?' ok':st.r[c]==0?' no':''):''}
+function fillInput(k,c,v,el){
+ const st=FILL[k]||(FILL[k]={v:{},r:{}});
+ st.v[c]=v;if(st.r)delete st.r[c];
+ if(el)el.classList.remove('ok','no');
+ store.s(pkey('fill'),FILL);
+}
+function ansInput(k,v){ANS[k]=v;store.s(pkey('ans'),ANS);const e=document.getElementById('ac-'+k);if(e)e.textContent=String(v).length}
+function itemAns(k,q,a){
+ if(MST[k])return true;
+ if(itemType(q,a)=='text')return !!(ANS[k]&&String(ANS[k]).trim());
+ const st=FILL[k];
+ return !!(st&&st.v&&Object.values(st.v).some(x=>String(x||'').trim()));
+}
+function pAnsN(i){return parseP(PRACT[i]).reduce((a,s,si)=>a+s.items.filter((x,ii)=>itemAns(i+'-'+si+'-'+ii,x[0],x[1])).length,0)}
+function statusTag(k,q,a){
+ if(itemType(q,a)=='text')return (ANS[k]&&String(ANS[k]).trim())?'<span class="tg t">✍ 已作答</span>':'';
+ const st=FILL[k];if(!st||!st.v)return '';
+ const B=stdsOf(k,q,a);
+ const n=B.blanks.filter(c=>String(st.v[c]||'').trim()).length;
+ if(!n)return '';
+ if(st.r&&B.blanks.every(c=>st.r[c]==1))return '<span class="tg ok">✓ 填空全对</span>';
+ return '<span class="tg t">✍ 已填 '+n+'/'+B.blanks.length+'</span>';
+}
+function codeLine(l,k,B){
+ let h=esc(l).replace(/~P~/g,'|');
+ h=h.replace(/_{2,}([①-⑩⑪-⑳㉑-㉟㊱-㊿])_{2,}/g,(m,c)=>{
+  const std=(B.std[c]&&B.std[c][0])||'';
+  const w=Math.max(5,Math.min(30,std.length+2));
+  return '<input class="fbi'+rCls(k,c)+'" id="fi-'+k+'-'+CNUM.indexOf(c)+'" style="width:'+w+'ch" value="'+escA(fillV(k,c))+'" placeholder="'+c+'" autocapitalize="off" autocomplete="off" spellcheck="false" oninput="fillInput(\''+k+'\',\''+c+'\',this.value,this)">';
+ });
+ return '<div class="fl">'+(h||'&nbsp;')+'</div>';
+}
+function fresHtml(k){
+ const B=STDC[k],st=FILL[k]||{v:{},r:{}};
+ let ok=0;B.blanks.forEach(c=>{if(st.r&&st.r[c]==1)ok++});
+ let h='<div class="fsum">检查结果：答对 '+ok+' / '+B.blanks.length+' 空</div>';
+ B.blanks.forEach(c=>{
+  h+=(st.r&&st.r[c]==1)
+   ?'<div class="frr ok">第'+c+'空 ✓ 与标准答案一致</div>'
+   :'<div class="frr no">第'+c+'空 ✗ 与标准答案不一致<span class="std">标准答案：'+esc((B.std[c]&&B.std[c][0])||'—')+'</span></div>';
+ });
+ return h;
+}
+function fillCheck(k){
+ const B=STDC[k];if(!B)return;
+ const st=FILL[k]||(FILL[k]={v:{},r:{}});
+ const vals=B.blanks.map(c=>{const el=document.getElementById('fi-'+k+'-'+CNUM.indexOf(c));const v=el?el.value:(st.v[c]||'');st.v[c]=v;return String(v)});
+ if(!vals.some(v=>v.trim())){toast('请先填入答案再检查');return}
+ let ok=0;
+ B.blanks.forEach((c,i)=>{
+  const good=!!vals[i].trim()&&B.std[c].some(s=>normFill(s)===normFill(vals[i]));
+  st.r[c]=good?1:0;if(good)ok++;
+  const el=document.getElementById('fi-'+k+'-'+CNUM.indexOf(c));
+  if(el){el.classList.remove('ok','no');el.classList.add(good?'ok':'no')}
+ });
+ store.s(pkey('fill'),FILL);
+ const box=document.getElementById('fr-'+k);
+ if(box){box.dataset.on='';box.style.display='block';box.innerHTML=fresHtml(k)}
+ const sa=document.getElementById('sa-'+k);if(sa)sa.textContent='显示本题答案 ▾';
+ toast('答对 '+ok+' / '+B.blanks.length+' 空');
+}
+function showFill(k){
+ const B=STDC[k],box=document.getElementById('fr-'+k),btn=document.getElementById('sa-'+k);
+ if(!B||!box)return;
+ if(box.dataset.on=='1'){
+  box.dataset.on='';
+  const st=FILL[k],hasR=st&&st.r&&B.blanks.every(c=>st.r[c]!=null);
+  if(hasR){box.innerHTML=fresHtml(k)}else{box.style.display='none';box.innerHTML=''}
+  if(btn)btn.textContent='显示本题答案 ▾';
+  return;
+ }
+ box.dataset.on='1';box.style.display='block';
+ box.innerHTML='<div class="fsum">参考答案（共 '+B.blanks.length+' 空）</div>'
+  +B.blanks.map(c=>'<div class="frr ok" style="background:var(--bluebg);color:var(--blue)">第'+c+'空 <span class="std">'+esc((B.std[c]&&B.std[c][0])||'—')+'</span></div>').join('');
+ if(btn)btn.textContent='收起本题答案 ▴';
+}
+function clearAns(k){
+ if(!confirm('清空本题作答？（不影响掌握标记）'))return;
+ if(ANS[k]){delete ANS[k];store.s(pkey('ans'),ANS)}
+ if(FILL[k]){delete FILL[k];store.s(pkey('fill'),FILL)}
+ const y=window.scrollY;subView();window.scrollTo(0,y);
+}
+function itemHtml(k,it){
+ const q=it[0],a=it[1],mst=!!MST[k],t=itemType(q,a);
+ let h='<div class="card" style="padding:17px">'
+  +'<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px">'
+  +'<span class="tg '+(mst?'ok':'g')+'">'+(mst?'✓ 已掌握':'待掌握')+'</span>'
+  +'<span class="tg '+(t=='text'?'t':'b')+'">'+(t=='text'?'简答作答':'代码填空')+'</span>'
+  +statusTag(k,q,a)+'</div>';
+ if(t=='text'){
+  const v=String(ANS[k]||'');
+  h+='<div style="font-size:14.5px;font-weight:650;line-height:1.65">'+escB(q)+'</div>'
+   +'<textarea class="ta" placeholder="在此作答：建议先写编号得分点（①②③…），再补细节；写完可展开参考答案对照" oninput="ansInput(\''+k+'\',this.value)">'+esc(v)+'</textarea>'
+   +'<div class="tainfo"><span>作答区 · 自动保存 · 文字不作自动比对</span><b id="ac-'+k+'">'+v.length+'</b><span>字</span></div>';
+ }else{
+  const B=stdsOf(k,q,a);
+  let desc=q,code=null;
+  if(t=='code'){const sp=q.indexOf('§§');if(sp>=0){desc=q.slice(0,sp);code=q.slice(sp+2)}}
+  h+='<div style="font-size:14.5px;font-weight:650;line-height:1.65">'+escB(desc)+'</div>';
+  if(code!=null){
+   h+='<div class="code">'+code.split('§').map(l=>codeLine(l,k,B)).join('')+'</div>';
+  }else{
+   const hints=hintList(q,B.blanks.length);
+   h+=B.blanks.map((c,i)=>'<div class="frow"><span class="fno">第'+c+'空</span>'
+    +(hints&&hints[i]?'<span class="fhint">'+esc(hints[i])+'</span>':'')
+    +'<input class="fbi2'+rCls(k,c)+'" id="fi-'+k+'-'+CNUM.indexOf(c)+'" value="'+escA(fillV(k,c))+'" placeholder="填写代码 / 函数 / 参数" autocapitalize="off" autocomplete="off" spellcheck="false" oninput="fillInput(\''+k+'\',\''+c+'\',this.value,this)"></div>').join('');
+  }
+  h+='<div class="abtns"><button class="bt bp" onclick="fillCheck(\''+k+'\')">检查答案</button>'
+   +'<button class="bt bf" id="sa-'+k+'" onclick="showFill(\''+k+'\')">显示本题答案 ▾</button></div>';
+  const st=FILL[k],hasR=st&&st.r&&B.blanks.every(c=>st.r[c]!=null);
+  h+='<div class="fres" id="fr-'+k+'"'+(hasR?' style="display:block"':'')+'>'+(hasR?fresHtml(k):'')+'</div>';
+ }
+ h+='<button id="b-'+k+'" class="bt bf" style="margin-top:11px;padding:8px 16px;font-size:13px" onclick="togA(\''+k+'\')">查看参考答案与解析 ▾</button>'
+  +'<div id="a-'+k+'" style="display:none" class="ex">'+escB(a)+'</div>'
+  +'<div style="display:flex;justify-content:center;gap:20px;margin-top:10px;flex-wrap:wrap">'
+  +'<button class="rm" style="margin:0" onclick="togM(\''+k+'\')">'+(mst?'取消掌握':'标记已掌握 ✓')+'</button>'
+  +'<button class="rm" style="margin:0;color:var(--red)" onclick="clearAns(\''+k+'\')">清空作答</button></div></div>';
+ return h;
+}
+
+/* ===== 三级题库数据 ===== */
+const SQ3=`人工智能训练师职业守则的核心内容不包括（ ）。|爱岗敬业|诚实守信|办事公道|谋取私利|3|
+发现已交付数据中存在标注错误时，最恰当的处理方式是（ ）。|隐瞒问题，避免影响进度|记录问题并按流程报告、修正|直接追究标注员责任并公开通报|删除全部数据且不保留记录|1|
+处理包含个人敏感信息的数据时，首先应确认（ ）。|数据能否公开展示|数据是否具有商业价值|处理目的是否明确且具有合法依据|数据是否便于复制传播|2|
+发现模型对特定群体产生明显不合理差异时，训练师应（ ）。|分析数据与模型原因并推动改进|只提高整体准确率|将问题归因于用户|保留现象以便观察|0|
+项目进度紧张时，关于数据安全要求的正确做法是（ ）。|可适当降低要求|仍须遵守授权、保密和安全规范|先使用数据，事后补授权|交由标注员自行决定|1|
+编写测试报告时，符合职业规范的做法是（ ）。|只记录有利结果|根据预期修改异常数据|如实记录方法、结果和已知限制|省略测试集来源|2|
+在 conda 中查看全部虚拟环境的命令是（ ）。|conda list|conda create|conda env list|conda activate|2|
+Python 中，具有无序、元素不重复特点的内置数据结构是（ ）。|list|tuple|dict|set|3|
+关系型数据库最适合直接存储和管理的是（ ）。|结构化表格数据|未加工的视频流|任意二进制文件集合|纸质档案|0|
+下列基于决策树集成的分类算法是（ ）。|K近邻|随机森林|线性回归|K均值|1|
+SQL 中用于按条件筛选记录的关键字是（ ）。|ORDER BY|GROUP BY|WHERE|JOIN|2|
+pandas 中用于表示二维表格数据的核心数据结构是（ ）。|Series|Index|ndarray|DataFrame|3|
+为不同项目建立独立 Python 虚拟环境的主要目的是（ ）。|隔离依赖，减少版本冲突|自动提高模型准确率|替代数据备份|免除软件安装|0|
+容器化技术的主要作用是（ ）。|增加网络带宽|将应用及依赖打包，便于一致部署|替代所有操作系统功能|自动完成数据标注|1|
+深度学习中，激活函数的主要作用是（ ）。|存储训练数据|减少全部模型参数|引入非线性表达能力|代替损失函数|2|
+下列任务中，属于监督学习的是（ ）。|聚类|无监督降维|随机采样|基于标注样本的分类|3|
+关于训练数据时间序列划分，正确的是（ ）。|通常应保持时间先后关系，避免未来信息泄漏|必须先随机打乱全部时间点|训练集应只包含最新数据|测试集可参与特征选择|0|
+查看数据集中每列缺失值数量，主要是为了评估数据的（ ）。|时效性|完整性|多样性|机密性|1|
+业务分析阶段首先应明确的是（ ）。|服务器品牌|业务目标与应用场景|模型层数|训练轮次|1|
+SWOT 分析中的“O”代表（ ）。|优势|劣势|机会|威胁|2|
+PEST 分析中的“T”对应的因素是（ ）。|政治|经济|社会|技术|3|
+用于同时呈现流程先后顺序和各角色责任分工的图形工具是（ ）。|泳道图|饼图|散点图|雷达图|0|
+确认业务需求最直接、规范的方式是（ ）。|训练师自行推测|与干系人沟通并确认需求文档|照搬其他项目|上线后再收集需求|1|
+衡量业务流程效率时，最有价值的指标组合是（ ）。|员工工龄与办公面积|设备品牌与部门人数|处理耗时与吞吐量|界面颜色与代码行数|2|
+反映数据集中趋势的指标是（ ）。|方差|极差|偏度|中位数|3|
+“低耦合”的业务模块设计是指（ ）。|模块间依赖较少、接口清晰|模块内部职责高度集中|模块代码必须很短|模块只能独立部署|0|
+漏斗分析最适合用于（ ）。|比较模型参数量|分析用户在多步骤流程中的转化情况|检测图像边界|衡量磁盘容量|1|
+将历史业务数据汇总为报表，主要属于（ ）。|预测性分析|规范性分析|描述性分析|因果实验|2|
+业务指标口径不统一最可能导致（ ）。|存储成本下降|训练速度提高|安全风险消失|不同部门结果冲突|3|
+在标准流程图中，菱形通常表示（ ）。|判断或分支|开始或结束|数据存储|人工输入|0|
+比较不同方案的投入与预期产出，宜采用（ ）。|聚类分析|成本效益分析|交叉验证|特征编码|1|
+SMART 原则中的“M”表示目标应当（ ）。|有明确时限|与业务相关|可衡量|具有挑战性|2|
+需要展示业务指标随时间变化的趋势时，优先选择（ ）。|组织结构图|思维导图|甘特图|折线图|3|
+需求变更管理的主要目的是（ ）。|规范评估和审批，控制变更影响|拒绝一切需求变化|减少全部文档|绕过测试直接上线|0|
+识别业务流程中的瓶颈环节，主要依据是（ ）。|环节名称是否复杂|处理能力是否制约整体效率|是否位于流程起点|使用人员是否最多|1|
+同期群分析最典型的用途是（ ）。|比较模型层数|统计磁盘使用率|分析不同时间获客群体的留存差异|生成训练样本|2|
+A/B 测试中，为保证方案比较可靠，最关键的做法是（ ）。|两组同时使用不同评价指标|仅选择表现好的用户|随时更换分组规则|控制无关变量并统一评价口径|3|
+业务方案可行性分析通常不包括（ ）。|负责人的个人偏好|技术可行性|经济可行性|法律合规性|0|
+数据流转过程中，将数据加工为有业务意义结论的环节是（ ）。|传输|数据分析|存储|备份|1|
+边际效益递减在业务优化中是指（ ）。|投入增加后效果必然变为负值|所有投入均无价值|新增单位投入带来的收益逐步降低|业务规模不能扩大|2|
+设计关键绩效指标时，最合理的是（ ）。|仅追求容易统计|指标越多越好|与模型参数量直接绑定|与业务目标对齐且可量化|3|
+需要比较同一时点各业务类别占总体的比例时，较合适的图表是（ ）。|流程图|散点图|折线图|饼图|3|
+训练集、验证集和测试集的常规用途分别是（ ）。|调参、训练、测试|训练、调参、最终评估|测试、训练、调参|训练、测试、调参|1|
+批次大小（Batch Size）是指（ ）。|模型总层数|训练总轮数|每次参数更新使用的样本数|验证集样本数|2|
+学习率的主要作用是（ ）。|决定数据类别数|决定网络层数|控制正则化强度|控制每次参数更新的步长|3|
+过拟合的典型表现是（ ）。|训练集表现好、独立测试集表现差|训练集和测试集表现都差|训练集和测试集表现同样好|训练损失始终无法计算|0|
+欠拟合的典型表现是（ ）。|训练集好、测试集差|训练集和测试集表现都不理想|仅测试集表现好|仅推理速度慢|1|
+交叉熵损失最常用于（ ）。|聚类|降维|分类|数据去重|2|
+均方误差（MSE）主要用于衡量（ ）。|图像尺寸|文本长度|标注一致性|回归预测误差|3|
+兼顾精确率与召回率的常用指标是（ ）。|F1 分数|均方误差|决定系数|吞吐率|0|
+混淆矩阵中的假正例（FP）是指（ ）。|实际为正、预测为正|实际为负、预测为正|实际为正、预测为负|实际为负、预测为负|1|
+精确率（Precision）的计算式是（ ）。|TP/(TP+FN)|TN/(TN+FP)|TP/(TP+FP)|(TP+TN)/FP|2|
+召回率（Recall）的计算式是（ ）。|TP/(TP+FP)|FP/(FP+TN)|TN/(TN+FN)|TP/(TP+FN)|3|
+类别不平衡场景下，仅看准确率可能产生误导，此时应重点关注（ ）。|少数类召回率等指标|训练文件大小|代码行数|显卡品牌|0|
+处理类别不平衡的数据层方法是（ ）。|提高学习率|对少数类过采样|增加训练轮次|删除验证集|1|
+代价敏感学习处理类别不平衡的核心思路是（ ）。|统一所有误分类成本|只保留多数类|为不同误分类设置不同代价|取消类别标签|2|
+训练损失下降而验证损失持续上升，通常表明（ ）。|数据增强不足|学习率必然过小|模型一定欠拟合|模型可能过拟合|3|
+早停法通常依据（ ）决定是否停止训练。|验证集性能|训练集样本顺序|测试集反复调参结果|代码提交次数|0|
+Dropout 的主要作用是（ ）。|增加数据标签|缓解过拟合|替代优化器|减少数据类别|1|
+L2 正则化通常通过（ ）约束模型。|删除异常样本|降低图像分辨率|在损失函数中加入参数平方和惩罚|增大批次大小|2|
+数据增强的主要目的在于（ ）。|替代模型评估|减少全部人工审核|保证测试集准确率|扩充样本变化并改善泛化|3|
+网格搜索的特点是（ ）。|遍历指定超参数组合，开销通常较大|只搜索一个随机组合|通过反向传播更新权重|仅适用于回归模型|0|
+K 折交叉验证中，常见的 K 值是（ ）。|1|5或10|1000|必须等于样本维度|1|
+标准化（Z-score）处理后，特征通常具有（ ）。|固定取值0或1|完全相同的方差|均值约0、标准差约1|最小值固定为-1|2|
+Min-Max 归一化通常将特征缩放到（ ）。|均值为0、标准差为1|所有值为正整数|[-1,1]且均值必为0|[0,1]|3|
+设置随机种子的主要价值是（ ）。|提高实验可复现性|消除全部模型误差|保证模型准确率提升|自动修复数据缺失|0|
+为防止数据泄漏，正确的做法是（ ）。|用全量数据拟合预处理器后再划分|划分后仅用训练集拟合预处理器|测试集参与特征选择|根据测试成绩反复修改测试集|1|
+模型出现梯度消失时，较合理的排查方向是（ ）。|仅检查文件格式|仅增加训练数据|检查网络深度、激活函数和参数初始化|直接删除验证集|2|
+模型训练环境配置的核心目标是（ ）。|所有软件都使用最新版|使用尽可能多的GPU|关闭全部日志|依赖可管理、过程可复现、资源可监控|3|
+LoRA 微调的主要特点是（ ）。|训练低秩适配参数，减少可训练参数量|不需要基础模型即可独立推理|只能用于图像分类|不需要训练数据|0|
+模型预标注与人工复核结合的主要优势是（ ）。|完全取消人工质量控制|兼顾标注效率与质量|保证预标注结果无误|取消标注规范|1|
+多人标注同一样本并计算 Kappa 系数，主要用于评估（ ）。|模型推理速度|数据存储容量|标注一致性|特征相关性|2|
+SMOTE 的基本思想是（ ）。|随机删除多数类全部样本|复制测试集样本|对所有类别降采样|在少数类样本间插值生成合成样本|3|
+噪声标签鲁棒训练前，首先应做的是（ ）。|评估噪声来源与数据质量|直接增加训练轮次|隐藏标签错误|将噪声样本放入测试集|0|
+模型效果评估时，业务指标与技术指标的关系应是（ ）。|只看技术指标|结合使用并相互印证|只看业务指标|二者相互替代|1|
+模型上线前使用独立测试集的主要目的是（ ）。|继续拟合模型参数|选择最佳学习率|获得相对客观的最终效果评估|扩充训练数据|2|
+在标注规范频繁引发争议时，最合理的改进方式是（ ）。|要求标注员自行猜测|删除全部争议样本|仅提高标注速度|分析典型争议并澄清规则与示例|3|
+模型评估发现特定场景错误集中时，下一步最合理的是（ ）。|开展分层错误分析并针对性补充或修正数据|只报告整体平均指标|将错误样本全部移除且不记录|直接认定模型无需改进|0|
+将系统拆分为多个独立部署、松耦合服务的架构是（ ）。|单体架构|微服务架构|主从复制|点对点传输|1|
+API 网关的典型职责是（ ）。|训练模型|标注数据|统一路由、鉴权和限流|替代全部业务数据库|2|
+通过多台服务实例分担请求流量的主要手段是（ ）。|数据脱敏|日志归档|代码混淆|负载均衡|3|
+灰度发布的主要目的是（ ）。|先小范围验证，降低全量发布风险|取消上线前测试|减少全部文档|替代数据备份|0|
+系统自动切换到备用实例以维持服务的机制称为（ ）。|缓存|故障转移|特征编码|模型剪枝|1|
+将模型推理能力封装为接口供业务调用，属于（ ）。|数据采集|数据标注|模型服务化|需求调研|2|
+人机交互中，用户操作后系统及时显示结果，体现的是（ ）。|一致性原则|简洁原则|容错原则|反馈原则|3|
+对话系统的意图识别通常可建模为（ ）。|文本分类任务|图像分割任务|语音合成任务|目标跟踪任务|0|
+接口幂等性是指（ ）。|接口响应时间固定|同一操作重复执行不会产生额外副作用|接口只能调用一次|数据加密后不可恢复|1|
+面对突发流量，自动增加服务实例数量的机制是（ ）。|日志轮转|数据归档|弹性伸缩|模型蒸馏|2|
+QPS 通常表示（ ）。|每秒错误数|每秒事务提交数|每秒磁盘容量|每秒请求或查询数|3|
+将热点数据暂存在高速存储层以降低读取延迟的技术是（ ）。|缓存|分库分表|数据脱敏|容器化|0|
+模型跨框架、跨平台部署时，常用的开放模型格式是（ ）。|JPEG|ONNX|MP3|CSV|1|
+模型量化的主要目标是（ ）。|增加标注类别|增加训练样本|降低存储或计算开销|提高数据采集量|2|
+在压力较大时暂时关闭非核心功能以保障核心链路，称为（ ）。|数据增强|交叉验证|负载均衡|系统降级|3|
+依赖服务持续故障时，为避免请求堆积而快速失败的机制是（ ）。|熔断|缓存|分片|灰度|0|
+系统日志的主要用途是（ ）。|替代模型训练|故障排查、审计和运行分析|提高图像分辨率|生成标注规范|1|
+智能系统上线后，数据分布随时间发生变化的现象称为（ ）。|数据增强|特征缩放|数据漂移|梯度消失|2|
+RAG 的核心思路是（ ）。|减少全部训练参数|取消知识来源记录|仅扩大上下文长度|检索外部知识为生成提供依据|3|
+AI Agent 的工具调用能力主要用于（ ）。|与外部系统交互并完成实际任务|只生成更长文本|替代全部权限控制|自动保证答案正确|0|
+设计人机协同流程时，合理的做法是（ ）。|所有场景均取消人工复核|根据风险与能力边界配置人工接管|只追求交互步骤最少|隐藏系统不确定性|1|
+最终一致性更适合（ ）。|必须实时强一致的扣款核心步骤|允许短暂不一致的状态同步场景|所有金融交易|任何场景均无例外|1|
+CAP 理论中的 P 指（ ）。|性能|隐私|分区容错性|持久化|2|
+CQRS 模式的核心思想是（ ）。|压缩模型|加密查询|合并读写职责|分离命令与查询职责|3|
+在嘈杂工厂环境中，相较纯语音交互更稳妥的方案是（ ）。|结合现场条件设计多模态或人工兜底|只提高语音音量|取消操作反馈|强制所有操作语音完成|0|
+设计智能系统监控告警时，最重要的是（ ）。|所有指标使用同一阈值|告警分级并与处置流程衔接|只监控CPU|关闭重复告警且不留记录|1|
+模型版本回滚机制的主要价值是（ ）。|提高训练数据量|减少数据标注|新版本异常时快速恢复可用服务|替代访问控制|2|
+系统容量规划最合理的依据是（ ）。|开发人员数量|界面数量|代码提交次数|业务峰值、性能目标和资源实测|3|
+模型部署前进行安全评估，应优先检查（ ）。|权限、输入输出和敏感信息风险|界面配色|训练集文件命名|代码注释数量|0|
+对智能系统用户反馈的处理，正确的是（ ）。|只保留正面反馈|分类分析并纳入优化闭环|全部直接作为训练标签|反馈与系统优化无关|1|
+为保障密码安全，系统应（ ）。|明文保存便于找回|使用可逆加密并公开密钥|采用加盐哈希等安全存储方式|记录在普通日志中|2|
+系统备份策略是否可靠，最关键的验证是（ ）。|备份文件命名规范|备份窗口足够长|备份数量足够多|定期验证可恢复性|3|
+微服务架构带来的典型挑战是（ ）。|分布式调用和运维复杂度增加|服务无法独立部署|彻底消除故障|不再需要接口管理|0|
+在检索增强生成系统中，降低错误知识影响的有效做法是（ ）。|取消来源记录|评估检索质量并保留可追溯来源|只增加生成长度|将所有检索结果无差别拼接|1|
+为避免智能接口被异常高频调用拖垮，较直接的防护措施是（ ）。|关闭全部日志|取消身份认证|设置合理的限流与配额|扩大训练批次|2|
+设计模型服务健康检查时，最有价值的检查内容是（ ）。|服务器机柜颜色|源代码注释比例|开发人员名单|服务可用性及关键依赖状态|3|
+三级人工智能训练师在培训与指导方面的主要对象是（ ）。|仅一级人员|五级、四级人员|仅外部客户|仅管理人员|1|
+编写面向初级人员的培训讲义，最合理的是（ ）。|照搬高级技术研究论文|只列术语不作解释|内容由浅入深并结合实操|省略评价标准|2|
+情景模拟培训最适合培养学员的（ ）。|硬件制造能力|代码记忆速度|文档排版能力|真实场景应对能力|3|
+“示范—模仿—反馈”的指导方式主要属于（ ）。|实践教学指导|纯理论讲授|无指导自学|财务审计|0|
+柯氏四级评估模型中，用于考察学员知识和技能掌握程度的是（ ）。|反应层|学习层|行为层|结果层|1|
+培训结束后，为判断学员能否在岗位中应用所学内容，应重点评估（ ）。|签到人数|课件页数|行为层表现|教室面积|2|`.split('\n');
+const MQ3=`人工智能训练师处理业务数据时应遵守的原则包括（ ）。|合法合规|安全保密|真实记录|为追求效果可扩大授权范围|012|
+监督学习的常见任务包括（ ）。|分类|回归|聚类|关联规则挖掘|01|
+开展数据采集时，符合合规与质量要求的措施有（ ）。|确认来源及授权情况|记录采集时间和来源|采集越多无关数据越好|按目的控制采集范围|013|
+标注项目的溯源元数据可包括（ ）。|标注员账号与时间戳|原始文件路径及脱敏标识|疑难样本说明|标注员私人社交账号|012|
+业务需求调研可采用的方法有（ ）。|访谈关键干系人|查阅历史报表|现场观察业务流程|仅凭个人经验确定需求|012|
+评估智能业务方案可行性时，应考虑（ ）。|技术条件|成本与收益|法律合规|个人喜好|012|
+业务流程优化的常见目标包括（ ）。|缩短处理时间|降低运营成本|减少重复劳动|降低处理准确率|012|
+设计业务模块时，良好的设计特征包括（ ）。|职责清晰|接口明确|便于维护和扩展|模块间无序交叉依赖|012|
+缓解过拟合的常用方法包括（ ）。|数据增强|L1/L2 正则化|早停|无限增加训练轮次|012|
+训练过程中值得监控的信息包括（ ）。|训练损失|验证损失|学习率|资源使用情况|0123|
+多分类模型可采用的分析方法或指标有（ ）。|混淆矩阵|宏平均F1|各类别召回率|均方误差作为唯一指标|012|
+开展数据标注质量控制时，合理措施有（ ）。|明确标注规范|抽检与复核|分析争议样本并修订规则|为追求速度取消培训|012|
+训练实验记录通常应包含（ ）。|数据集版本|超参数配置|代码或环境版本|评价结果|0123|
+微服务架构的常见优点包括（ ）。|服务可独立部署|便于按服务扩展|有利于故障隔离|必然降低整体运维复杂度|012|
+系统监控体系通常应覆盖（ ）。|基础资源|应用性能|业务指标|告警与处置|0123|
+保障智能系统数据安全的措施包括（ ）。|传输与存储加密|细粒度访问控制|必要时数据脱敏|关键操作审计|0123|
+模型上线后的监控内容可包括（ ）。|推理延迟|错误率|数据漂移|关键业务效果|0123|
+良好的人机交互设计应关注（ ）。|清晰反馈|操作一致性|错误预防与恢复|以技术实现为唯一中心|012|
+标注人员实操培训应包括（ ）。|标注规则解读|工具操作演练|数据安全要求|与岗位无关的商业投资技巧|012|
+有效的实操演练设计应做到（ ）。|贴近真实业务场景|操作要求明确|设置可量化评价标准|提供反馈与纠错机会|0123|`.split('\n');
+const JQ3=`未经授权的数据，只要能够提升模型效果，就可以直接用于训练。|1|
+模型性能评估既要关注效果，也应关注公平性、安全性和潜在风险。|0|
+DataFrame 的不同列可以使用不同的数据类型。|0|
+所有自动化标注工具都能保证结果完全正确，因此无需人工复核。|1|
+训练样本数量增加时，模型在真实场景中的效果必然同步提高。|1|
+业务分析可在不了解业务流程的情况下直接确定模型方案。|1|
+业务数据可按地区、渠道或客户类型等维度拆解，以定位细分问题。|0|
+KPI 应与业务目标相关，并尽可能量化、可追踪。|0|
+数据准确性不足时，只要分析图表美观，就可以支撑可靠决策。|1|
+业务分析报告应说明数据来源、指标口径和分析限制。|0|
+需求文档经确认后，任何变更都无需再评估影响。|1|
+标注一致性高就一定代表标签定义和标注结果正确。|1|
+业务模块优化应形成“现状分析—问题识别—方案实施—效果评估”的闭环。|0|
+测试集可以反复用于调参，以持续提高最终评估分数。|1|
+训练集准确率高而验证集准确率低，可能发生过拟合。|0|
+类别不平衡时，模型可能偏向多数类，导致少数类召回率较低。|0|
+数据增强后的样本可以不加检查地直接放入测试集，以增加测试规模。|1|
+早停通常会监控验证集指标，并保存表现较好的模型。|0|
+模型在训练集上的准确率越高，真实业务效果就一定越好。|1|
+ROC 曲线的横坐标是假正率，纵坐标是真正率。|0|
+批归一化可稳定训练过程，但不能据此替代合理的模型评估。|0|
+只要训练集和测试集来自同一数据源，就不存在数据泄漏风险。|1|
+时间序列任务划分数据时，应特别防止未来信息进入训练过程。|0|
+抽检比例越高，项目成本一定越低，因此所有项目都应采用全检。|1|
+适当的真实噪声样本有助于评估或提升模型的场景鲁棒性。|0|
+LoRA 适配参数可以脱离基础模型，单独完成大模型推理。|1|
+模型上线后，只需关注错误日志，无需关注用户反馈和业务效果。|1|
+HTTPS 可为数据传输提供加密保护。|0|
+对幂等操作进行合理重试，通常比直接重试非幂等操作更安全。|0|
+系统响应时间越短越好，因此无需考虑资源成本和收益。|1|
+模型量化可能降低推理开销，但需要评估精度损失。|0|
+检索增强生成能够完全消除大模型幻觉，因此不再需要结果校验。|1|
+灰度发布期间应监控关键指标，并准备必要的回滚方案。|0|
+数据备份完成后，无需验证恢复过程即可认定备份可靠。|1|
+容错设计的目标之一是在部分组件故障时维持核心服务。|0|
+微服务能够自动消除分布式系统中的所有一致性问题。|1|
+模型服务化有助于业务系统按接口调用推理能力。|0|
+只要离线测试指标达标，智能系统上线后就不会发生性能退化。|1|
+高风险智能决策场景应合理设置人工复核或接管机制。|0|
+三级训练师只需完成个人任务，无需指导五级、四级人员。|1|`.split('\n');
+const SEC3=[["职业道德", "⚖️", 1, 6, 121, 121, 141, 142], ["基础知识", "📖", 7, 18, 122, 124, 143, 145], ["业务分析", "📊", 19, 42, 125, 128, 146, 153], ["智能训练", "🎯", 43, 78, 129, 133, 154, 166], ["智能系统设计", "🛠️", 79, 114, 134, 138, 167, 179], ["培训与指导", "🎓", 115, 120, 139, 140, 180, 180]];
+const PRACT3=[
+ {n:"三级 · 第一部分　业务数据采集与处理（第1—6题）",d:"代码实操题 · 在原文空缺处填空并逐空检查 · 共 6 题",data:`#第1题 智能医疗系统中的业务数据处理流程设计
+原题号：1.1.1　｜　填空数：22§某医疗机构计划引入智能医疗系统，以提升诊断效率和准确性。通过分析患者的历史数据，使用机器学习算法预测患者的健康风险，从而辅助医生进行诊断和治疗。为此，该机构需要设计一套全面的业务数据处理流程，确保数据处理的高效性和准确性，为人工智能模型提供可靠的输入数据。§我们提供一个患者数据集(patient_data.csv)，包含以下字段：§PatientID: 患者ID§Age: 年龄§BMI: 体重指数§BloodPressure: 血压§Cholesterol: 胆固醇水平§DaysInHospital: 住院天数§你作为人工智能训练师，根据提供的数据集和Python代码框架(1.1.1.ipynb)，完成以下数据的统计和分析，为智能医疗系统提供可靠的数据支持。§(1)通过补全并运行Python代码(1.1.1.ipynb)分别统计住院天数超过7天的患者数量以及其占比。这类患者被定义为高风险患者，反之为低风险患者。§(2)通过补全并运行Python代码(1.1.1.ipynb)统计不同BMI区间中高风险患者的比例和统计不同BMI区间中的患者数。BMI区间分类设置为：偏瘦(低于18.5)，正常(18.5～23.9)，超重(24.0～27.9)，肥胖(28.0及以上)。§(3)通过补全并运行Python代码(1.1.1.ipynb)统计不同年龄区间中高风险患者的比例和统计不同年龄区间中的患者数。年龄区间分类设置为：≤25岁，26-35岁，36-45岁，46-55岁，56-65岁，＞65岁。§§import pandas as pd§import numpy as np§# 读取数据集§data = __①__§# 1. 统计住院天数超过7天的患者数量及其占比§# 创建新列'RiskLevel'，根据住院天数判断风险等级§__②__ = __③__(__④__, '高风险患者', '低风险患者')§# 统计不同风险等级的患者数量§risk_counts = data__⑤__.__⑥__§# 计算高风险患者占比§high_risk_ratio = risk_counts['高风险患者'] / __⑦__§# 计算低风险患者占比§low_risk_ratio = risk_counts['低风险患者'] / __⑧__§# 输出结果§print("高风险患者数量:", risk_counts['高风险患者'])§print("低风险患者数量:", risk_counts['低风险患者'])§print("高风险患者占比:", high_risk_ratio)§print("低风险患者占比:", low_risk_ratio)§# 2. 统计不同BMI区间中高风险患者的比例和统计不同BMI区间中的患者数§# 定义BMI区间和标签§bmi_bins = [0, 18.5, 24, 28, np.inf]§bmi_labels = ['偏瘦', '正常', '超重', '肥胖']§# 根据BMI值划分指定区间§data['BMIRange'] = __⑨__(__⑩__, __⑪__, __⑫__, right=False)  # 使用左闭右开区间§# 计算每个BMI区间中高风险患者的比例§bmi_risk_rate = __⑬__(__⑭__)['RiskLevel'].apply(lambda x: (x == '高风险患者').mean())§# 统计每个BMI区间的患者数量§bmi_patient_count = data__⑮__§# 输出结果§print("BMI区间中高风险患者的比例和患者数:")§print(bmi_risk_rate)§print(bmi_patient_count)§# 3. 统计不同年龄区间中高风险患者的比例和统计不同年龄区间中的患者数§# 定义年龄区间和标签§age_bins = [0, 26, 36, 46, 56, 66, np.inf]§age_labels = ['≤25岁', '26-35岁', '36-45岁', '46-55岁', '56-65岁', '＞65岁']§# 根据年龄值划分指定区间§data['AgeRange'] = __⑯__(__⑰__, __⑱__, __⑲__, right=False)  # 使用左闭右开区间§# 计算每个年龄区间中高风险患者的比例§age_risk_rate = __⑳__(__㉑__)['RiskLevel'].apply(lambda x: (x == '高风险患者').mean())§# 统计每个年龄区间的患者数量§age_patient_count = data__㉒__§# 输出结果§print("年龄区间中高风险患者的比例和患者数:")§print(age_risk_rate)§print(age_patient_count) |①pd.read_csv('patient_data.csv')；§②data['RiskLevel']；§③np.where；§④data['DaysInHospital'] > 7；§⑤['RiskLevel']；§⑥value_counts()；§⑦len(data)；§⑧len(data)；§⑨pd.cut；§⑩data['BMI']；§⑪bins=bmi_bins；§⑫labels=bmi_labels；§⑬data.groupby；§⑭'BMIRange'；§⑮['BMIRange'].value_counts()；§⑯pd.cut；§⑰data['Age']；§⑱bins=age_bins；§⑲labels=age_labels；§⑳data.groupby；§㉑'AgeRange'；§㉒['AgeRange'].value_counts()
+#第2题 智能农业系统中的业务数据采集和处理流程设计
+原题号：1.1.2　｜　填空数：18§某农业公司计划引入智能农业系统，通过安装在农田中的各种传感器(如温度传感器、湿度传感器、土壤传感器等)实时监控农田环境，收集数据并进行分析，以优化作物管理和提高产量。为此，公司需要设计并实现一套数据采集和处理流程，确保数据的高效采集、传输和处理，为智能分析提供可靠的数据支持。§我们提供一个传感器数据集(sensor_data.csv)，包含以下字段：§SensorID: 传感器ID§Timestamp: 时间戳§SensorType: 传感器类型(Temperature温度, Humidity湿度, SoilMoisture土壤水分, SoilPH土壤酸碱度, Light光传感器)§Value: 传感器读数§Location: 传感器安装位置：§你作为智能农业系统的人工智能训练师，根据提供的sensor_data.csv数据集和Python代码框架(1.1.2.ipynb)，完成以下数据的采集和处理任务，为智能农业系统提供可靠的数据支持。请按照以下要求完成任务。§(1)传感器数据统计：§通过补全并运行Python代码(1.1.2.ipynb)分别统计每种传感器的数据数量和平均值。§(1)按位置统计温度和湿度数据：§通过补全并运行Python代码(1.1.2.ipynb)统计每个位置的温度和湿度传感器数据的平均值。§(1)数据清洗和异常值处理：§通过补全并运行Python代码(1.1.2.ipynb)对数据进行清洗，处理异常值。具体要求如下：§将明显异常的温度(< -10 或 > 50)和湿度(< 0 或 > 100)数据进行标记并统计。§对缺失值使用前面数据的值(如果前面值没有采用后面数据的值)进行填补。§将清洗后的数据保存为新文件cleaned_sensor_data.csv。§§import pandas as pd§import numpy as np§import matplotlib.pyplot as plt§# 读取数据集§data = __①__§# 1. 传感器数据统计§# 对传感器类型进行分组，并计算每个组的数据数量和平均值§sensor_stats = __②__(__③__)['Value'].__④__§# 输出结果§print("传感器数据数量和平均值:")§print(sensor_stats)§# 2. 按位置统计温度和湿度数据§# 筛选出温度和湿度数据，然后按位置和传感器类型分组，计算每个组的平均值§location_stats = data[data['SensorType'].__⑤__].__⑥__['Value'].mean().unstack()§# 输出结果§print("每个位置的温度和湿度数据平均值:")§print(location_stats)§# 3. 数据清洗和异常值处理§# 标记异常值§data['is_abnormal'] = __⑦__§    ((__⑧__) & ((data['Value'] < -10) ~P~ (data['Value'] > 50))) ~P~§    ((__⑨__) & ((data['Value'] < 0) ~P~ (data['Value'] > 100))),§    True, False§)§# 输出异常值数量§print("异常值数量:", data['is_abnormal'].__⑩__)§# 填补缺失值§# 使用前向填充和后向填充的方法填补缺失值§data['Value'].__⑪__(__⑫__, inplace=True)§data['Value'].__⑬__(__⑭__, inplace=True)§# 保存清洗后的数据§# 删除用于标记异常值的列，并将清洗后的数据保存到新的CSV文件中§cleaned_data = __⑮__(__⑯__=['is_abnormal'])§__⑰__('cleaned_sensor_data.csv', __⑱__)§print("数据清洗完成，已保存为 'cleaned_sensor_data.csv'")|①pd.read_csv('sensor_data.csv')；§②data.groupby；§③'SensorType'；§④agg(['count', 'mean'])；§⑤isin(['Temperature', 'Humidity'])；§⑥groupby(['Location', 'SensorType'])；§⑦np.where；§⑧data['SensorType'] == 'Temperature'；§⑨data['SensorType'] == 'Humidity'；§⑩sum()；§⑪fillna；§⑫method='ffill'；§⑬fillna；§⑭method='bfill'；§⑮data.drop；§⑯columns；§⑰cleaned_data.to_csv；§⑱index=False
+#第3题 金融机构信用评估系统中的业务数据审核流程设计
+原题号：1.1.3　｜　填空数：13§某金融机构计划引入智能信用评估系统，通过分析客户的历史交易数据和信用记录，使用机器学习算法预测客户的信用风险等级，从而辅助贷款审批和风险控制。为了确保数据的准确性和可靠性，该机构需要设计并实现一套全面的业务数据审核流程，确保数据在进入信用评估系统之前经过严格的审核和清洗。§我们提供一个客户信用数据集(credit_data.csv)，包含以下字段：§CustomerID: 客户ID§Name: 客户姓名§Age: 年龄§Income: 收入§LoanAmount: 贷款金额§LoanTerm: 贷款期限(月)§CreditScore: 信用评分§Default: 是否违约(0: 否，1: 是)§TransactionHistory: 历史交易记录(JSON格式)§你作为人工智能训练师，根据提供的credit_data.csv数据集和Python代码框架(1.1.3.ipynb)，完成以下数据的审核和处理任务，确保数据的准确性和可靠性。请按照以下要求完成任务。§(1)数据完整性审核：§通过运行Python代码(1.1.3.ipynb)检查数据集中的每个字段是否存在缺失值和重复值。§(1)数据合理性审核：§通过运行Python代码(1.1.3.ipynb)审核以下字段的合理性：§年龄：应在18到70岁之间。§收入：应大于2000。§贷款金额：应小于收入的5倍。§信用评分：应在300到850之间。§对不合理的数据进行标记。§(1)通过运行Python代码(1.1.3.ipynb)对数据进行清洗，处理异常值。具体要求如下：§将不合理的数据进行标记，并对异常值所在行进行删除；§清洗后的数据保存为新文件cleaned_credit_data.csv。§§import pandas as pd§import numpy as np§import matplotlib.pyplot as plt§# 读取数据集§data = pd.read_csv('credit_data.csv')§# 1. 数据完整性审核§missing_values = data.__①__       #数据缺失值统计§duplicate_values = data.__②__     #数据重复值统计§# 输出结果§print("缺失值统计:")§print(missing_values)§print("重复值统计:")§print(duplicate_values)§# 2. 数据合理性审核§data['is_age_valid'] = __③__.__④__(18, 70)              #Age数据的合理性审核§data['is_income_valid'] = __⑤__ > __⑥__                 #Income数据的合理性审核§data['is_loan_amount_valid'] = __⑦__ < (__⑧__ * 5)      #LoanAmount数据的合理性审核§data['is_credit_score_valid'] = __⑨__.__⑩__(300, 850)   #CreditScore数据的合理性审核§# 合理性检查结果§validity_checks = data[['is_age_valid', 'is_income_valid', 'is_loan_amount_valid', 'is_credit_score_valid']].all(axis=1)§data['is_valid'] = validity_checks§# 输出结果§print("数据合理性检查:")§print(data[['is_age_valid', 'is_income_valid', 'is_loan_amount_valid', 'is_credit_score_valid', 'is_valid']].describe())§# 3. 数据清洗和异常值处理§# 标记不合理数据§invalid_rows = data[~data['is_valid']]§# 删除不合理数据行§cleaned_data = data[data['is_valid']]§# 删除标记列§cleaned_data = cleaned_data.drop(columns=['is_age_valid', 'is_income_valid', 'is_loan_amount_valid', 'is_credit_score_valid', 'is_valid'])§# 保存清洗后的数据§__⑪__.__⑫__(__⑬__, index=False)§print("数据清洗完成，已保存为 'cleaned_credit_data.csv'")|①isna().sum()（或isnull().sum()）；§②duplicated().sum()；§③data['Age']；§④between；§⑤data['Income']；§⑥2000；§⑦data['LoanAmount']；§⑧data['Income']；§⑨data['CreditScore']；§⑩between；§⑪cleaned_data；§⑫to_csv；§⑬'cleaned_credit_data.csv'
+#第4题 电商平台用户行为分析系统的数据采集与处理流程设计
+原题号：1.1.4　｜　填空数：24§某电商平台希望通过用户行为数据分析，了解用户购物习惯、购买倾向等，从而优化产品推荐系统，提高用户满意度和销售额。作为数据分析师，您需要设计一套全面的业务数据采集与处理流程，确保数据在进入用户行为分析系统之前经过严格的采集、清洗和预处理。§我们提供一个用户行为数据集(user_behavior_data.csv)，包含以下字段：§UserID: 用户ID§UserName: 用户名§Age: 年龄§Gender: 性别(Male/Female)§Location: 位置§LastLogin: 上次登录时间§PurchaseAmount: 购买金额§PurchaseCategory: 购买类别(例如，电子产品、服装、食品等)§ReviewScore: 用户评价评分(1-5)§LoginFrequency: 登录频率(每日、每周、每月)§你作为人工智能训练师，根据提供的user_behavior_data.csv数据集和Python代码框架(1.1.4.ipynb)，完成以下数据的采集与处理任务，确保数据的准确性和可靠性。请按照以下要求完成任务。§(1)数据采集：§通过运行Python代码(1.1.4.ipynb)，从本地文件user_behavior_data.csv中读取数据，并将数据加载到DataFrame中。打印前5条数据。§(1)数据清洗与预处理：§通过运行Python代码(1.1.4.ipynb)对数据进行清洗和预处理，具体要求如下：§处理缺失值：对缺失值进行填充或删除。§数据类型转换：确保每个字段的数据类型正确。§处理异常值：删除不合理的年龄、购买金额和评价评分。§数据标准化：对购买金额和评价评分进行标准化处理。§清洗后的数据保存为新文件cleaned_user_behavior_data.csv。§(1)数据统计：§通过运行Python代码(1.1.4.ipynb)，完成以下数据统计任务：§统计每个购买类别的用户数。§统计不同性别的平均购买金额。§统计不同年龄段的用户数(18-25岁、26-35岁、36-45岁、46-55岁、56-65岁、65岁以上)。§§import pandas§import numpy as np§import matplotlib.pyplot as plt§# 1. 数据采集§# 从本地文件中读取数据§data =  __①__§print("数据采集完成，已加载到DataFrame中")§# 打印数据的前5条记录§print(__②__)§# 2. 数据清洗与预处理§# 处理缺失值（删除）§data = __③__§# 数据类型转换§data__④__ = __⑤__(int)   # Age数据类型转换为int§data__⑥__ = __⑦__(float) # PurchaseAmount数据类型转换为float§data__⑧__ = __⑨__(int)   # ReviewScore数据类型转换为int§# 处理异常值§data = data[(__⑩__.__⑪__(18, 70)) &§            (data['PurchaseAmount'] > 0) &§            (__⑫__.__⑬__(1, 5))]§# 数据标准化§data['PurchaseAmount'] = (data['PurchaseAmount'] - __⑭__) / __⑮__)  # PurchaseAmount数据标准化§data['ReviewScore'] = (data['ReviewScore'] - __⑯__) / __⑰__)        # ReviewScore数据标准化§# 保存清洗后的数据§__⑱__('cleaned_user_behavior_data.csv', index=False)§print("数据清洗完成，已保存为 'cleaned_user_behavior_data.csv'")§# 3. 数据统计§# 统计每个购买类别的用户数§purchase_category_counts = __⑲__.__⑳__§print("每个购买类别的用户数:\\n", purchase_category_counts)§# 统计不同性别的平均购买金额§gender_purchase_amount_mean = __㉑__(__㉒__)['PurchaseAmount'].mean()§print("不同性别的平均购买金额:\\n", gender_purchase_amount_mean)§# 统计不同年龄段的用户数§bins = [18, 26, 36, 46, 56, 66, np.inf]§labels = ['18-25', '26-35', '36-45', '46-55', '56-65', '65+']§data['AgeGroup'] = pandas.__㉓__(__㉔__, right=False)§age_group_counts = data['AgeGroup'].value_counts().sort_index()§print("不同年龄段的用户数:\\n", age_group_counts)|①pandas.read_csv('user_behavior_data.csv')；§②data.head()（或data.head(5)）；§③data.dropna()；§④['Age']；§⑤data['Age'].astype；§⑥['PurchaseAmount']；§⑦data['PurchaseAmount'].astype；§⑧['ReviewScore']；§⑨data['ReviewScore'].astype；§⑩data['Age']；§⑪between；§⑫data['ReviewScore']；§⑬between；§⑭data['PurchaseAmount'].mean()；§⑮data['PurchaseAmount'].std()；§⑯data['ReviewScore'].mean()；§⑰data['ReviewScore'].std()；§⑱data.to_csv；§⑲data['PurchaseCategory']；§⑳value_counts()；§㉑data.groupby；§㉒'Gender'；§㉓cut；§㉔data['Age'], bins=bins, labels=labels
+#第5题 智能交通系统的数据采集、处理和审核流程设计
+原题号：1.1.5　｜　填空数：28§某智能交通系统希望通过车辆的行驶数据，利用人工智能技术进行交通流量预测和拥堵预警。你作为人工智能训练师，需要设计一套全面的业务数据采集、处理和审核流程，确保数据在进入交通流量分析系统之前经过严格的采集、清洗、审核和预处理。这里提供一个车辆行驶数据集(vehicle_traffic_data.csv)，包含以下字段：§VehicleID: 车辆ID§DriverName: 驾驶员姓名§Age: 年龄§Gender: 性别(Male/Female)§Speed: 车速(km/h)§TravelDistance: 行驶距离(km)§TravelTime: 行驶时间(min)§TrafficEvent: 交通事件(Normal, Accident, Traffic Jam, Breakdown)§你作为人工智能训练师，根据提供的vehicle_traffic_data.csv数据集和Python代码框架(1.1.5.ipynb)，完成以下数据的采集、处理和审核任务，确保数据的准确性和可靠性。请按照以下要求完成任务。§(1)数据采集：§通过运行Python代码(1.1.5.ipynb)，从本地文件vehicle_traffic_data.csv中读取数据，并将数据加载到DataFrame中。显示前5行数据。§(1)数据清洗与预处理：§通过运行Python代码(1.1.5.ipynb)对数据进行清洗和预处理，具体要求如下：§处理缺失值：对缺失值进行删除。§数据类型转换：确保每个字段的数据类型正确。§处理异常值：删除不合理的年龄、车速、行驶距离和行驶时间。§清洗后的数据保存为新文件cleaned_vehicle_traffic_data.csv。§(1)数据合理性审核： 通过运行Python代码审核以下字段的合理性：§年龄：应在18到70岁之间。§车速：应在0到200 km/h之间。§行驶距离：应在1到1000 km之间。§行驶时间：应在1到1440分钟(24小时)之间。§对不合理的数据进行标记。§(1)数据统计：§通过运行Python代码(1.1.5.ipynb)，完成以下数据统计任务：§统计每种交通事件的发生次数。§统计不同性别的平均车速、行驶距离和行驶时间。§统计不同年龄段的驾驶员数(18-25岁、26-35岁、36-45岁、46-55岁、56-65岁、65岁以上)。§§import pandas as pd§import numpy as np§import matplotlib.pyplot as plt§# 1. 数据采集§# 从本地文件中读取数据§data = __①__§print("数据采集完成，已加载到DataFrame中")§# 打印数据的前5条记录§print(__②__)§# 2. 数据清洗与预处理§# 处理缺失值（删除）§data = __③__§# 数据类型转换§data__④__ = __⑤__(int)       #Age数据类型转换为int§data__⑥__ = __⑦__(float)     #Speed数据类型转换为float§data__⑧__ = __⑨__(float)     #TravelDistance数据类型转换为float§data__⑩__ = __⑪__(float)     #TravelTime数据类型转换为float§# 处理异常值§data = data[(__⑫__(18, 70))  &§            (__⑬__(0, 200)) &§            (__⑭__(1, 1000)) &§            (__⑮__(1, 1440))]§# 保存清洗后的数据§__⑯__('cleaned_vehicle_traffic_data.csv', index=False)§print("数据清洗完成，已保存为 'cleaned_vehicle_traffic_data.csv'")§# 3. 数据合理性审核§# 审核字段合理性§unreasonable_data = data[~((__⑰__(18, 70)) &§                           (__⑱__(0, 200)) &§                           (__⑲__(1, 1000)) &§                           (__⑳__(1, 1440)))]§print("不合理的数据:\\n", unreasonable_data)§# 4. 数据统计§# 统计每种交通事件的发生次数§traffic_event_counts = __㉑__§print("每种交通事件的发生次数:\\n", traffic_event_counts)§# 统计不同性别的平均车速、行驶距离和行驶时间§gender_stats = data.__㉒__.__㉓__§print("不同性别的平均车速、行驶距离和行驶时间:\\n", gender_stats)§# 统计不同年龄段的驾驶员数§age_bins = [18, 26, 36, 46, 56, 66, np.inf]§age_labels = ['18-25', '26-35', '36-45', '46-55', '56-65', '65+']§data['AgeGroup'] = __㉔__(__㉕__, __㉖__, __㉗__, right=False)§age_group_counts = __㉘__§print("不同年龄段的驾驶员数:\\n", age_group_counts)|①pd.read_csv('vehicle_traffic_data.csv')；§②data.head()（或data.head(5)）；§③data.dropna()；§④['Age']；§⑤data['Age'].astype；§⑥['Speed']；§⑦data['Speed'].astype；§⑧['TravelDistance']；§⑨data['TravelDistance'].astype；§⑩['TravelTime']；§⑪data['TravelTime'].astype；§⑫data['Age'].between；§⑬data['Speed'].between；§⑭data['TravelDistance'].between；§⑮data['TravelTime'].between；§⑯data.to_csv；§⑰data['Age'].between；§⑱data['Speed'].between；§⑲data['TravelDistance'].between；§⑳data['TravelTime'].between；§㉑data['TrafficEvent'].value_counts()；§㉒groupby('Gender')；§㉓agg({'Speed':'mean', 'TravelDistance':'mean', 'TravelTime':'mean'})；§㉔pd.cut；§㉕data['Age']；§㉖bins=age_bins；§㉗labels=age_labels；§㉘data['AgeGroup'].value_counts()
+#第6题 电商用户行为数据分析
+原题号：ecommerce-user-behavior　｜　填空数：20§你是一家电商平台的数据分析师，现有一份用户行为数据文件 ecommerce_user_data.csv，包含以下字段：§UserID：用户唯一标识(示例 1001)§UserName：用户名(示例 User_1)§Age：年龄(可能存在缺失或异常值)(示例 23)§Gender：性别 Male/Female(示例 Male)§PurchaseAmount：购买金额，单位元(可能为负数或异常高值)(示例 899.5)§ProductCategory：购买商品类别 Electronics, Clothing, Books, Home, Sports(示例 Electronics)§Rating：用户评分 1-5 分(可能超出范围)(示例 4)§LoginFrequency：登录频率 Daily, Weekly, Monthly(示例 Weekly)§LastPurchaseDate：最近一次购买日期(示例 2023-07-15)§请完成以下三个任务：§1. 数据采集与初步查看：使用 pandas 读取 ecommerce_user_data.csv；打印前 5 行。§2. 数据清洗与预处理：删除含缺失值的行；Age 整型、PurchaseAmount 浮点、Rating 整型；异常值规则：年龄 18~70、购买金额 >0、评分 1~5；按给定 bins/labels 新增 AgeGroup；保存为 cleaned_ecommerce_data.csv。§3. 数据统计分析：各商品类别购买人数；不同性别平均购买金额；各年龄段用户数量并按年龄段排序输出。§§import pandas as pd§import numpy as np§# 1. 数据采集§data = __①__§print("数据采集完成，已加载到DataFrame中")§#§# 显示前五行数据§print(__②__)§# 2. 数据清洗与预处理§# 处理缺失值§data = __③__§# 数据类型转换§__④__ = __⑤__(int) #Age数据类型转换为int§__⑥__ = __⑦__(float) #PurchaseAmount数据类型转换为float§__⑧__ = __⑨__(int) #Rating数据类型转换为int§# 处理异常值§data = data[§    (data['Age']__⑩__(18, 70)) &§    (data['PurchaseAmount'] > 0) &§    (data['Rating']__⑪__(1, 5))§]§# 新增 AgeGroup 字段§bins = [18, 25, 35, 45, 55, 70]§labels = ['18-25', '26-35', '36-45', '46-55', '56+']§data['AgeGroup'] = __⑫__(__⑬__, __⑭__, __⑮__, right=True)§# 保存清洗后数据§__⑯__('cleaned_ecommerce_data.csv', __⑰__)§print("数据清洗完成，已保存为 'cleaned_ecommerce_data.csv'")§# 3. 数据统计分析§# 每个商品类别的购买人数§category_count = __⑱__§print("\\n每个商品类别的购买人数:\\n", category_count)§# 不同性别的平均购买金额§avg_purchase_by_gender = __⑲__§print("\\n不同性别的平均购买金额:\\n", avg_purchase_by_gender)§# 各年龄段用户数量§age_group_count = __⑳__.sort_index()§print("\\n各年龄段的用户数量:\\n", age_group_count)|①pd.read_csv('ecommerce_user_data.csv')；§②data.head()（或data.head(5)）；§③data.dropna()；§④data['Age']；§⑤data['Age'].astype；§⑥data['PurchaseAmount']；§⑦data['PurchaseAmount'].astype；§⑧data['Rating']；§⑨data['Rating'].astype；§⑩.between；§⑪.between；§⑫pd.cut；§⑬data['Age']；§⑭bins=bins；§⑮labels=labels；§⑯data.to_csv；§⑰index=False；§⑱data.groupby('ProductCategory')['UserID'].nunique()；§⑲data.groupby('Gender')['PurchaseAmount'].mean()；§⑳data['AgeGroup'].value_counts()`},
+ {n:"三级 · 第二部分　数据清洗与预处理（第7—12题）",d:"代码实操题 · 在原文空缺处填空并逐空检查 · 共 6 题",data:`#第7题 智慧交通中燃油效率模型的数据清洗和标注流程设计
+原题号：2.1.1　｜　填空数：16§在现代交通中，燃油效率(MPG)是衡量汽车性能和交通系统优化的重要指标之一。高效的燃油利用不仅能够降低车辆运营成本，还能减少碳排放，促进环保。开发一个用于预测汽车燃油效率的模型可以帮助智慧交通系统优化路线规划和车辆调度，从而提升整体交通效率和减少能源消耗。此外，这样的模型还可以帮助消费者做出更明智的购车决策，并帮助厂商优化汽车设计。§现要求根据提供的汽车燃油效率数据集，补全2.1.1.ipynb代码。选择合适的特征，开发一个燃油效率预测模型。在开发预测模型之前，首先要对数据进行数据清洗和标注，请完成下面的数据预处理任务：§(1)正确加载数据集，并显示前五行的数据及数据类型。§(2)检查数据集中的缺失值并删除缺失值所在的行。§(3)将「horsepower」列转换为数值类型，并处理转换中的异常值。§(4)对数值型数据进行标准化处理，确保数据在同一量纲下进行分析。§(5)根据业务需求和数据特性，选择对燃油效率预测最有用的特征：'cylinders'、'displacement'、'horsepower'、'weight'、'acceleration'、'model year'、'origin'§(6)将「mpg」设为目标变量并标注；§(7)对数据进行标注和划分；§(8)保存处理后的数据，并命名为：2.1.1_cleaned_data.csv；§§import pandas as pd§# 加载数据集并显示数据集的前五行§data = __①__§print("数据集的前五行:")§print(__②__)§# 显示每一列的数据类型§print(data.dtypes)§# 检查缺失值并删除缺失值所在的行§print("\\n检查缺失值:")§print(__③__.__④__.__⑤__)§data = __⑥__§# 将 'horsepower' 列转换为数值类型，并（删除）处理转换中的异常值§data['horsepower'] = __⑦__(data['horsepower'], errors='coerce')§data = __⑧__§# 显示每一列的数据类型§print(data.horsepower.dtypes)§# 检查清洗后的缺失值§print("\\n检查清洗后的缺失值:")§print(data.isnull().sum())§from sklearn.preprocessing import StandardScaler§# 对数值型数据进行标准化处理§numerical_features = ['displacement', 'horsepower', 'weight', 'acceleration']§scaler = StandardScaler()§data[numerical_features] = __⑨__§from sklearn.model_selection import train_test_split§# 选择特征、自变量和目标变量§selected_features = __⑩__§X = __⑪__§y = __⑫__§# 划分数据集为训练集和测试集（训练集占8成）§X_train, X_test, y_train, y_test = __⑬__(__⑭__, random_state=42)§# 将特征和目标变量合并到一个数据框中§cleaned_data = X.copy()§cleaned_data['mpg'] = y§# 保存清洗和处理后的数据（不存储额外的索引号）§__⑮__('2.1.1_cleaned_data.csv', __⑯__)§# 打印消息指示文件已保存§print("\\n清洗后的数据已保存到 2.1.1_cleaned_data.csv")|①pd.read_csv('auto-mpg.csv')；§②data.head()（或data.head(5)）；§③data；§④isna()（或isnull()）；§⑤sum()；§⑥data.dropna()；§⑦pd.to_numeric；§⑧data.dropna()（或data.dropna(subset=['horsepower'])）；§⑨scaler.fit_transform(data[numerical_features])；§⑩['cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model year', 'origin']；§⑪data[selected_features]；§⑫data['mpg']；§⑬train_test_split；§⑭X, y, train_size=0.8（或X, y, test_size=0.2）；§⑮cleaned_data.to_csv；§⑯index=False
+#第8题 低碳生活行为影响因素数据清洗和标注流程设计
+原题号：2.1.2　｜　填空数：15§在应对气候变化的背景下，了解和促进低碳生活行为变得越来越重要。现要求根据提供的「大学生低碳生活行为的影响因素数据集」，选择合适的特征，开发一个预测大学生低碳生活行为的模型。提供的数据集样本数据包含300多个关于大学生低碳生活行为的自变量和因变量。自变量为主观规范、知觉行为控制、低碳行为态度，中介变量为行为意愿，因变量为低碳生活行为。同时，性别、生源地、月生活费作为控制变量进行研究。在开发预测模型之前，首先要对数据进行数据清洗和标注。补全2.1.2.ipynb代码。完成下面的数据预处理任务：§(1)正确加载数据集，并显示前五行的数据；§(2)检查数据集中的缺失值，使用删除包含缺失值的行的办法处理，记录缺失值处理后的数据行数；§(3)检查数据集中的重复值并删除所有重复值，并记录删除的行数；§(4)对数值型数据进行标准化处理，确保数据在同一量纲下进行分析；§(5)根据业务需求和数据特性，选择对低碳生活行为预测最有用的特征，将「低碳行为积极性」设为目标变量并标注(题干所列 8 项特征)；§(6)对数据进行划分(8:2)；§(7)保存处理后的数据，并命名为：2.1.2_cleaned_data.csv；§§import pandas as pd§#读取一个Excel文件，并将读取到的数据存储在变量data中§data = __①__§#打印出数据集的前5行§print(data.head())§#处理数据集中的缺失值§initial_row_count = __②__   #处理前的数据行数§data = __③__                #删除缺失值所在行§final_row_count = __④__     #处理后的数据行数§print(f'处理后数据行数: {final_row_count}, 删除的行数: {initial_row_count - final_row_count}')§#删除重复行§data = __⑤__§from sklearn.preprocessing import StandardScaler§numerical_features = ['4.您的月生活费○≦1,000元   ○1,001-2,000元   ○2,001-3,000元   ○≧3,001元']§scaler = StandardScaler()§data[numerical_features] = __⑥__§#选择特征§selected_features = [__⑦__]§X = __⑧__§# 创建目标变量§y = __⑨__§from sklearn.model_selection import train_test_split§# 数据划分（测试集取20%）§X_train, X_test, y_train, y_test = __⑩__(__⑪__, random_state=42)§# 合并处理后得数据，并将其保存（保存中不用额外创建索引）§cleaned_data = __⑫__(__⑬__, axis=1)§__⑭__('2.1.2_cleaned_data.csv', __⑮__)|①pd.read_excel('大学生低碳生活行为的影响因素数据集.xlsx')；§②data.shape[0]（或len(data)）；§③data.dropna()；§④data.shape[0]（或len(data)）；§⑤data.drop_duplicates()；§⑥scaler.fit_transform(data[numerical_features])；§⑦'1.您的性别○男性   ○女性', '2.您的年级○大一   ○大二   ○大三   ○大四', '3.您的生源地○农村   ○城镇(乡镇)   ○地县级城市  ○省会城市及直辖市', '4.您的月生活费○≦1,000元   ○1,001-2,000元   ○2,001-3,000元   ○≧3,001元', '5.您进行过绿色低碳的相关生活方式吗?', '6.您觉得"低碳"，与你的生活关系密切吗？', '7.低碳生活是否会成为未来的主流生活方式？', '8.您是否认为低碳生活会提高您的生活质量？'；§⑧data[selected_features]；§⑨data['低碳行为积极性']；§⑩train_test_split；§⑪X, y, test_size=0.2；§⑫pd.concat；§⑬[X, y]；§⑭cleaned_data.to_csv；§⑮index=False
+#第9题 信用评分模型数据清洗和标注流程设计
+原题号：2.1.3　｜　填空数：17§互联网金融飞速发展，使得个人金融理财变得越来越容易。而其中信用评分技术是一种对贷款申请人(信用卡申请人)做风险评估分值的统计模型，可以根据客户提供的资料、客户的历史数据、第三方平台数据(芝麻分、京东、微信等)，对客户的信用进行评估。现要求根据提供的Finance数据集，选择合适的特征，开发一个申请的评分模型，对未来一段时间内借贷人出现违约的概率进行预测，对客户信用进行评估打分。提供的数据集样本数据一共15000条，10个自变量，1个因变量(SeriousDlqin2yrs)。在开发评分模型之前，首先要对数据进行数据清洗，请补全2.1.3.ipynb代码完成下面的数据预处理任务：§(1)正确加载数据集，并显示前五行的数据；§(2)检查数据集中的异常值并处理异常值，使用箱线图检测异常值，使用IQR方法处理异常值；§设置图像的尺寸为12英寸宽和8英寸高；§将画布分成3行4列，总共可以容纳12个子图；§(1)检查数据集中的重复值并删除所有重复值，并记录删除的行数；§(2)对数据进行归一化处理；§(3)创建新的特征IncomeToDebtRatio，MonthlyIncome，并添加到数据集中；§(4)将SeriousDlqin2yrs设为目标变量并标注；§(5)对数据进行划分；§(6)保存处理后的数据，并命名为：2.1.3_cleaned_data.csv；§§import pandas as pd§# 加载数据§data = __①__§# 显示前五行的数据§__②__§import matplotlib.pyplot as plt§import seaborn as sns§# 设置图像尺寸§plt.figure(figsize=(12, 8))§# 识别数值列用于箱线图§numeric_cols = data.select_dtypes(include=['float64', 'int64']).columns§# 创建箱线图§for i, col in enumerate(numeric_cols, 1):§    plt.subplot(3, 4, i)§    sns.boxplot(x=data[col])§    plt.title(col)§plt.tight_layout()§plt.show()§# 使用IQR处理异常值§Q1 = __③__(0.25)§Q3 = __④__(0.75)§IQR = __⑤__§# 移除异常值§data_cleaned = data[~((data[numeric_cols] < (Q1 - 1.5 * __⑥__)) ~P~ (data[numeric_cols] > (Q3 + 1.5 * __⑦__))).any(axis=1)]§# 检查处理重复值§duplicates = __⑧__()§num_duplicates = duplicates.sum()§data_cleaned = data_cleaned[~duplicates]§print(f'删除的重复行数: {num_duplicates}')§#对数据进行归一化处理§from sklearn.preprocessing import MinMaxScaler§scaler = MinMaxScaler()§data_cleaned[numeric_cols] = __⑨__§# 设定目标变量§target_variable = __⑩__§from sklearn.model_selection import train_test_split§# 定义特征和目标§X = __⑪__(columns=[__⑫__])   #§y = __⑬__                         #§# 划分数据（训练集占80%）§X_train, X_test, y_train, y_test = __⑭__(__⑮__, random_state=42)§# 显示划分后的数据形状§print(f'训练数据形状: {X_train.shape}')§print(f'测试数据形状: {X_test.shape}')§# 保存清洗后的数据到CSV§cleaned_file_path = '2.1.3_cleaned_data.csv'§__⑯__(__⑰__, index=False)|①pd.read_csv('finance数据集.csv')；§②print(data.head())（或print(data.head(5))）；§③data[numeric_cols].quantile；§④data[numeric_cols].quantile；§⑤Q3 - Q1；§⑥IQR；§⑦IQR；§⑧data_cleaned.duplicated；§⑨scaler.fit_transform(data_cleaned[numeric_cols])；§⑩'SeriousDlqin2yrs'；§⑪data_cleaned.drop；§⑫target_variable；§⑬data_cleaned[target_variable]；§⑭train_test_split；§⑮X,y,train_size=0.8（或X, y, test_size=0.2）；§⑯data_cleaned.to_csv；§⑰cleaned_file_path
+#第10题 医疗研究数据清洗和标注设计
+原题号：2.1.4　｜　填空数：18§随着医学技术的进步和医疗资源的丰富，医疗研究在改善患者治疗效果、提升医疗服务质量方面起到了重要作用。研究人员通过分析大量患者的治疗数据，能够评估不同治疗方案的效果，发现潜在的健康问题，并提出针对性的治疗建议。这不仅可以帮助患者获得更好的治疗效果，还能为医疗机构优化资源配置、提升服务水平提供重要依据。§现提供一份医疗研究数据集，训练集样本数据一共5441条记录。请补全2.1.4.ipynb代码，完成下面的数据预处理任务：§1、加载数据集，查看表的数据类型，表结构和显示每一列的空缺值数量；§2、将“就诊日期”和“诊断日期”规范为“yyyy-mm-dd”格式，并将“病人ID”列名改为“患者ID”，显示修改后的表结构；§3、增加“诊断延迟”(诊断日期-就诊日期)和“病程”(当前日期-诊断日期)两列，删除不合理的数据(如负数，年龄为几百岁等)；§4、检查数据集中的重复值并删除所有重复值，并记录删除的行数；§5、对数据段[年龄，体重，身高]进行归一化处理；§6、统计不同疾病类型的治疗结果分布，并画出柱状图；§7、分析年龄和疾病严重程度的关系，绘制出散点图；§8、保存处理后的数据，并命名为：2.1.4_cleaned_data.csv；§§import pandas as pd§# 加载数据集并指定编码为gbk§data = __①__§# 查看数据类型§print(data.dtypes)§# 查看表结构基本信息§print(__②__)§# 显示每一列的空缺值数量§print(data.isnull().sum())§# 规范日期格式§data['就诊日期'] = pd.to_datetime(data['就诊日期'])§data['诊断日期'] = pd.to_datetime(data['诊断日期'])§# 修改列名§__③__(columns={__④__}, inplace=True)§# 查看修改后的表结构§print(data.head())§from datetime import datetime§# 增加诊断延迟和病程列§data['诊断延迟'] = __⑤__.dt.days§data['病程'] = (datetime(2024, 9, 1) - data['诊断日期']).dt.days§# 删除不合理的数据§data = __⑥__[(__⑦__ >= 0) & (__⑧__ > 0) & (__⑨__ < 120)]§# 查看修改后的数据§print(data.describe())§# 删除重复值并记录删除的行数§initial_rows = data.shape[0]§__⑩__(inplace=True)§deleted_rows = initial_rows - data.shape[0]§print(f'删除的重复行数: {deleted_rows}')§from sklearn.preprocessing import MinMaxScaler§# 对需要归一化的列进行处理§scaler = MinMaxScaler()§columns_to_normalize = [__⑪__]§data[columns_to_normalize] = __⑫__§# 查看归一化后的数据§print(data.head())§import matplotlib.pyplot as plt§import matplotlib.font_manager as fm§# 统计治疗结果分布§treatment_outcome_distribution = data.groupby('疾病类型')['治疗结果'].value_counts().unstack()§# 设置中文字体§font_path = 'C:/Windows/Fonts/simhei.ttf'  # 根据你的系统调整字体路径§my_font = fm.FontProperties(fname=font_path)§# 绘制柱状图§__⑬__(__⑭__, stacked=True)§plt.title('不同疾病类型的治疗结果分布', fontproperties=my_font)§plt.xlabel('疾病类型', fontproperties=my_font)§plt.ylabel('治疗结果数量', fontproperties=my_font)§plt.xticks(fontproperties=my_font)  # 设置x轴刻度标签的字体§plt.yticks(fontproperties=my_font)  # 设置y轴刻度标签的字体§plt.legend(prop=my_font)  # 设置图例字体§plt.show()§# 绘制散点图§__⑮__(__⑯__)§plt.title('年龄和疾病严重程度的关系', fontproperties=my_font)§plt.xlabel('年龄', fontproperties=my_font)§plt.ylabel('疾病严重程度', fontproperties=my_font)§plt.xticks(fontproperties=my_font)  # 设置x轴刻度标签的字体§plt.yticks(fontproperties=my_font)  # 设置y轴刻度标签的字体§plt.legend(prop=my_font)  # 设置图例字体§plt.show()§# 保存处理后得数据§output_path = '2.1.4_cleaned_data.csv'§__⑰__(__⑱__, index=False)|①pd.read_csv('medical_data.csv', encoding='gbk')；§②data.info()；§③data.rename；§④'病人ID': '患者ID'；§⑤(data['诊断日期'] - data['就诊日期'])；§⑥data；§⑦data['诊断延迟']；§⑧data['年龄']；§⑨data['年龄']；§⑩data.drop_duplicates；§⑪'年龄', '体重', '身高'；§⑫scaler.fit_transform(data[columns_to_normalize])；§⑬treatment_outcome_distribution.plot；§⑭kind='bar'；§⑮plt.scatter；§⑯data['年龄'], data['疾病严重程度']；§⑰data.to_csv；§⑱output_path
+#第11题 健康与营养咨询数据预处理与数据规范设计
+原题号：2.1.5　｜　填空数：16§在健康与营养咨询领域，客户的健康数据是评估其饮食和生活方式建议的重要依据。通过对客户健康数据的分析，可以帮助健康咨询师更准确地评估客户的健康状况，并制定个性化的营养和健康管理计划。现提供一份健康咨询客户数据集。请补全2.1.5.ipynb代码，完成下面的数据预处理任务：§(1)加载数据集：查看表的数据类型，表结构和显示每一列的空缺值数量；§(2)缺失值处理：对于含有缺失值的行进行删除操作；§(3)数据类型转换：将“Your age”列的数据类型转换为整数类型，并处理其中的异常值；§(4)数据去重：检查数据集中的重复值并删除所有重复值，并记录删除的行数；§(5)数据归一化处理：对“如何形容你的当前健身水平？”(How do you describe your current level of fitness ?)列中的数据进行归一化处理；§(6)绘制健身频率分布的饼图；§(7)对数据进行标注划分；§(8)保存处理后的数据，并命名为：2.1.5_cleaned_data.csv；§§import pandas as pd§# 加载数据集§data = __①__§# 查看表结构基本信息§print(__②__)§# 显示每一列的空缺值数量§print(__③__)§# 删除含有缺失值的行§data_cleaned = __④__§# 转换 'Your age' 列的数据类型为整数类型，并处理异常值§data_cleaned.loc[:, 'Your age'] = __⑤__(__⑥__, errors='coerce')§data_cleaned = data_cleaned.dropna(subset=['Your age'])§data_cleaned = data_cleaned[data_cleaned['Your age'] >= 0]§data_cleaned.loc[:, 'Your age'] = data_cleaned['Your age'].__⑦__§print(data_cleaned['Your age'].dtype)§# 检查和删除重复值§duplicates_removed = data_cleaned.duplicated().sum()§data_cleaned = __⑧__§print(f"Removed {duplicates_removed} duplicate rows")§from sklearn.preprocessing import LabelEncoder§# 归一化 'How do you describe your current level of fitness ?' 列§label_encoder = LabelEncoder()§data_cleaned[__⑨__] = __⑩__§print(data_cleaned['How do you describe your current level of fitness ?'].unique())§from sklearn.preprocessing import LabelEncoder§import matplotlib.pyplot as plt§# 去掉列名中的空格§data.columns = data.columns.str.strip()§# 显示数据集的列名§print(data.columns)§# 删除包含缺失值的行§data_cleaned = data.dropna(subset=['How often do you exercise?'])§# 统计不同健身频率的分布情况§exercise_frequency_counts = data_cleaned['How often do you exercise?'].value_counts()§# 绘制饼图§plt.figure(figsize=(10, 6))§__⑪__(autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors)§plt.title('Distribution of Exercise Frequency')§plt.ylabel('')§plt.show()§import pandas as pd§from sklearn.model_selection import train_test_split§import matplotlib.pyplot as plt§# 填充缺失值§data_filled = data.apply(lambda x: x.fillna(x.mode()[0]))§# 划分数据（测试集占比20%）§train_data, test_data = __⑫__(__⑬__, random_state=42)§# 保存处理后的数据§cleaned_file_path = '__⑭__'§__⑮__(__⑯__)|①pd.read_csv('健康咨询客户数据集.csv')；§②data.info()；§③data.isna().sum()（或data.isnull().sum()）；§④data.dropna()；§⑤pd.to_numeric；§⑥data_cleaned['Your age']；§⑦astype(int)；§⑧data_cleaned.drop_duplicates()；§⑨'How do you describe your current level of fitness ?'；§⑩label_encoder.fit_transform(data_cleaned['How do you describe your current level of fitness ?'])；§⑪exercise_frequency_counts.plot.pie；§⑫train_test_split；§⑬data_filled, test_size=0.2（或data_filled, train_size=0.8）；§⑭2.1.5_cleaned_data.csv；§⑮data_filled.to_csv；§⑯cleaned_file_path, index=False
+#第12题 糖尿病风险预测数据预处理
+原题号：2.1.6　｜　填空数：33§你是一家医疗科技公司的数据科学家，公司收集了一批患者的健康检查数据，用于构建预测糖尿病风险的模型。§文件名称：diabetes_health_data.csv§字段包括 Patient_ID、Age、Gender、BMI、BloodPressure、Glucose、Insulin、SkinThickness、DiabetesPedigree、Pregnancies、Smoking、PhysicalActivity、Outcome 等。§数据质量问题：部分数值特征缺失；BMI/BloodPressure 等存在异常值；Gender 编码不一致；Smoking 拼写不一；需创建 BMI_category。§请按 md 中代码框架补全并完成预处理与质量报告。§§import pandas as pd§import numpy as np§from sklearn.preprocessing import StandardScaler, LabelEncoder§from sklearn.model_selection import train_test_split§# 1. 数据加载与探索§data = __①__§print("数据集形状：", data.__②__)§print("\\n数据基本信息：")§print(data.__③__())§print("\\n缺失值统计：")§print(data.__④__.__⑤__())§# 2. 数据清洗 - 处理不一致的分类变量§# 统一Gender列的编码§data["Gender"] = data["Gender"].__⑥__({'M': 'Male', 'F': 'Female'})§data["Gender"] = data["Gender"].__⑦__('Male') # 填充剩余不一致值§# 统一Smoking列的编码§smoking_mapping = {'Y': 'Yes', 'N': 'No', 'yes': 'Yes', 'no': 'No'}§data["Smoking"] = data["Smoking"].__⑧__(smoking_mapping)§# 3. 缺失值处理 - 采用不同策略§# 对数值型特征，使用中位数填充§numerical_cols = ['BMI', 'BloodPressure', 'Glucose', 'Insulin', 'SkinThickness']§for col in numerical_cols:§    data[col] = data[col].__⑨__(data[col].__⑩__)§# 对分类特征，使用众数填充§categorical_cols = ['Smoking']§for col in categorical_cols:§    data[col] = data[col].__⑪__(data[col].__⑫__[0])§# 4. 异常值检测与处理§def handle_outliers(df, column):§    Q1 = df[column].__⑬__(0.25)§    Q3 = df[column].__⑭__(0.75)§    IQR = Q3 - Q1§    lower_bound = Q1 - 1.5 * IQR§    upper_bound = Q3 + 1.5 * IQR§    # 将异常值截断到边界值§    df[column] = np.__⑮__(df[column], lower_bound, upper_bound)§    return df§# 处理关键特征的异常值§outlier_columns = ['BMI', 'BloodPressure', 'Glucose']§for col in outlier_columns:§    data = handle_outliers(data, col)§# 5. 特征工程 - 创建新特征§# 创建BMI分类特征§def categorize_bmi(bmi):§    if bmi < 18.5:§        return 'Underweight'§    elif 18.5 <= bmi < 25:§        return 'Normal'§    elif 25 <= bmi < 30:§        return 'Overweight'§    else:§        return 'Obese'§data['BMI_category'] = data['BMI'].__⑯__(__⑰__)§# 6. 数据编码与标准化§# 对分类变量进行标签编码§categorical_to_encode = ['Gender', 'Smoking', 'BMI_category']§label_encoders = {}§for col in categorical_to_encode:§    le = __⑱__§    data[col] = le.__⑲__(__⑳__)§    label_encoders[col] = le§# 对数值型特征进行标准化§features_to_scale = ['Age', 'BMI', 'BloodPressure', 'Glucose', 'Insulin', 'SkinThickness', 'DiabetesPedigree', 'PhysicalActivity']§scaler = __㉑__§data[features_to_scale] = scaler.__㉒__(__㉓__)§# 7. 数据集划分与保存§# 选择特征和目标变量§selected_features = ['Age', 'Gender', 'BMI', 'BloodPressure', 'Glucose', 'Insulin', 'DiabetesPedigree', 'PhysicalActivity', 'Smoking', 'BMI_category']§X = data[__㉔__]§y = data[__㉕__]§# 划分训练集和测试集§X_train, X_test, y_train, y_test = __㉖__(X, y, test_size=0.2, random_state=42, stratify=y)§print(f"训练集大小: {X_train.shape[0]}, 测试集大小: {X_test.shape[0]}")§# 保存处理后的数据§final_data = X.copy()§final_data['Outcome'] = y§final_data.__㉗__('diabetes_processed_data.csv', __㉘__)§print("数据预处理完成！")§print("\\n处理后的数据统计信息：")§print(final_data.__㉙__)§# 8. 数据质量报告生成§def generate_data_quality_report(df):§    report = {§    'total_records': __㉚__(df),§    'total_features': df.__㉛__[1],§    'missing_values': df.__㉜__.sum(),§    'duplicate_rows': df.__㉝__.sum()§    }§    return report§quality_report = generate_data_quality_report(final_data)§print("数据质量报告：")§for key, value in quality_report.items():§    print(f"{key}: {value}")|①pd.read_csv('diabetes_health_data.csv')；§②shape；§③info；§④isnull()（或isna()）；§⑤sum；§⑥replace；§⑦fillna；§⑧replace；§⑨fillna；§⑩median()；§⑪fillna；§⑫mode()；§⑬quantile；§⑭quantile；§⑮clip；§⑯apply；§⑰categorize_bmi；§⑱LabelEncoder()；§⑲fit_transform；§⑳data[col]；§㉑StandardScaler()；§㉒fit_transform；§㉓data[features_to_scale]；§㉔selected_features；§㉕'Outcome'；§㉖train_test_split；§㉗to_csv；§㉘index=False；§㉙describe()；§㉚len；§㉛shape；§㉜isnull()（或isna()）；§㉝duplicated()`},
+ {n:"三级 · 第三部分　模型开发、测试与评估（第13—18题）",d:"代码实操题 · 在原文空缺处填空并逐空检查 · 共 6 题",data:`#第13题 智能信用评分Logistic回归模型开发与测试
+原题号：2.2.1　｜　填空数：13§互联网金融飞速发展，使得个人金融理财变得越来越容易。而其中信用评分技术是一种对贷款申请人(信用卡申请人)做风险评估分值的统计模型，可以根据客户提供的资料、客户的历史数据、第三方平台数据(芝麻分、京东、微信等)，对客户的信用进行评估。现要求根据提供的finance数据集，补全2.2.1.ipynb代码。选择合适的特征，开发一个申请的评分模型，利用测试工具对模型进行测试，并运用工具对错误原因进行纠正。§(1)正确加载数据集，显示前五行的数据。§(2)使用Logistic模型进行模型训练，要求设定自变量和因变量，并根据自变量特征进行模型训练，最终将训练好的模型以文件名2.2.1_model.pkl保存，结果文件以2.2.1_results.txt保存。§(3)使用测试工具对模型进行测试，并记录测试结果，命名2.2.1_report.txt。§(4)运用工具分析算法中错误案例产生的原因并进行纠正，重新得到模型训练结果，以文件名2.2.1_results_xg.txt保存。§数据集说明：§Unnamed: 0 - 索引号。§SeriousDlqin2yrs - 个人在过去两年内是否出现过严重的拖欠(1 表示有严重拖欠，0 表示没有)。§RevolvingUtilizationOfUnsecuredLines - 这是指个人未偿还的信用额度与总信用额度的比例。§age - 客户的年龄。§NumberOfTime30-59DaysPastDueNotWorse - 在过去一段时间内，贷款逾期30至59天的次数。§DebtRatio - 债务比率。§MonthlyIncome - 客户的月收入。§NumberOfOpenCreditLinesAndLoans - 正在使用的信贷账户或贷款的数量。§NumberOfTimes90DaysLate - 贷款逾期超过90天的次数。§NumberRealEstateLoansOrLines - 持有的房地产相关贷款或信贷的数量。§NumberOfTime60-89DaysPastDueNotWorse - 贷款逾期60至89天的次数。§NumberOfDependents - 家庭中依赖该个人的人数。§§import pandas as pd§from sklearn.model_selection import train_test_split§from sklearn.linear_model import LogisticRegression§import pickle§from sklearn.metrics import classification_report§from imblearn.over_sampling import SMOTE§# 加载数据§data = __①__§# 显示前五行的数据§print(__②__)§# 选择自变量和因变量§X = data.drop(['SeriousDlqin2yrs', 'Unnamed: 0'], axis=1)§y = data['SeriousDlqin2yrs']§# 分割训练集和测试集（测试集20%）§X_train, X_test, y_train, y_test = __③__(__④__, random_state=42)§# 训练Logistic回归模型（最大迭代次数为1000次）§model = __⑤__§#训练 Logistic 回归模型§__⑥__§# 保存模型§with open('2.2.1_model.pkl', 'wb') as file:§    pickle.__⑦__§# 预测并保存结果§y_pred = __⑧__§pd.DataFrame(y_pred, columns=['预测结果']).to_csv('2.2.1_results.txt', index=False)§# 生成测试报告§report = classification_report(y_test, y_pred, zero_division=1)§with open('2.2.1_report.txt', 'w') as file:§    file.write(report)§# 分析测试结果§accuracy = __⑨__§print(f"模型准确率: {accuracy:.2f}")§# 处理数据不平衡§smote = SMOTE(random_state=42)§X_resampled, y_resampled = __⑩__§# 重新训练模型§__⑪__§# 重新预测§y_pred_resampled = __⑫__§# 保存新结果§pd.DataFrame(y_pred_resampled, columns=['预测结果']).to_csv('2.2.1_results_xg.txt', index=False)§# 生成新的测试报告§report_resampled = classification_report(y_test, y_pred_resampled, zero_division=1)§with open('2.2.1_report_xg.txt', 'w') as file:§    file.write(report_resampled)§# 分析新的测试结果§accuracy_resampled = __⑬__§print(f"重新采样后的模型准确率: {accuracy_resampled:.2f}")|①pd.read_csv('finance数据集.csv')；§②data.head()（或data.head(5)）；§③train_test_split；§④X, y, test_size=0.2（或X,y,train_size=0.8）；§⑤LogisticRegression(max_iter=1000)；§⑥model.fit(X_train, y_train)；§⑦dump(model, file)；§⑧model.predict(X_test)；§⑨(y_test == y_pred).mean()（或(y_pred==y_test).mean()）；§⑩smote.fit_resample(X_train, y_train)；§⑪model.fit(X_resampled, y_resampled)；§⑫model.predict(X_test)；§⑬(y_test == y_pred_resampled).mean()（或(y_pred==y_pred_resampled).mean()）
+#第14题 智慧交通中燃油效率随机森林模型开发与测试
+原题号：2.2.2　｜　填空数：21§在现代交通中，燃油效率(MPG)是衡量汽车性能和交通系统优化的重要指标之一。高效的燃油利用不仅能够降低车辆运营成本，还能减少碳排放，促进环保。开发一个用于预测汽车燃油效率的模型可以帮助智慧交通系统优化路线规划和车辆调度，从而提升整体交通效率和减少能源消耗。此外，这样的模型还可以帮助消费者做出更明智的购车决策，并帮助厂商优化汽车设计。§现要求根据提供的汽车燃油效率数据集，补全2.2.2.ipynb代码。选择合适的特征，开发一个燃油效率预测模型。利用测试工具对模型进行测试，并运用工具对错误原因进行纠正。§(1)正确加载数据集，显示前五行的数据。§(2)使用线性回归模型进行模型训练，要求设定自变量和因变量，并根据自变量特征进行模型训练，最终将训练好的模型以"2.2.2_model.pkl"命名保存，结果文件以"2.2.2_results.txt"命名保存。§(3)使用测试工具对模型进行测试，并记录测试结果，以"2.2.2_report.txt"命名保存。§(4)运用工具分析算法中错误案例产生的原因并进行纠正，重新进行模型训练，并以"2.2.2_results_rf.txt"命名保存。§数据集说明：§mpg : 燃油效率，每加仑油可以行驶的英里数。§cylinders: 发动机气缸的数量。§displacement: 这是指发动机所有气缸的总容积。§horsepower: 发动机的马力。§weight: 车辆的重量。§acceleration: 加速。§model year: 车辆的生产年份。§origin: 指的是车辆的制造地或品牌所属国家。§car name: 每辆车的具体名称或型号。§§import pandas as pd§from sklearn.model_selection import train_test_split§from sklearn.linear_model import LinearRegression§from sklearn.preprocessing import StandardScaler§from sklearn.pipeline import Pipeline§import pickle§from sklearn.ensemble import RandomForestRegressor§# 加载数据集§df = __①__§# 显示前五行数据§print(__②__)§# 处理缺失值§# 将 'horsepower' 列中的所有值转换为数值类型§df['horsepower'] = __③__(__④__, errors='coerce')§# 删除包含缺失值的行§df = __⑤__§# 选择相关特征进行建模（定义自变量（返回一个DataFrame）和因变量）§X = __⑥__§y = __⑦__§# 将数据集划分为训练集和测试集（测试集占比20%）§X_train, X_test, y_train, y_test = __⑧__(__⑨__, random_state=42)§# 创建包含标准化和线性回归的管道§pipeline = __⑩__([('scaler', __⑪__),('linreg', __⑫__)])§# 训练模型§__⑬__§# 保存训练好的模型§with open('2.2.2_model.pkl', 'wb') as model_file:§    pickle.__⑭__§# 预测并保存结果§y_pred = __⑮__§results_df = pd.DataFrame(y_pred, columns=['预测结果'])§__⑯__('2.2.2_results.txt', index=False)§# 测试模型§with open('2.2.2_report.txt', 'w') as results_file:§    results_file.write(f'训练集得分: {pipeline.score(X_train, y_train)}\\n')§    results_file.write(f'测试集得分: {pipeline.score(X_test, y_test)}\\n')§# 创建随机森林回归模型实例（创建的决策树的数量为100）§rf_model = __⑰__(__⑱__, random_state=42)§# 训练随机森林回归模型§__⑲__§# 使用随机森林模型进行预测§y_pred_rf = __⑳__§# 保存新的结果§results_rf_df = pd.DataFrame(y_pred_rf, columns=['预测结果'])§__㉑__('2.2.2_results_rf.txt', index=False)§# 测试模型并保存得分§with open('2.2.2_report_rf.txt', 'w') as results_rf_file:§    results_rf_file.write(f'训练集得分: {rf_model.score(X_train, y_train)}\\n')§    results_rf_file.write(f'测试集得分: {rf_model.score(X_test, y_test)}\\n')|①pd.read_csv('auto-mpg.csv')；§②df.head()（或df.head(5)）；§③pd.to_numeric；§④df['horsepower']；§⑤df.dropna()；§⑥df[['cylinders', 'displacement', 'horsepower', 'weight', 'acceleration', 'model year', 'origin']]；§⑦df['mpg']；§⑧train_test_split；§⑨X, y, test_size=0.2（或X,y,train_size=0.8）；§⑩Pipeline；§⑪StandardScaler()；§⑫LinearRegression()；§⑬pipeline.fit(X_train, y_train)；§⑭dump(pipeline, model_file)；§⑮pipeline.predict(X_test)；§⑯results_df.to_csv；§⑰RandomForestRegressor；§⑱n_estimators=100；§⑲rf_model.fit(X_train, y_train)；§⑳rf_model.predict(X_test)；§㉑results_rf_df.to_csv
+#第15题 日常运动量随机森林预测模型开发与测试
+原题号：2.2.3　｜　填空数：23§随着人们健康意识的增强，越来越多的人开始关注日常运动和健康管理。使用提供的训练数据，补全2.2.3.ipynb代码。选择合适的特征，开发一个预测模型，基于个体性别，个体对运动的看法和个人健康评价来预测个体年龄。利用测试工具对模型进行测试，并运用工具对错误原因进行纠正。§(1)正确加载数据集，并显示前五行的数据§(2)使用随机森林模型进行模型训练，要求设定自变量和因变量，并根据自变量特征进行模型训练，最终将训练好的模型以文件名2.2.3_model.pkl保存，结果文件以2.2.3_results.txt保存。§(3)使用测试工具对模型进行测试，并记录测试结果，命名2.2.3_report.txt。§(4)运用工具分析算法中错误案例产生的原因并进行纠正，重新得到模型训练结果，以文件名2.2.3_results_xgb.txt保存。§§import pandas as pd§from sklearn.model_selection import train_test_split§from sklearn.ensemble import RandomForestRegressor§import pickle§from sklearn.metrics import mean_squared_error, r2_score§import xgboost as xgb§# 加载数据集§df = __①__§# 显示前五行数据§print(__②__)§# 去除所有字符串字段的前后空格§df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)§# 检查和清理列名§df.columns = df.columns.str.strip()§# 选择相关特征进行建模§X = df[['Your gender', 'How important is exercise to you ?', 'How healthy do you consider yourself?']]§X = __③__(X)  # 将分类变量转为数值变量§# 将年龄段转为数值变量§y = __④__(lambda x: int(x.split(' ')[0]))  # 假设年龄段为整数§# 将数据集划分为训练集和测试集（测试集占比20%）§X_train, X_test, y_train, y_test = __⑤__(__⑥__, random_state=42)§# 创建随机森林回归模型（创建的决策树的数量为100）§rf_model = __⑦__(__⑧__, random_state=42)§# 训练随机森林回归模型§__⑨__§# 保存训练好的模型§with open('2.2.3_model.pkl', 'wb') as model_file:§    pickle.__⑩__§# 进行结果预测§y_pred = __⑪__§results_df = pd.DataFrame(y_pred, columns=['预测结果'])§results_df.to_csv('2.2.3_results.txt', index=False)§# 使用测试工具对模型进行测试，并记录测试结果§train_score = __⑫__   #训练集分数§test_score = __⑬__    #测试集分数§mse = __⑭__  #均方误差§r2 = __⑮__  #决定系数§with open('2.2.3_report.txt', 'w') as report_file:§    report_file.write(f'训练集得分: {train_score}\\n')§    report_file.write(f'测试集得分: {test_score}\\n')§    report_file.write(f'均方误差(MSE): {mse}\\n')§    report_file.write(f'决定系数(R^2): {r2}\\n')§# 运用工具分析算法中错误案例产生的原因并进行纠正§# 初始化XGBoost回归模型（构建100棵树）§xgb_model = __⑯__(__⑰__, random_state=42)§# 训练XGBoost回归模型§__⑱__§# 使用XGBoost回归模型在测试集上进行结果预测§y_pred_xgb = __⑲__§results_df_xgb = pd.DataFrame(y_pred_xgb, columns=['预测结果'])§results_df_xgb.to_csv('2.2.3_results_xgb.txt', index=False)§with open('2.2.3_report_xgb.txt', 'w') as xgb_report_file:§    xgb_report_file.write(f'XGBoost训练集得分: {__⑳__}\\n')§    xgb_report_file.write(f'XGBoost测试集得分: {__㉑__}\\n')§    xgb_report_file.write(f'XGBoost均方误差(MSE): {__㉒__}\\n')§    xgb_report_file.write(f'XGBoost决定系数(R^2): {__㉓__}\\n')|①pd.read_csv('fitness analysis.csv')；§②df.head()（或df.head(5)）；§③pd.get_dummies；§④df['Your age'].apply；§⑤train_test_split；§⑥X, y, test_size=0.2（或X,y,train_size=0.8）；§⑦RandomForestRegressor；§⑧n_estimators=100；§⑨rf_model.fit(X_train, y_train)；§⑩dump(rf_model, model_file)；§⑪rf_model.predict(X_test)；§⑫rf_model.score(X_train, y_train)；§⑬rf_model.score(X_test, y_test)；§⑭mean_squared_error(y_test, y_pred)；§⑮r2_score(y_test, y_pred)；§⑯xgb.XGBRegressor；§⑰n_estimators=100；§⑱xgb_model.fit(X_train, y_train)；§⑲xgb_model.predict(X_test)；§⑳xgb_model.score(X_train, y_train)；§㉑xgb_model.score(X_test, y_test)；§㉒mean_squared_error(y_test, y_pred_xgb)；§㉓r2_score(y_test, y_pred_xgb)
+#第16题 低碳生活行为影响因素预测线性回归模型开发与测试
+原题号：2.2.4　｜　填空数：25§在应对气候变化的背景下，了解和促进低碳生活行为变得越来越重要。现要求根据提供的"大学生低碳生活行为的影响因素数据集"，补全2.2.4.ipynb代码。选择合适的特征，开发一个预测大学生低碳生活行为的模型。利用测试工具对模型进行测试，并运用工具对错误原因进行纠正。§(1)正确加载数据集，并显示前五行的数据。§(2)请使用线性回归模型，要求设定自变量和因变量，并根据自变量特征进行模型训练，最终将训练好的模型以文件名2.2.4_model.pkl保存，结果文件以2.2.4_results.txt保存。§(3)使用测试工具对模型进行测试，并记录测试结果，命名2.2.4_report.txt。§(4)运用工具分析算法中错误案例产生的原因并进行纠正，重新得到模型训练结果，以文件名2.2.4_results_xg.txt保存。§§import pandas as pd§from sklearn.model_selection import train_test_split§from sklearn.linear_model import LinearRegression§from sklearn.metrics import mean_squared_error, r2_score§import joblib§from xgboost import XGBRegressor§# 加载数据集§data = __①__§# 显示数据集的前五行§print(__②__)§# 删除不必要的列并处理分类变量§data_cleaned = __③__(__④__=__⑤__)  # 删除不必要的列§data_cleaned = pd.get_dummies(data_cleaned, drop_first=True)  # 将分类变量转换为哑变量/指示变量§# 定义目标变量和特征§target = '5.您进行过绿色低碳的相关生活方式吗?'  # 确保这是目标变量§# 定义自变量和因变量§X = __⑥__(__⑦__=__⑧__)§y = __⑨__§# 将数据拆分为训练集和测试集（测试集占20%）§X_train, X_test, y_train, y_test = __⑩__(__⑪__, random_state=42)§# 初始化线性回归模型§model = __⑫__§# 训练线性回归模型§__⑬__§# 保存训练好的模型§model_filename = '2.2.4_model.pkl'§joblib.__⑭__§# 进行预测§y_pred = __⑮__§# 将结果保存到文本文件中§results = pd.DataFrame({'实际值': y_test, '预测值': y_pred})§results_filename = '2.2.4_results.txt'§__⑯__(__⑰__, index=False, sep='\\t')  # 使用制表符分隔值保存到文本文件§# 将测试结果保存到报告文件中§report_filename = '2.2.4_report.txt'§with open(report_filename, 'w') as f:§    f.write(f'均方误差: {__⑱__}\\n')§    f.write(f'决定系数: {__⑲__}\\n')§# 分析并纠正错误（示例：使用XGBoost）§# 初始化XGBoost模型（设定树的数量为1000，学习率为0.05，每棵树的最大深度为5，）§xgb_model = __⑳__(__㉑__, subsample=0.8, colsample_bytree=0.8)§# 训练XGBoost模型§__㉒__§# 使用XGBoost模型进行预测§y_pred_xg = __㉓__§# 将XGBoost结果保存到文本文件中§results_xg_filename = '2.2.4_results_xg.txt'§results_xg = pd.DataFrame({'实际值': y_test, '预测值': y_pred_xg})§results_xg.to_csv(results_xg_filename, index=False, sep='\\t')  # 使用制表符分隔值保存到文本文件§# 将XGBoost测试结果保存到报告文件中§report_filename_xgb = '2.2.4_report_xgb.txt'§with open(report_filename_xgb, 'w') as f:§    f.write(f'均方误差: {__㉔__}\\n')§    f.write(f'决定系数: {__㉕__}\\n')|①pd.read_excel('大学生低碳生活行为的影响因素数据集.xlsx')；§②data.head()（或data.head(5)）；§③data.drop；§④columns；§⑤['序号', '所用时间']；§⑥data_cleaned.drop；§⑦columns；§⑧[target]；§⑨data_cleaned[target]；§⑩train_test_split；§⑪X, y, test_size=0.2（或X,y,train_size=0.8）；§⑫LinearRegression()；§⑬model.fit(X_train, y_train)；§⑭dump(model, model_filename)；§⑮model.predict(X_test)；§⑯results.to_csv；§⑰results_filename；§⑱mean_squared_error(y_test, y_pred)；§⑲r2_score(y_test, y_pred)；§⑳XGBRegressor；§㉑n_estimators=1000, learning_rate=0.05, max_depth=5, random_state=42；§㉒xgb_model.fit(X_train, y_train)；§㉓xgb_model.predict(X_test)；§㉔mean_squared_error(y_test, y_pred_xg)；§㉕r2_score(y_test, y_pred_xg)
+#第17题 智能步数预测模型开发与测试
+原题号：2.2.5　｜　填空数：17§随着健康意识的增强，越来越多的人开始使用智能设备跟踪自己的日常活动。准确预测每日步数对于用户来说至关重要，因为它可以帮助他们更好地管理健康状况，设定合理的运动目标，并提高生活质量。现要求根据提供的预处理好的fitness analysis数据集，补全2.2.5.ipynb代码。选择合适的特征，开发一个步数预测模型，对用户未来一段时间内的每日步数进行预测。利用测试工具对模型进行测试，并运用工具对错误原因进行纠正。§(1)正确加载数据集，并显示前五行的数据。§(2)请使用决策树模型，要求设定自变量和因变量(设定daily_steps为目标变量)，并根据自变量特征进行模型训练，最终将训练好的模型以文件名2.2.5_model.pkl保存，结果文件以2.2.5_results.txt保存。§(3)使用测试工具对模型进行测试，并记录测试结果，命名2.2.5_report.txt。§§import pandas as pd§from sklearn.model_selection import train_test_split§from sklearn.tree import DecisionTreeRegressor§import pickle§from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score§# 加载数据集§df = __①__§# 显示前五行数据§print(__②__)§# 选择相关特征进行建模§X = df[['Your gender ', 'How important is exercise to you ?', 'How healthy do you consider yourself?']]§X = __③__(X)  # 将分类变量转为数值变量§# 设置目标变量§y = __④__§# 将数据集划分为训练集和测试集（测试集占20%）§X_train, X_test, y_train, y_test = __⑤__(__⑥__, random_state=42)§# 创建并训练决策树回归模型§__⑦__ = __⑧__(random_state=42)§# 训练决策树回归模型§__⑨__§# 保存训练好的模型§with open('2.2.5_model.pkl', 'wb') as model_file:§    pickle.__⑩__§# 进行预测§y_pred = __⑪__§# 将结果保存到文本文件中§results = pd.DataFrame({'实际值': y_test, '预测值': y_pred})§results_filename = '2.2.5_results.txt'§__⑫__(__⑬__, index=False, sep='\\t')§# 将测试结果保存到报告文件中§report_filename = '2.2.5_report.txt'§with open(__⑭__) as f:§    f.write(f'均方误差: {__⑮__}\\n')§    f.write(f'平均绝对误差: {__⑯__}\\n')§    f.write(f'决定系数: {__⑰__}\\n')|①pd.read_csv('fitness analysis.csv')；§②df.head()（或df.head(5)）；§③pd.get_dummies；§④df['daily_steps']；§⑤train_test_split；§⑥X, y, test_size=0.2（或X,y,train_size=0.8）；§⑦dt_model（或model）；§⑧DecisionTreeRegressor；§⑨dt_model.fit(X_train, y_train)（或model.fit(X_train, y_train)）；§⑩dump(dt_model, model_file)（或dump(model, model_file)）；§⑪dt_model.predict(X_test)（或model.predict(X_test)）；§⑫results.to_csv；§⑬results_filename；§⑭report_filename, 'w'；§⑮mean_squared_error(y_test, y_pred)；§⑯mean_absolute_error(y_test, y_pred)；§⑰r2_score(y_test, y_pred)
+#第18题 高价值客户预测建模
+原题号：2.2.6　｜　填空数：41§你是一家电商平台的数据科学家，需要构建一个预测模型来识别潜在的高价值客户。公司收集了用户的浏览行为、历史交易数据和基本信息，希望预测用户在未来30天内是否会进行大额购买(订单金额≥500元)。§数据集说明§- 文件名称：ecommerce_customer_behavior.csv§- 数据集特征：§- UserID：用户编号§- Age：年龄§- Gender：性别(Male/Female)§- CityTier：城市等级(1-3)§- Tenure：成为会员时长(月)§- AvgSessionDuration：平均会话时长(分钟)§- PageViewsPerSession：每次会话页面浏览量§- BounceRate：跳出率(%)§- TotalTransactions：总交易次数§- AvgOrderValue：平均订单价值(元)§- DaysSinceLastPurchase：距上次购买天数§- HighValuePurchase：是否进行大额购买(0=否，1=是)§请根据下列代码框架补全并运行，完成数据加载、预处理、SMOTE 不平衡处理、逻辑回归(Pipeline)与随机森林建模、评估与对比，保存最佳模型及预测结果 CSV。§§import pandas as pd§import numpy as np§from sklearn.model_selection import train_test_split§from sklearn.preprocessing import StandardScaler, LabelEncoder§from sklearn.ensemble import RandomForestClassifier§from sklearn.linear_model import LogisticRegression§from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, accuracy_score§from sklearn.pipeline import Pipeline§from imblearn.over_sampling import SMOTE§import pickle§import matplotlib.pyplot as plt§import seaborn as sns§# 1. 数据加载与探索§data = __①__§print("数据集形状：", data.__②__)§print("\\n数据基本信息：")§print(data.__③__())§print("\\n目标变量分布：")§print(data['HighValuePurchase'].__④__)§# 2. 数据预处理§# 处理分类变量编码§le = __⑤__§data['Gender'] = __⑥__.__⑦__(data['Gender'])§# 选择特征和目标变量§features = ['Age', 'Gender', 'CityTier', 'Tenure', 'AvgSessionDuration', 'PageViewsPerSession', 'BounceRate', 'TotalTransactions', 'AvgOrderValue', 'DaysSinceLastPurchase']§X = __⑧__[__⑨__]§y = data['__⑩__']§# 3. 数据集划分§X_train, X_test, y_train, y_test = __⑪__(X, y, test_size=0.2, random_state=42, __⑫__=y)§print(f"训练样本数: {X_train.shape[0]}, 测试样本数: {X_test.shape[0]}")§# 4. 处理数据不平衡§print("处理前类别分布:")§print(__⑬__)§smote = __⑭__(random_state=42)§X_resampled, y_resampled = __⑮__.__⑯__(X_train, y_train)§print("处理后类别分布:")§print(__⑰__)§# 5. 构建逻辑回归模型§# 创建包含标准化和逻辑回归的管道§lr_pipeline = __⑱__([§('scaler', __⑲__),§('logreg', __⑳__(max_iter=1000, random_state=42))§])§# 训练模型§__㉑__.__㉒__(X_resampled, y_resampled)§# 预测§y_pred_lr = lr_pipeline.__㉓__(X_test)§# 6. 构建随机森林模型§rf_model = __㉔__(n_estimators=100, random_state=42)§__㉕__.__㉖__(X_resampled, y_resampled)§y_pred_rf = rf_model.__㉗__(X_test)§# 7. 模型评估与比较§def evaluate_model(model_name, y_true, y_pred):§    print(f"\\n{model_name} 模型评估:")§    print("分类报告:")§    print(__㉘__)§    accuracy = __㉙__§    print(f"准确率: {accuracy:.4f}")§    cm = __㉚__§    print("混淆矩阵:")§    print(cm)§    return accuracy§# 评估逻辑回归模型§accuracy_lr = evaluate_model("逻辑回归", __㉛__, __㉜__)§# 评估随机森林模型§accuracy_rf = evaluate_model("随机森林", __㉝__, __㉞__)§# 8. 模型保存与结果输出§# 保存最佳模型§if __㉟__ > __㊱__:§    best_model = lr_pipeline§    best_model_name = "逻辑回归"§else:§    best_model = rf_model§    best_model_name = "随机森林"§print(f"\\n最佳模型: {best_model_name}")§# 保存最佳模型§with open('best_ecommerce_model.pkl', 'wb') as file:§    pickle.__㊲__(__㊳__, __㊴__)§# 保存预测结果（不需要概率列）§results_df = pd.DataFrame({§'Actual': y_test,§'Predicted_LR': y_pred_lr,§'Predicted_RF': y_pred_rf§})§__㊵__.__㊶__('model_comparison_results.csv', index=False)§print("建模完成！所有结果已保存。")§print("\\n=== 模型比较总结 ===")§print(f"逻辑回归准确率: {accuracy_lr:.4f}")§print(f"随机森林准确率: {accuracy_rf:.4f}")§print(f"最佳模型: {best_model_name}")|①pd.read_csv('ecommerce_customer_behavior.csv')；§②shape；§③info；§④value_counts()；§⑤LabelEncoder()；§⑥le；§⑦fit_transform；§⑧data；§⑨features；§⑩HighValuePurchase；§⑪train_test_split；§⑫stratify；§⑬y_train.value_counts()；§⑭SMOTE；§⑮smote；§⑯fit_resample；§⑰pd.Series(y_resampled).value_counts()；§⑱Pipeline；§⑲StandardScaler()；§⑳LogisticRegression；§㉑lr_pipeline；§㉒fit；§㉓predict；§㉔RandomForestClassifier；§㉕rf_model；§㉖fit；§㉗predict；§㉘classification_report(y_true, y_pred)；§㉙accuracy_score(y_true, y_pred)；§㉚confusion_matrix(y_true, y_pred)；§㉛y_test；§㉜y_pred_lr；§㉝y_test；§㉞y_pred_rf；§㉟accuracy_lr；§㊱accuracy_rf；§㊲dump；§㊳best_model；§㊴file；§㊵results_df；§㊶to_csv`},
+ {n:"三级 · 第四部分　模型部署与交互流程（第19—24题）",d:"代码实操题 · 在原文空缺处填空并逐空检查 · 共 6 题",data:`#第19题 图像识别评估系统交互流程设计
+原题号：3.2.1　｜　填空数：7§图像识别评估系统是在深度学习技术日益成熟的背景下发展起来的，旨在解决传统图像识别方法在面对复杂场景和大规模数据集时的局限性。随着互联网和物联网技术的飞速发展，图像数据量呈指数级增长，对图像内容的自动理解和智能分析提出了更高的要求。ResNet作为一种深度卷积神经网络架构，凭借其深度残差连接机制，能够有效缓解梯度消失问题，实现更深层次的网络结构，从而捕获更加丰富和抽象的图像特征，极大地提高了图像识别的准确性和效率，推动了人工智能技术在现实世界中的广泛应用和商业化进程。§AI模型说明："resnet.onnx"模型是使用 Pytorch 框架和基于深度卷积神经网络网络训练得到的，专门用于进行图像识别。对应的标签文件为"labels.txt"。该模型的使用交互流程为：§1)加载"resnet.onnx"模型和"labels.txt"类别标签；§2)加载本地测试图片"img_test.jpg"，并进行预处理图像以符合模型输入要求；§3)使用"resnet.onnx"模型对加载的图片进行识别；§4)输出加载图片的识别结果(输出概率值最大的5组类别和对应概率值)§你作为一名人工智能训练师，请完成以下工作任务：§(1)补全该模型的使用交互流程对应的Python代码(3.2.1.ipynb)，实现本地测试图片"img_test.jpg"的识别。§§import onnxruntime as ort§import numpy as np§import scipy.special§from PIL import Image§# 预处理图像§def preprocess_image(image, resize_size=256, crop_size=224, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]):§  image = image.resize((resize_size, resize_size), Image.BILINEAR)§  w, h = image.size§  left = (w - crop_size) / 2§  top = (h - crop_size) / 2§  image = image.crop((left, top, left + crop_size, top + crop_size))§  image = np.array(image).astype(np.float32)§  image = image / 255.0§  image = (image - mean) / std§  image = np.transpose(image, (2, 0, 1))§  image = image.reshape((1,) + image.shape)§  return image§# 模型加载§session = __①__§# 加载类别标签§labels_path = 'labels.txt'§with open(labels_path) as f:§  labels = [line.strip() for line in f.readlines()]§# 获取模型输入和输出的名称§input_name = session.get_inputs()[0].name§output_name = session.get_outputs()[0].name§# 加载图片§image = __②__('RGB')§# 预处理图片§processed_image = __③__§# 确保输入数据是 float32 类型§processed_image = processed_image.astype(np.float32)§# 进行图片识别§output = __④__([output_name], {input_name: processed_image})[0]§# 应用 softmax 函数获取概率§probabilities = __⑤__(output, axis=-1)§# 获取最高的5个概率和对应的类别索引§top5_idx = __⑥__[-5:][::-1]§top5_prob = __⑦__§# 打印结果§print("Top 5 predicted classes:")§for i in range(5):§  print(f"{i+1}: {labels[top5_idx[i]]} - Probability: {top5_prob[i]}")|①ort.InferenceSession('resnet.onnx')；§②Image.open('img_test.jpg').convert；§③preprocess_image(image)；§④session.run；§⑤scipy.special.softmax；§⑥np.argsort(probabilities[0])；§⑦probabilities[0][top5_idx]
+#第20题 手写数字识别系统交互流程设计
+原题号：3.2.2　｜　填空数：12§手写数字识别系统是在数字化转型和自动化需求日益增长的社会背景下应运而生的。随着信息时代的到来，大量手写文档需要进行电子化处理，以提高数据存储、检索和分析的效率。传统的光学字符识别(OCR)技术在处理手写体时面临诸多挑战，如书写风格的多样性、笔迹的连笔和重叠等，导致识别率不高。然而，深度学习的兴起，尤其是卷积神经网络(CNN)的发展，为手写数字的精准识别提供了强大的工具。§AI模型说明：提供的模型"mnist.onnx"是基于卷积神经网络训练得到的，专门用于进行手写数字的识别应用。该模型的使用交互流程为：§1)加载模型"mnist.onnx";§2)加载一张本地手写数字图片"img_test.png"，并进行预处理图像以符合模型输入要求；§3)使用mnist模型对手写数字图片进行识别；§4)输出识别后的数字。§你作为一名人工智能训练师，请完成以下工作任务：§(1)补全该模型的使用交互流程对应的Python代码(3.2.2.ipynb)，实现本地测试图片"img_test.png"的识别。§§import onnxruntime§import numpy as np§from PIL import Image§# 加载ONNX模型§ort_session = __①__§# 加载图像§image = __②__('L')  # 转为灰度图§#图像预处理§image = __③__((28, 28))  # 调整大小为MNIST模型的输入尺寸§image_array = __④__(__⑤__, dtype=np.float32)  # 转为numpy数组§image_array = __⑥__(__⑦__, axis=0)  # 添加batch维度§image_array = __⑧__(__⑨__, axis=0)  # 添加通道维度§#返回模型输入列表§ort_inputs = {__⑩__()[0].name: image_array}§# 执行预测§ort_outs = __⑪__(None, ort_inputs)§# 获取预测结果§predicted_class = __⑫__§# 输出预测结果§print(f"Predicted class: {predicted_class}")|①onnxruntime.InferenceSession('mnist.onnx')；§②Image.open('img_test.png').convert；§③image.resize；§④np.array；§⑤image；§⑥np.expand_dims；§⑦image_array；§⑧np.expand_dims；§⑨image_array；§⑩ort_session.get_inputs；§⑪ort_session.run；§⑫np.argmax(ort_outs[0])
+#第21题 面部表情识别系统交互流程设计
+原题号：3.2.3　｜　填空数：7§面部表情识别系统是一种先进的计算机视觉技术，它能够分析人脸的微表情，识别出诸如快乐、悲伤、惊讶等基本情绪。通过捕捉和解读面部特征，如眼睛、眉毛和嘴部的动作，这类系统能在实时或预录的视频中判断人的情感状态，广泛应用于人机交互、市场调研、医疗健康监测、安全监控及教育科技等多个领域，为提升用户体验、增进情感智能和优化社会服务提供了有力工具。§AI模型说明：提供的已训练的模型"emotion-ferplus.onnx"，其专门用于进行面部表情识别。定义情感类别与数字标签的映射表为{'neutral':0, 'happiness':1, 'surprise':2, 'sadness':3, 'anger':4, 'disgust':5, 'fear':6, 'contempt':7}。§该模型的使用交互流程为：§1)加载模型"emotion-ferplus.onnx"和加载情感类别与数字标签的映射表；§2)加载一张本地图片"img_test.png"，并预处理图像；§3)使用已训练的模型对图片面部表情识别；§4)输出识别后的表情标签。§你作为一名人工智能训练师，请完成以下工作任务：§(1)补全该模型的使用交互流程对应的Python代码(3.2.3.ipynb)，实现本地测试图片"img_test.png"的识别。§§# 导入必要的库§import numpy as np§from PIL import Image§import onnxruntime as ort§# 定义预处理函数，用于将图片转换为模型所需的输入格式§def preprocess(image_path):§    input_shape = (1, 1, 64, 64)    # 模型输入期望的形状，这里是 (N, C, H, W)，N=batch size, C=channels, H=height, W=width§    img = Image.open(image_path).convert('L')    # 打开图像文件并将其转换为灰度图§    img = img.resize((64, 64), Image.ANTIALIAS)    # 调整图像大小到模型输入所需的尺寸§    img_data = np.array(img, dtype=np.float32)    # 将PIL图像对象转换为numpy数组，并确保数据类型是float32§    # 调整数组的形状以匹配模型输入的形状§    img_data = np.expand_dims(img_data, axis=0)  # 添加 batch 维度§    img_data = np.expand_dims(img_data, axis=1)  # 添加 channel 维度§    assert img_data.shape == input_shape, f"Expected shape {input_shape}, but got {img_data.shape}"    # 确保最终的形状与模型输入要求的形状一致§    return img_data    # 返回预处理后的图像数据§# 定义情感类别与数字标签的映射表§emotion_table = __①__§# 加载模型§ort_session = __②__    # 使用onnxruntime创建一个会话，用于加载并运行模型§# 加载本地图片并进行预处理§input_data = __③__§# 准备输入数据，确保其符合模型输入的要求§ort_inputs = {ort_session.get_inputs()[0].name: input_data}    # ort_session.get_inputs()[0].name 是获取模型的第一个输入的名字§# 运行模型，进行预测§ort_outs = __④__(None, __⑤__)§# 解码模型输出，找到预测概率最高的情感类别§predicted_label = __⑥__(ort_outs[0])§# 根据预测的标签找到对应的情感名称§predicted_emotion = __⑦__[predicted_label]§# 输出预测的情感§print(f"Predicted emotion: {predicted_emotion}")|①{'neutral':0, 'happiness':1, 'surprise':2, 'sadness':3, 'anger':4, 'disgust':5, 'fear':6, 'contempt':7}；§②ort.InferenceSession('emotion-ferplus.onnx')；§③preprocess('img_test.png')；§④ort_session.run；§⑤ort_inputs；§⑥np.argmax；§⑦list(emotion_table.keys())
+#第22题 花朵智能识别系统交互流程设计
+原题号：3.2.4　｜　填空数：9§花朵智能识别系统在现代城市绿化管理中起着越来越重要的作用，其利用先进的计算机视觉技术，如花朵检测与识别，实现了对花朵种类的实时监控与管理。本系统要求开发一个基于已训练模型的花朵检测与分类系统，能够准确识别出不同类别的花朵。§AI模型说明：提供的模型"flower-detection.onnx"是使用 Pytorch 框架和基于深度卷积神经网络训练得到的，专门用于进行花朵识别。对应的标签文件为"labels.txt"。 该模型的使用交互流程为：§1)加载模型"flower-detection.onnx"和加载类别标签"labels.txt"；§2)加载一张本地花朵图片"flower_test.png"，并预处理图像；§3)使用flower-detection模型对花朵图片进行识别；§4)输出花朵的预测类型和识别的准确率。§你作为一名人工智能训练师，请完成以下工作任务：§(1)补全该模型的使用交互流程对应的Python代码(3.2.4.ipynb)，实现本地测试图片"flower_test.png"的识别(题面若出现带空格文件名以素材为准)。§§import onnxruntime as ort§import numpy as np§import scipy.special§from PIL import Image§# 预处理图像§def preprocess_image(image, resize_size=256, crop_size=224, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]):§    image = image.resize((resize_size, resize_size), Image.BILINEAR)§    w, h = image.size§    left = (w - crop_size) / 2§    top = (h - crop_size) / 2§    image = image.crop((left, top, left + crop_size, top + crop_size))§    image = np.array(image).astype(np.float32)§    image = image / 255.0§    image = (image - mean) / std§    image = np.transpose(image, (2, 0, 1))§    image = image.reshape((1,) + image.shape)§    return image§# 加载模型§session = __①__§# 加载类别标签§with __②__ as f:§    labels = [line.strip() for line in f.readlines()]§# 获取模型输入和输出的名称§input_name = session.get_inputs()[0].name§output_name = session.get_outputs()[0].name§# 加载图片§image = __③__('RGB')§# 预处理图片§processed_image = __④__§# 确保输入数据是 float32 类型§processed_image = processed_image.astype(np.float32)§# 进行图片识别§output = __⑤__([output_name], {input_name: processed_image})[0]§# 应用 softmax 函数获取识别分类后的准确率§accuracy = __⑥__(output, axis=-1)§# 获取预测的类别索引§predicted_idx =  __⑦__§# 获取预测的准确值（转换为百分比）§prob_percentage =  __⑧__§# 获取预测的类别标签§predicted_label = __⑨__§# 输出预测结果，包含百分比形式的概率§print(f"Predicted class: {predicted_label}, Accuracy: {prob_percentage:.2f}%")|①ort.InferenceSession('flower-detection.onnx')；§②open('labels.txt')；§③Image.open('flower_test.png').convert；§④preprocess_image(image)；§⑤session.run；§⑥scipy.special.softmax；§⑦np.argmax(accuracy)；§⑧accuracy[0, predicted_idx] * 100；§⑨labels[predicted_idx]
+#第23题 人脸AI智能检测系统交互流程设计
+原题号：3.2.5　｜　填空数：10§在安防监控、智能交通等领域，实时准确的人脸检测需求日益增长。传统的人脸检测方法在面对复杂光照、多角度、遮挡等情况时，检测效果往往不尽人意。随着深度学习技术的发展，基于深度神经网络的人脸检测模型展现出强大的性能优势。ONNX(Open Neural Network Exchange)作为一种开放式的神经网络交换格式，能够实现不同深度学习框架间的模型转换与共享，使得基于 ONNX 的人脸检测模型可以在多种环境下高效运行。本系统所使用的 "version-RFB-320.onnx" 模型，通过大量数据训练，能够快速准确地检测出图像中的人脸，在实际应用场景中具有重要价值。§AI 模型说明："version-RFB-320.onnx" 模型是用于人脸检测的 ONNX 格式模型，对应的类别标签文件为 "voc-model-labels.txt" 。该模型的使用交互流程为：§(1)加载 "version-RFB-320.onnx" 模型和 "voc-model-labels.txt" 类别标签；§(2)加载本地测试图片文件夹 "imgs" 中的所有图片，并对每张图片进行预处理以符合模型输入要求；§(3)使用 "version-RFB-320.onnx" 模型对加载的图片进行人脸检测；§(4)在图片上绘制检测到的人脸框，并将处理后的图片保存到 "./detect_imgs_results_onnx" 文件夹中；§(5)统计所有图片中检测到的人脸总数并输出。§你作为一名人工智能训练师，请完成以下工作任务：§(1)补全该模型的使用交互流程对应的 Python 代码(3.2.5.ipynb)，实现本地测试图片文件夹 "imgs" 中所有图片的人脸检测。§§import os§import time§import cv2§import numpy as np§import vision.utils.box_utils_numpy as box_utils§import onnxruntime as ort§# 定义预测函数，对模型输出的边界框和置信度进行后处理§def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.3, top_k=-1):§    boxes = boxes[0]§    confidences = confidences[0]§    picked_box_probs = []§    picked_labels = []§    for class_index in range(1, confidences.shape[1]):§        probs = confidences[:, class_index]§        mask = probs > prob_threshold§        probs = probs[mask]§        if probs.shape[0] == 0:§            continue§        subset_boxes = boxes[mask, :]§        box_probs = np.concatenate([subset_boxes, probs.reshape(-1, 1)], axis=1)§        box_probs = box_utils.hard_nms(box_probs,§                                       iou_threshold=iou_threshold,§                                       top_k=top_k,§                                       )§        picked_box_probs.append(box_probs)§        picked_labels.extend([class_index] * box_probs.shape[0])§    if not picked_box_probs:§        return np.array([]), np.array([]), np.array([])§    picked_box_probs = np.concatenate(picked_box_probs)§    picked_box_probs[:, 0] *= width§    picked_box_probs[:, 1] *= height§    picked_box_probs[:, 2] *= width§    picked_box_probs[:, 3] *= height§    return picked_box_probs[:, :4].astype(np.int32), np.array(picked_labels), picked_box_probs[:, 4]§# 从标签文件中读取每一行，并去除行首尾的空白字符，得到类别名称列表§class_names = [__①__ for name in open('voc-model-labels.txt').readlines()]§# 创建 ONNX Runtime 的推理会话，用于运行模型进行推理§ort_session = __②__('version-RFB-320.onnx')§# 获取模型输入的名称§input_name = __③__()[0].name§# 定义保存检测结果图像的目录路径§result_path = "./detect_imgs_results_onnx"§# 定义置信度阈值，用于筛选出置信度较高的检测结果§threshold = 0.7§# 定义存储待检测图像的目录路径§path = "imgs"§# 用于统计所有图像中检测到的目标框总数，初始化为 0§sum = 0§# 如果保存结果的目录不存在，则创建该目录§if not os.path.exists(result_path):§    os.__④__(result_path)§# 获取指定目录下的所有文件和文件夹名称列表§listdir = os.listdir(path)§# 遍历目录下的每个文件§for file_path in listdir:§    # 拼接图像文件的完整路径§    img_path = os.path.join(path, file_path)§    # 使用 OpenCV 读取图像文件§    orig_image = __⑤__§    # 将图像从 BGR 颜色空间转换为 RGB 颜色空间（许多模型要求输入为 RGB 格式）§    image = cv2.cvtColor(orig_image, cv2.COLOR_BGR2RGB)§    # 将图像调整为 320x240 的尺寸（符合模型输入的尺寸要求）§    image = __⑥__(__⑦__, (320, 240))§    # 定义图像归一化的均值数组§    image_mean = __⑧__([127, 127, 127])§    # 对图像进行归一化处理，减去均值并除以 128§    image = (image - image_mean) / 128§    # 将图像的维度从 (高度, 宽度, 通道数) 转换为 (通道数, 高度, 宽度)§    image = np.transpose(image, [2, 0, 1])§    # 在第一个维度上扩展一个维度，将图像变为 (1, 通道数, 高度, 宽度)，以符合模型输入的维度要求§    image = __⑨__(image, axis=0)§    # 将图像数据类型转换为 float32 类型§    image = image.astype(np.float32)§    # 记录开始时间，用于计算模型推理的耗时§    time_time = time.time()§    # 使用 ONNX Runtime 运行模型，输入图像数据，得到模型输出的置信度和边界框§    confidences, boxes = __⑩__(None, {input_name: image})§    # 计算并打印模型推理的耗时§    print("cost time:{}".format(time.time() - time_time))§    # 调用 predict 函数对模型输出的边界框和置信度进行后处理，得到最终的边界框、类别标签和置信度§    boxes, labels, probs = predict(orig_image.shape[1], orig_image.shape[0], confidences, boxes, threshold)§    # 遍历每个检测到的目标框§    for i in range(boxes.shape[0]):§        # 获取当前目标框的坐标§        box = boxes[i, :]§        # 生成当前目标框的标签字符串，包含类别名称和置信度§        label = f"{class_names[labels[i]]}: {probs[i]:.2f}"§        # 在原始图像上绘制目标框，颜色为 (255, 255, 0)，线条粗细为 4§        cv2.rectangle(orig_image, (box[0], box[1]), (box[2], box[3]), (255, 255, 0), 4)§        # 将绘制了目标框的图像保存到结果目录中§        cv2.imwrite(os.path.join(result_path, file_path), orig_image)§    # 累加当前图像中检测到的目标框数量到总数中§    sum += boxes.shape[0]§# 打印所有图像中检测到的目标框总数§print("sum:{}".format(sum))|①name.strip()；§②ort.InferenceSession；§③ort_session.get_inputs；§④makedirs；§⑤cv2.imread(img_path)；§⑥cv2.resize；§⑦image；§⑧np.array；§⑨np.expand_dims；§⑩ort_session.run
+#第24题 ONNX图像分类模型部署
+原题号：3.2.6　｜　填空数：23§你是一家AI公司的工程师，需要将一个训练好的图像分类模型部署到生产环境中。该模型使用ONNX格式保存，能够识别10种不同的动物类别。你需要完成模型的加载、图像预处理和推理预测的完整流程。§§import onnxruntime§import numpy as np§from PIL import Image§import scipy.special§# 1. 加载ONNX模型§session = __①__§# 2. 获取模型输入输出信息§input_name = __②__[0].name§output_name = __③__[0].name§# 3. 加载类别标签并输出结果§with open('animal_labels.txt', 'r',encoding='utf-8') as f:§    labels = [line.strip() for line in f.readlines()]§# 4. 图像预处理函数§def preprocess_image(image_path, target_size=(224, 224)):§    # 加载图像并转换为RGB格式§    image = __④__(image_path).__⑤__("RGB")§    # 调整图像大小§    image = image.__⑥__(target_size)§    # 转换为numpy数组并归一化§    image_array = __⑦__(image).__⑧__(np.float32)§    image_array = image_array / 255.0§    # 标准化（ImageNet标准）§    mean = np.array([0.485, 0.456, 0.406], dtype=np.float32) # 确保mean是float32§    std = np.array([0.229, 0.224, 0.225], dtype=np.float32)  # 确保std是float32§    image_array = (image_array - __⑨__) / __⑩__§    # 调整维度顺序为CHW§    image_array = __⑪__(image_array, (2, 0, 1))§    # 添加batch维度§    image_array = __⑫__(image_array, axis=0)§    image_array = image_array.astype(np.float32)§    return image_array§# 5. 加载并预处理测试图像§processed_image = __⑬__§# 6. 执行模型推理§outputs = __⑭__([output_name], {__⑮__: processed_image})§# 7. 后处理预测结果§# 应用softmax获取概率§probabilities = __⑯__.__⑰__(outputs[0], axis=1)§# 获取最高概率的类别索引§predicted_class_idx = __⑱__(probabilities[0])§# 获取最高概率值§confidence = __⑲__[0][predicted_class_idx]§# 8. 输出结果§predicted_label = __⑳__[predicted_class_idx]§print(f"预测结果: {predicted_label}")§print(f"置信度: {confidence:.4f}")§# 9. 输出Top-3预测结果§top3_indices = __㉑__(probabilities[0])[-3:][__㉒__]§top3_confidences = __㉓__[0][top3_indices]§print("\\nTop-3 预测结果:")§for i, (idx, conf) in enumerate(zip(top3_indices, top3_confidences)):§    print(f"{i+1}. {labels[idx]} - {conf:.4f}")|①onnxruntime.InferenceSession('animal_classifier.onnx')；§②session.get_inputs()；§③session.get_outputs()；§④Image.open；§⑤convert；§⑥resize；§⑦np.array；§⑧astype；§⑨mean；§⑩std；§⑪np.transpose；§⑫np.expand_dims；§⑬preprocess_image('test_animal.jpg')；§⑭session.run；§⑮input_name；§⑯scipy.special；§⑰softmax；§⑱np.argmax；§⑲probabilities；§⑳labels；§㉑np.argsort；§㉒::-1；§㉓probabilities`},
+];
+
+/* =========================================================================
+   Supabase 账号 + 云同步层
+   ========================================================================= */
+const SB_URL = 'https://YOUR-PROJECT.supabase.co';   // ← 替换为 Project URL
+const SB_KEY = 'YOUR-ANON-KEY';                       // ← 替换为 anon / publishable key
+
+let UID   = localStorage.getItem('tk_cur_user') || '';
+let TOKEN = localStorage.getItem('tk_token') || '';
+let REFRESH = localStorage.getItem('tk_refresh') || '';
+let EMAIL = localStorage.getItem('tk_email') || '';
+
+const _rawSave = store.s;
+const _rawGet  = store.g;
+
+/* ---- 通用请求：自动带 token，401 自动刷新一次 ---- */
+async function sbFetch(path, opt={}, retry=true){
+  const headers = Object.assign({
+    'apikey': SB_KEY,
+    'Content-Type': 'application/json'
+  }, opt.headers||{});
+  if (TOKEN) headers['Authorization'] = 'Bearer ' + TOKEN;
+  const r = await fetch(SB_URL + path, Object.assign({}, opt, {headers}));
+  if (r.status === 401 && retry && REFRESH){
+    const ok = await refreshToken();
+    if (ok) return sbFetch(path, opt, false);
+  }
+  return r;
+}
+
+async function refreshToken(){
+  try {
+    const r = await fetch(SB_URL + '/auth/v1/token?grant_type=refresh_token', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','apikey':SB_KEY},
+      body: JSON.stringify({refresh_token: REFRESH})
+    });
+    if (!r.ok) return false;
+    const d = await r.json();
+    TOKEN = d.access_token; REFRESH = d.refresh_token; UID = d.user.id;
+    EMAIL = d.user.email || EMAIL;
+    localStorage.setItem('tk_token', TOKEN);
+    localStorage.setItem('tk_refresh', REFRESH);
+    localStorage.setItem('tk_cur_user', UID);
+    localStorage.setItem('tk_email', EMAIL);
+    return true;
+  } catch(e){ return false; }
+}
+
+async function sbSignup(email, pass){
+  const r = await fetch(SB_URL + '/auth/v1/signup', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':SB_KEY},
+    body: JSON.stringify({email, password: pass})
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.msg || d.error_description || '注册失败');
+  return d;
+}
+
+async function sbLogin(email, pass){
+  const r = await fetch(SB_URL + '/auth/v1/token?grant_type=password', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':SB_KEY},
+    body: JSON.stringify({email, password: pass})
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error_description || d.msg || '登录失败');
+  return d;
+}
+
+/* ---- meta：每个 key 的本地最后修改时间 ---- */
+function getMeta(){ return _rawGet('tk_meta_' + (UID||'guest'), {}); }
+function setMeta(m){ _rawSave('tk_meta_' + (UID||'guest'), m); }
+function touchMeta(k){
+  const m = getMeta();
+  m[k] = Date.now();
+  setMeta(m);
+}
+
+/* ---- 包装 store.s：写本地后打标记并防抖同步 ---- */
+let syncTimer = null;
+store.s = function(k, v){
+  _rawSave(k, v);
+  if (TOKEN && !k.startsWith('tk_meta_')){
+    touchMeta(k);
+    scheduleSync();
+  }
+};
+function scheduleSync(){
+  if (!TOKEN) return;
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(pushAll, 1500);
+}
+
+/* ---- 会话合并：按题 id 合并 ans / done ---- */
+function mergeSession(a, b){
+  if (!a) return b;
+  if (!b) return a;
+  if (!a.ids || !b.ids) return ((a.t0||0) >= (b.t0||0)) ? a : b;
+  const base = ((a.t0||0) >= (b.t0||0)) ? a : b;
+  return Object.assign({}, base, {
+    ans:  Object.assign({}, b.ans  || {}, a.ans  || {}),
+    done: Object.assign({}, b.done || {}, a.done || {})
+  });
+}
+
+/* ---- 推送全部本地改动到云端 ---- */
+async function pushAll(){
+  if (!TOKEN) return;
+  const m = getMeta();
+  const rows = [];
+  for (const k of Object.keys(m)){
+    if (k.startsWith('tk_meta_')) continue;
+    const v = _rawGet(k, null);
+    if (v === null) continue;
+    rows.push({
+      level: k.startsWith('tk3_') ? '3' : '2',
+      key: k,
+      value: v,
+      updated_at: new Date(m[k]).toISOString()
+    });
+  }
+  if (!rows.length) return;
+  try {
+    await sbFetch('/rest/v1/progress', {
+      method: 'POST',
+      headers: {'Prefer': 'resolution=merge-duplicates,return=minimal'},
+      body: JSON.stringify(rows)
+    });
+  } catch(e){}
+}
+
+/* ---- 从云端拉取并合并到本地 ---- */
+async function pullAll(){
+  if (!TOKEN) return;
+  let rows = [];
+  try {
+    const r = await sbFetch('/rest/v1/progress?select=level,key,value,updated_at');
+    if (!r.ok) return;
+    rows = await r.json();
+  } catch(e){ return; }
+  const m = getMeta();
+  let changed = false;
+  for (const row of rows){
+    const cloudT = new Date(row.updated_at).getTime();
+    const localT = m[row.key] || 0;
+    if (cloudT > localT){
+      if (row.key.endsWith('_s')){
+        const local = _rawGet(row.key, null);
+        _rawSave(row.key, mergeSession(local, row.value));
+      } else {
+        _rawSave(row.key, row.value);
+      }
+      m[row.key] = cloudT;
+      changed = true;
+    }
+  }
+  if (changed) setMeta(m);
+}
+
+/* ---- 删除云端某个 key（用于刷题完成后清理会话） ---- */
+async function deleteCloudKey(key){
+  try {
+    await sbFetch('/rest/v1/progress?key=eq.' + encodeURIComponent(key), {method:'DELETE'});
+  } catch(e){}
+}
+
+/* ---- 旧数据迁移：tk_xxx -> tk_{UID}_xxx ---- */
+function migrateOldData(){
+  if (!UID) return;
+  const flagKey = 'tk_mig_to_' + UID;
+  if (localStorage.getItem(flagKey)) return;
+  const names = ['w','st','h','s','mst','ans','fill'];
+  const m = getMeta();
+  for (const p of ['tk_', 'tk3_']){
+    for (const n of names){
+      const oldK = p + n;
+      const newK = p + UID + '_' + n;
+      const oldV = localStorage.getItem(oldK);
+      if (oldV !== null && localStorage.getItem(newK) === null){
+        localStorage.setItem(newK, oldV);
+        m[newK] = Date.now();
+      }
+    }
+  }
+  setMeta(m);
+  localStorage.setItem(flagKey, '1');
+}
+
+/* ---- 页面切走 / 关闭时尽量 flush ---- */
+document.addEventListener('visibilitychange', ()=>{
+  if (document.visibilityState === 'hidden') flushSync();
+});
+window.addEventListener('beforeunload', ()=>flushSync(true));
+
+function flushSync(){
+  if (!TOKEN) return;
+  clearTimeout(syncTimer);
+  const m = getMeta();
+  const rows = [];
+  for (const k of Object.keys(m)){
+    if (k.startsWith('tk_meta_')) continue;
+    const v = _rawGet(k, null);
+    if (v === null) continue;
+    rows.push({
+      level: k.startsWith('tk3_') ? '3' : '2',
+      key: k,
+      value: v,
+      updated_at: new Date(m[k]).toISOString()
+    });
+  }
+  if (!rows.length) return;
+  try {
+    fetch(SB_URL + '/rest/v1/progress', {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + TOKEN,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates,return=minimal'
+      },
+      body: JSON.stringify(rows)
+    });
+  } catch(e){}
+}
+
+/* ---- 登录 / 注册 / 退出 ---- */
+async function onAuthSuccess(d){
+  TOKEN = d.access_token; REFRESH = d.refresh_token; UID = d.user.id;
+  EMAIL = d.user.email || '';
+  localStorage.setItem('tk_token', TOKEN);
+  localStorage.setItem('tk_refresh', REFRESH);
+  localStorage.setItem('tk_cur_user', UID);
+  localStorage.setItem('tk_email', EMAIL);
+  migrateOldData();
+  await pullAll();
+  setLevel(LV);
+  scheduleSync();
+  home();
+}
+
+function loginPage(){
+  clearInterval(tmr);
+  document.body.className = '';
+  document.title = '登录 · 人工智能训练师题库';
+  $('#app').innerHTML = `
+  <div class="hero"><div class="wrap">
+    <div class="k">职业技能等级认定题库</div>
+    <h1>人工智能训练师题库</h1>
+    <p>登录后，答题进度、错题本、主观题作答将跨设备同步</p>
+  </div></div>
+  <div class="wrap">
+    <div class="card">
+      <h3>登录</h3>
+      <input class="fbi2" id="lgEmail" type="email" placeholder="邮箱" style="width:100%;margin-bottom:9px" autocapitalize="off" autocomplete="username">
+      <input class="fbi2" id="lgPass" type="password" placeholder="密码" style="width:100%" autocomplete="current-password">
+      <button class="bt bp" style="width:100%;margin-top:12px" id="lgBtn" onclick="doLoginClick()">登录</button>
+      <div class="tip" style="margin-top:10px;text-align:center">没有账号？<a href="javascript:showRegister()" style="color:var(--blue)">注册</a></div>
+    </div>
+    <div class="foot">进度保存在 Supabase 云端，换设备登录同一账号即可继续<br>请勿在公共设备保存密码</div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+
+function showRegister(){
+  document.title = '注册 · 人工智能训练师题库';
+  $('#app').innerHTML = `
+  <div class="top"><div class="tin"><button class="nv" onclick="loginPage()">‹</button><div class="tb">注册新账号</div><span style="width:36px"></span></div></div>
+  <div class="wrap" style="padding-top:20px">
+    <div class="card">
+      <h3>邮箱注册</h3>
+      <input class="fbi2" id="rgEmail" type="email" placeholder="邮箱" style="width:100%;margin-bottom:9px" autocapitalize="off" autocomplete="username">
+      <input class="fbi2" id="rgPass" type="password" placeholder="密码（至少 6 位）" style="width:100%;margin-bottom:9px" autocomplete="new-password">
+      <input class="fbi2" id="rgPass2" type="password" placeholder="确认密码" style="width:100%" autocomplete="new-password">
+      <button class="bt bp" style="width:100%;margin-top:12px" onclick="doRegisterClick()">注册</button>
+      <div class="tip" style="margin-top:10px">若项目开启了邮箱确认，注册后需到邮箱点击确认链接再登录。</div>
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+
+async function doLoginClick(){
+  const email = $('#lgEmail').value.trim();
+  const pass = $('#lgPass').value;
+  if (!email || !pass) return toast('请输入邮箱和密码');
+  const btn = $('#lgBtn'); btn.disabled = true; btn.textContent = '登录中…';
+  try {
+    const d = await sbLogin(email, pass);
+    await onAuthSuccess(d);
+    toast('登录成功');
+  } catch(e){
+    toast(e.message || '登录失败');
+    btn.disabled = false; btn.textContent = '登录';
+  }
+}
+
+async function doRegisterClick(){
+  const email = $('#rgEmail').value.trim();
+  const pass = $('#rgPass').value;
+  const pass2 = $('#rgPass2').value;
+  if (!email || !pass) return toast('请填写邮箱和密码');
+  if (pass.length < 6) return toast('密码至少 6 位');
+  if (pass !== pass2) return toast('两次密码不一致');
+  try {
+    const d = await sbSignup(email, pass);
+    if (d.access_token){
+      await onAuthSuccess(d);
+      toast('注册并登录成功');
+    } else {
+      toast('注册成功，请查收邮箱确认');
+      loginPage();
+    }
+  } catch(e){ toast(e.message || '注册失败'); }
+}
+
+function logout(){
+  if (!confirm('退出登录？云端记录保留，下次登录可继续。')) return;
+  flushSync();
+  TOKEN=''; REFRESH=''; UID=''; EMAIL='';
+  localStorage.removeItem('tk_token');
+  localStorage.removeItem('tk_refresh');
+  localStorage.removeItem('tk_cur_user');
+  localStorage.removeItem('tk_email');
+  clearInterval(tmr);
+  setLevel(LV);
+  loginPage();
+}
+
+/* ===== 等级切换与初始化 ===== */
+let SQ,MQ,JQ,SEC,PRACT,CNT={s:100,m:40,j:60},LV='2';
+const BANKS={'2':{SQ:SQ2,MQ:MQ2,JQ:JQ2,SEC:SEC2,PRACT:PRACT2},'3':{SQ:SQ3,MQ:MQ3,JQ:JQ3,SEC:SEC3,PRACT:PRACT3}};
+function pkey(k){return (LV==='3'?'tk3_':'tk_')+(UID||'guest')+'_'+k;}
+function setLevel(lv){LV=lv;const B=BANKS[LV];SQ=B.SQ;MQ=B.MQ;JQ=B.JQ;SEC=B.SEC;PRACT=B.PRACT;CNT={s:B.SQ.length,m:B.MQ.length,j:B.JQ.length};W=store.g(pkey('w'),{});ST=store.g(pkey('st'),{a:0,c:0});HIST=store.g(pkey('h'),[]);S=null;SU=null;DONE=null;RV='s';tmr=null;MST=store.g(pkey('mst'),{});ANS=store.g(pkey('ans'),{});FILL=store.g(pkey('fill'),{});STDC={};SUB={v:0,only:0,f:'all'};}
+
+/* 以下为含账号信息与新入口的首页 */
+function home(){
+ clearInterval(tmr);S=null;document.body.className='';document.title='人工智能训练师题库';
+ const is3=LV==='3';
+ const w=Object.keys(W).length,acc=ST.a?Math.round(ST.c/ST.a*100):0,sv=store.g(pkey('s'),null);
+ const cont=sv&&!sv.fin?`<div class="mc" onclick="resume()"><div class="mi" style="background:var(--greenbg)">▶️</div><div class="mtx"><div class="mt">继续上次答题</div><div class="ms">${sv.m=='p'?'刷题':'考试'}模式 · 进度 ${sv.pos+1}/${sv.ids.length} 题</div></div><div class="che">›</div></div>`:'';
+ const hs=HIST.slice(-3).reverse().map(h=>`<div class="hist"><b style="color:${h.p>=60?'var(--green)':'var(--red)'}">${h.p}分</b><span>${h.n}题 · 对${h.r} / 错${h.n-h.r-h.b} / 空${h.b} · 用时${h.t}</span><div class="d">${h.d}</div></div>`).join('');
+ const tot=is3?204:230;
+ const heroK=is3?'职业技能等级认定 · 三级 / 高级工':'职业技能等级认定 · 二级 / 技师';
+ const heroT=is3?'人工智能训练师<br>三级题库':'人工智能训练师<br>二级题库';
+ const heroP=is3?'理论题（单选 120 · 多选 20 · 判断 40）＋ 代码实操题 24 题':'客观题 200 题 · 主观题 30 题 · 实操卷 4 套（全部含参考答案）';
+ const objMs=is3?'理论题逐题作答，确认后立即显示答案':'客观题逐题作答，确认后立即显示答案与解析';
+ const statLab=is3?'理论+代码题':'客观+主观题';
+ const subMc=is3?`<div class="mc" onclick="subHome()"><div class="mi" style="background:var(--tealbg)">💻</div><div class="mtx"><div class="mt">代码实操题</div><div class="ms">代码填空 24 题，原文空缺处填空并逐空检查</div></div><div class="che">›</div></div>`:`<div class="mc" onclick="subHome()"><div class="mi" style="background:var(--tealbg)">🗂️</div><div class="mtx"><div class="mt">主观题与实操卷</div><div class="ms">简答/论述30题＋实操卷4套，答案对照与掌握标记</div></div><div class="che">›</div></div>`;
+ $('#app').innerHTML=`<div class="hero"><div class="wrap">
+  <div class="k">${heroK}</div>
+  <h1>${heroT}</h1><p>${heroP}</p>
+ </div></div><div class="wrap">
+  <div class="seg" style="margin-top:18px"><button class="${!is3?'on':''}" onclick="setLevel('2');pullAll().then(home)">二级题库</button><button class="${is3?'on':''}" onclick="setLevel('3');pullAll().then(home)">三级题库</button></div>
+  <div class="stats"><div class="st"><b>${tot}</b><span>${statLab}</span></div><div class="st"><b>${ST.a}</b><span>累计答题</span></div><div class="st"><b>${acc}%</b><span>总正确率</span></div><div class="st"><b>${w}</b><span>错题本</span></div></div>
+  ${cont}
+  <div class="mc" onclick="setup('p')"><div class="mi b">📚</div><div class="mtx"><div class="mt">刷题模式</div><div class="ms">${objMs}</div></div><div class="che">›</div></div>
+  <div class="mc" onclick="setup('e')"><div class="mi p">📝</div><div class="mtx"><div class="mt">考试模式</div><div class="ms">整卷作答，交卷后统一判分并分模块解析</div></div><div class="che">›</div></div>
+  <div class="mc" onclick="wrongBook()"><div class="mi" style="background:var(--redbg)">📕</div><div class="mtx"><div class="mt">错题本${w?`<span class="rb">${w}</span>`:''}</div><div class="ms">针对错题反复练习，掌握后可移除</div></div><div class="che">›</div></div>
+  ${subMc}
+  ${HIST.length?`<div class="card"><h3>最近考试</h3>${hs}</div>`:''}
+  <div class="card"><h3>账号</h3>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="mi b" style="width:36px;height:36px;font-size:16px">👤</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(EMAIL||'已登录')}</div>
+        <div class="ms">进度已开启云端同步</div>
+      </div>
+      <button class="bt bf" style="padding:8px 14px;font-size:13px" onclick="logout()">退出</button>
+    </div>
+  </div>
+  <div class="foot">答题记录保存在 Supabase 云端，换设备登录同一账号即可继续<br>清除浏览器数据不影响云端记录</div>
+ </div>`;window.scrollTo(0,0);
+}
+
+/* ===== 启动：先校验登录态，再决定进首页还是登录页 ===== */
+setLevel('2');
+(async ()=>{
+  if (TOKEN && UID){
+    try {
+      const r = await sbFetch('/auth/v1/user');
+      if (!r.ok) throw new Error('auth failed');
+      const u = await r.json();
+      EMAIL = u.email || EMAIL;
+      localStorage.setItem('tk_email', EMAIL);
+      await pullAll();
+      setLevel(LV);
+      home();
+      return;
+    } catch(e){
+      TOKEN=''; REFRESH=''; UID=''; EMAIL='';
+      localStorage.removeItem('tk_token');
+      localStorage.removeItem('tk_refresh');
+      localStorage.removeItem('tk_cur_user');
+      localStorage.removeItem('tk_email');
+    }
+  }
+  loginPage();
+})();
+</script>
+</body>
+</html>
